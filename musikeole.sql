@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
--- Client: 127.0.0.1
--- Généré le: Jeu 20 Mars 2014 à 15:13
--- Version du serveur: 5.5.27-log
--- Version de PHP: 5.4.6
+-- Client :  127.0.0.1
+-- Généré le :  Jeu 20 Mars 2014 à 18:18
+-- Version du serveur :  5.6.15-log
+-- Version de PHP :  5.5.8
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `musikeole`
+-- Base de données :  `musikeole`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,9 @@ CREATE TABLE IF NOT EXISTS `adherents` (
   `idFamille` int(11) NOT NULL,
   `idMembre` int(11) NOT NULL,
   `valide` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idFamille` (`idFamille`),
+  KEY `idMembre` (`idMembre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -43,9 +45,11 @@ CREATE TABLE IF NOT EXISTS `adherents` (
 --
 
 CREATE TABLE IF NOT EXISTS `adherentsassociations` (
-  `idAdherent` int(11) NOT NULL,
+  `idAdherent` varchar(20) NOT NULL,
   `idAssociation` int(11) NOT NULL,
-  PRIMARY KEY (`idAdherent`,`idAssociation`)
+  PRIMARY KEY (`idAdherent`,`idAssociation`),
+  KEY `adherentsAssociations_associations` (`idAssociation`),
+  KEY `idAdherent` (`idAdherent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -76,8 +80,10 @@ CREATE TABLE IF NOT EXISTS `annoncesbourse` (
   `date` date NOT NULL,
   `valide` tinyint(1) NOT NULL,
   `idCategorie` int(11) NOT NULL,
-  `idAdherent` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `idAdherent` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idCategorie` (`idCategorie`),
+  KEY `idAdherent` (`idAdherent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -152,7 +158,8 @@ CREATE TABLE IF NOT EXISTS `commandes` (
   `date` date NOT NULL,
   `reglee` tinyint(1) NOT NULL,
   `idMembre` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idMembre` (`idMembre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -166,8 +173,9 @@ CREATE TABLE IF NOT EXISTS `demandesphotos` (
   `date` date NOT NULL,
   `valide` tinyint(1) NOT NULL,
   `lien` varchar(100) NOT NULL,
-  `idAdherent` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `idAdherent` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idAdherent` (`idAdherent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -194,9 +202,11 @@ CREATE TABLE IF NOT EXISTS `inscriptionsmanifestations` (
   `placesExterieurs` int(11) NOT NULL,
   `date` date NOT NULL,
   `valide` tinyint(1) NOT NULL,
-  `idAdherent` int(11) NOT NULL,
+  `idAdherent` varchar(20) NOT NULL,
   `idManifestation` int(11) NOT NULL,
-  PRIMARY KEY (`idInscription`)
+  PRIMARY KEY (`idInscription`),
+  KEY `idAdherent` (`idAdherent`,`idManifestation`),
+  KEY `idManifestation` (`idManifestation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -208,7 +218,8 @@ CREATE TABLE IF NOT EXISTS `inscriptionsmanifestations` (
 CREATE TABLE IF NOT EXISTS `inscritsnewsletter` (
   `mail` varchar(50) NOT NULL,
   `idMembre` int(11) NOT NULL,
-  PRIMARY KEY (`mail`)
+  PRIMARY KEY (`mail`),
+  KEY `idMembre` (`idMembre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -221,7 +232,9 @@ CREATE TABLE IF NOT EXISTS `lignescommande` (
   `idCommande` int(11) NOT NULL DEFAULT '0',
   `idProduit` int(11) NOT NULL DEFAULT '0',
   `quantite` int(11) NOT NULL,
-  PRIMARY KEY (`idCommande`,`idProduit`)
+  PRIMARY KEY (`idCommande`,`idProduit`),
+  KEY `idCommande` (`idCommande`,`idProduit`),
+  KEY `lignesCommandes_produits` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -243,7 +256,9 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
   `dateCreation` date NOT NULL,
   `idAssociation` int(11) NOT NULL,
   `idAlbum` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idAssociation` (`idAssociation`,`idAlbum`),
+  KEY `idAlbum` (`idAlbum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -258,7 +273,8 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
   `idAutorisation` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idAutorisation` (`idAutorisation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -273,7 +289,9 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `message` varchar(1000) NOT NULL,
   `idMembre` int(11) NOT NULL,
   `idSujet` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idMembre` (`idMembre`,`idSujet`),
+  KEY `idSujet` (`idSujet`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -300,7 +318,8 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `idAlbum` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idAlbum` (`idAlbum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -312,7 +331,8 @@ CREATE TABLE IF NOT EXISTS `photos` (
 CREATE TABLE IF NOT EXISTS `photosdemandees` (
   `idPhoto` int(11) NOT NULL,
   `idDemande` int(11) NOT NULL,
-  PRIMARY KEY (`idPhoto`,`idDemande`)
+  PRIMARY KEY (`idPhoto`,`idDemande`),
+  KEY `photosdemandees_demandesphotos` (`idDemande`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -326,13 +346,14 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `nom` varchar(50) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `quantiteInitiale` int(11) NOT NULL,
-  `quantiteRestante` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
   `prix` double(4,2) NOT NULL,
   `photo` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `prioriteAdherent` tinyint(1) NOT NULL,
   `idCategorie` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idCategorie` (`idCategorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -365,7 +386,8 @@ CREATE TABLE IF NOT EXISTS `propositionsidees` (
   `image` varchar(50) NOT NULL,
   `reponse` varchar(1500) NOT NULL,
   `idMembre` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idMembre` (`idMembre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -378,8 +400,25 @@ CREATE TABLE IF NOT EXISTS `propositionssondages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `proposition` varchar(50) NOT NULL,
   `idQuestion` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idQuestion` (`idQuestion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `publicites`
+--
+
+CREATE TABLE IF NOT EXISTS `publicites` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `lien` varchar(150) NOT NULL,
+  `mailAnnonceur` varchar(100) NOT NULL,
+  `affichee` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -392,7 +431,9 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `question` varchar(150) NOT NULL,
   `idType` int(11) NOT NULL,
   `idSondage` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idType` (`idType`),
+  KEY `idSondage` (`idSondage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -406,7 +447,9 @@ CREATE TABLE IF NOT EXISTS `responsessondages` (
   `ip` varchar(50) NOT NULL,
   `idQuestion` int(11) NOT NULL,
   `idProposition` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idQuestion` (`idQuestion`),
+  KEY `idProposition` (`idProposition`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -434,7 +477,9 @@ CREATE TABLE IF NOT EXISTS `sujets` (
   `date` date NOT NULL,
   `idMembre` int(11) NOT NULL,
   `idCategorieForum` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idMembre` (`idMembre`),
+  KEY `idCategorieForum` (`idCategorieForum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -448,6 +493,135 @@ CREATE TABLE IF NOT EXISTS `typequestions` (
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `adherents`
+--
+ALTER TABLE `adherents`
+  ADD CONSTRAINT `adherents_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `adherents_familles` FOREIGN KEY (`idFamille`) REFERENCES `familles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `adherentsassociations`
+--
+ALTER TABLE `adherentsassociations`
+  ADD CONSTRAINT `adherentsAssociations_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `adherentsAssociations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `annoncesbourse`
+--
+ALTER TABLE `annoncesbourse`
+  ADD CONSTRAINT `annoncesBourse_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `annoncesBourse_categories` FOREIGN KEY (`idCategorie`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD CONSTRAINT `commandes_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `demandesphotos`
+--
+ALTER TABLE `demandesphotos`
+  ADD CONSTRAINT `demandesPhotos_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `inscriptionsmanifestations`
+--
+ALTER TABLE `inscriptionsmanifestations`
+  ADD CONSTRAINT `inscriptionsmanifestations_manifestations` FOREIGN KEY (`idManifestation`) REFERENCES `manifestations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inscriptionsmanifestations_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `inscritsnewsletter`
+--
+ALTER TABLE `inscritsnewsletter`
+  ADD CONSTRAINT `inscritsNewsletter_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `lignescommande`
+--
+ALTER TABLE `lignescommande`
+  ADD CONSTRAINT `lignesCommandes_produits` FOREIGN KEY (`idProduit`) REFERENCES `produits` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lignescommande_commandes` FOREIGN KEY (`idCommande`) REFERENCES `commandes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `manifestations`
+--
+ALTER TABLE `manifestations`
+  ADD CONSTRAINT `manifestations_albums` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `membres`
+--
+ALTER TABLE `membres`
+  ADD CONSTRAINT `membres_autorisations` FOREIGN KEY (`idAutorisation`) REFERENCES `autorisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_sujets` FOREIGN KEY (`idSujet`) REFERENCES `sujets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messages_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `photos`
+--
+ALTER TABLE `photos`
+  ADD CONSTRAINT `photos_albums` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `photosdemandees`
+--
+ALTER TABLE `photosdemandees`
+  ADD CONSTRAINT `photosdemandees_demandesphotos` FOREIGN KEY (`idDemande`) REFERENCES `demandesphotos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `photosdemandees_photos` FOREIGN KEY (`idPhoto`) REFERENCES `photos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `produits`
+--
+ALTER TABLE `produits`
+  ADD CONSTRAINT `produits_categories` FOREIGN KEY (`idCategorie`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `propositionsidees`
+--
+ALTER TABLE `propositionsidees`
+  ADD CONSTRAINT `propositionsidees_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `propositionssondages`
+--
+ALTER TABLE `propositionssondages`
+  ADD CONSTRAINT `propositions_questions` FOREIGN KEY (`idQuestion`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_sondages` FOREIGN KEY (`idSondage`) REFERENCES `sondages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `questions_types` FOREIGN KEY (`idType`) REFERENCES `typequestions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `responsessondages`
+--
+ALTER TABLE `responsessondages`
+  ADD CONSTRAINT `reponsessondage_propositions` FOREIGN KEY (`idProposition`) REFERENCES `propositionssondages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reponsessondage_questions` FOREIGN KEY (`idQuestion`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `sujets`
+--
+ALTER TABLE `sujets`
+  ADD CONSTRAINT `sujets_categoriesforum` FOREIGN KEY (`idCategorieForum`) REFERENCES `categoriesforum` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sujets_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
