@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.3
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Client: 127.0.0.1
--- Généré le: Jeu 20 Mars 2014 à 12:17
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.5.0
+-- Généré le: Jeu 20 Mars 2014 à 15:13
+-- Version du serveur: 5.5.27-log
+-- Version de PHP: 5.4.6
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `musikeole`
 --
-CREATE DATABASE IF NOT EXISTS `musikeole` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `musikeole`;
 
 -- --------------------------------------------------------
 
@@ -66,6 +64,25 @@ CREATE TABLE IF NOT EXISTS `albums` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `annoncesbourse`
+--
+
+CREATE TABLE IF NOT EXISTS `annoncesbourse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `prix` double(4,2) NOT NULL,
+  `photo` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `valide` tinyint(1) NOT NULL,
+  `idCategorie` int(11) NOT NULL,
+  `idAdherent` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `associations`
 --
 
@@ -100,6 +117,20 @@ INSERT INTO `autorisations` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `boutique` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `categoriesforum`
 --
 
@@ -107,6 +138,20 @@ CREATE TABLE IF NOT EXISTS `categoriesforum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
   `description` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `reglee` tinyint(1) NOT NULL,
+  `idMembre` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -164,6 +209,19 @@ CREATE TABLE IF NOT EXISTS `inscritsnewsletter` (
   `mail` varchar(50) NOT NULL,
   `idMembre` int(11) NOT NULL,
   PRIMARY KEY (`mail`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lignescommande`
+--
+
+CREATE TABLE IF NOT EXISTS `lignescommande` (
+  `idCommande` int(11) NOT NULL DEFAULT '0',
+  `idProduit` int(11) NOT NULL DEFAULT '0',
+  `quantite` int(11) NOT NULL,
+  PRIMARY KEY (`idCommande`,`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -256,6 +314,26 @@ CREATE TABLE IF NOT EXISTS `photosdemandees` (
   `idDemande` int(11) NOT NULL,
   PRIMARY KEY (`idPhoto`,`idDemande`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produits`
+--
+
+CREATE TABLE IF NOT EXISTS `produits` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `quantiteInitiale` int(11) NOT NULL,
+  `quantiteRestante` int(11) NOT NULL,
+  `prix` double(4,2) NOT NULL,
+  `photo` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `prioriteAdherent` tinyint(1) NOT NULL,
+  `idCategorie` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
