@@ -4,7 +4,7 @@
 		protected $connexion;
 		
 		function __construct(){
-			$dsn = "mysql:host=localhost;dbname=nombdd";
+			$dsn = "mysql:host=localhost;dbname=musikeole";
 			$user = "root";
 			$pass = "";
 			try {
