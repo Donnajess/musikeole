@@ -10,7 +10,7 @@
 
 	include("modeles/ManagerSondages.php");
 
-	$monManager = new ManagerSondages();
+	$manager = new ManagerSondages();
 
 	if (isset($_GET['action'])) {
 		$action = htmlentities($_GET['action']);
@@ -20,12 +20,34 @@
 
 	switch ($action) {
 
-		case 'foo':
-			
+		case 'liste':
+			$listeSondages = $manager.getSondages();
+			include("vues/sondages/liste.php");
 			break;
 		
-		case 'bar':
+		case 'formulaireCreation':
+			// Récupérer les variables (nom, nombre de questions)
+			include("vues/sondages/formulaire.php");
+			break;
 
+		case 'validerCreation':
+			// Récupérer les variables et créer les objets
+			$manager.creerSondage($nouveauSondage);
+			$message = "Le sondage *insérer nom* a bien été créé.";
+			$listeSondages = $manager.getSondages();
+			include("vues/sondages/liste.php");
+			break;
+
+		case 'supprimerSonsage':
+			// Récupérer la variable
+			$manager.supprimerSondage($id);
+			$message = "Le sondage a bien été supprimé.";
+			$listeSondages = $manager.getSondages();
+			include("vues/sondages/liste.php");
+			break;
+
+		case 'consulterResultats':
+			// Traitement
 			break;
 
 		default:
