@@ -19,6 +19,15 @@
 			$this->connexion = new ConnexionBDD();
 		}
 
+		/**
+		 * récupère tous les sondages
+		 * @return array<Sondage> liste des sondages
+		 */
+		public function getListe(){
+
+			return $liste;
+		}
+
 	}
 
 ?>
