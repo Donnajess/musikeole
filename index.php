@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-
+		<h1>Index</h1>
+		
 	</body>	
 </html>

@@ -14,7 +14,7 @@
 	<body>
 		<h1>Administration</h1>
 		<ul>
-			<li><a href="cGestionSondages.php">Gérer les sondages</a></li>
+			<li><a href="cGestionSondages.php?action=liste">Gérer les sondages</a></li>
 		</ul>
-	</body>	
+	</body>
 </html>

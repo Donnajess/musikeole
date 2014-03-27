@@ -7,7 +7,8 @@
 	{
 		
 		protected $id;
-		protected $nom;
+		protected $titre;
+		protected $votants;
 		protected $date;
 		protected $actif;
 		protected $questions;
@@ -15,15 +16,17 @@
 		/**
 		 * Constructeur
 		 * @param int $pid        identifiant
-		 * @param string $pnom     nom du sondage
+		 * @param string $ptitre     titre du sondage
+		 * @param int $pvotants  Nombre d'exprimés au sondage
 		 * @param int $pdate      timestamp de la création du sondage
 		 * @param bool $pactif     sondage actuel
 		 * @param array<Question> $pquestions liste des questions du sondage
 		 */
-		function __construct($pid, $pnom, $pdate, $pactif, $pquestions)
+		function __construct($pid, $ptitre, $pvotants, $pdate, $pactif, $pquestions = null)
 		{
 			$this->id = $pid;
-			$this->nom = $pnom;
+			$this->titre = $ptitre;
+			$this->votants = $pvotants;
 			$this->date = $pdate;
 			$this->actif = $pactif;
 			$this->questions = $pquestions;
@@ -39,12 +42,21 @@
 		}
 
 		/**
-		* Accesseur de nom.
-		* @return string nom du sondage
+		* Accesseur de titre.
+		* @return string titre du sondage
 		*/
-		public function getNom()
+		public function getTitre()
 		{
-			return $this->nom;
+			return $this->titre;
+		}
+
+		/**
+		* Accesseur de votants.
+		* @return int nombre d'exprimés au sondage
+		*/
+		public function getVotants()
+		{
+			return $this->votants;
 		}
 
 		/**

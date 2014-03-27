@@ -14,6 +14,10 @@
 			}
 		}
 
+		/**
+		 * retourne la connexion à la base de données
+		 * @return PDO la connexion
+		 */
 		function getConnexion(){
 			return $this->connexion;
 		}

@@ -8,7 +8,7 @@
 		require "$classDir/$file";
 	}
 
-	include("modeles/ManagerSondages.php");
+	include($_SERVER['DOCUMENT_ROOT'].'/www/musikeole/toor/modeles/ManagerSondages.php');
 
 	$manager = new ManagerSondages();
 
@@ -21,7 +21,7 @@
 	switch ($action) {
 
 		case 'liste':
-			$listeSondages = $manager.getSondages();
+			$listeSondages = $manager->getSondages();
 			include("vues/sondages/liste.php");
 			break;
 		
@@ -38,7 +38,7 @@
 			include("vues/sondages/liste.php");
 			break;
 
-		case 'supprimerSonsage':
+		case 'supprimer':
 			// Récupérer la variable
 			$manager.supprimerSondage($id);
 			$message = "Le sondage a bien été supprimé.";
@@ -46,7 +46,7 @@
 			include("vues/sondages/liste.php");
 			break;
 
-		case 'consulterResultats':
+		case 'detail':
 			// Traitement
 			break;
 

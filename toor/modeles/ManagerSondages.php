@@ -1,7 +1,8 @@
 <?php
 
-	// Classe à charger
-	include("../../modeles/ConnexionBDD.php");
+	// Classes à charger
+	include($_SERVER['DOCUMENT_ROOT'].'/www/musikeole/modeles/ConnexionBDD.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/www/musikeole/includes/packageSondages.php');
 
 	/**
 	* Classe manager de la fonctionnalité des sondages
@@ -23,8 +24,14 @@
 		 * récupère tous les sondages
 		 * @return array<Sondage> liste des sondages
 		 */
-		public function getListe(){
-
+		function getSondages()
+		{
+			$liste = array();
+			$reqSondages = $this->connexion->getConnexion()->prepare('SELECT * FROM sondages');
+			$reqSondages->execute();
+			while ($ligne = $reqSondages->fetch()) {
+				array_push($liste, new Sondage($ligne['id'], $ligne['titre'], $ligne['votants'], $ligne['date'], $ligne['actif']));
+			}
 			return $liste;
 		}
 
