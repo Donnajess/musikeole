@@ -3,7 +3,7 @@
 	<h1>Liste des sondages</h1>
 	<div class="row">
 		<div class="col-md-12">
-			<form action="cGestionSondages.php?action=formulaireCreation" method="POST" class="form-inline">
+			<form action="cGestionSondages.php?action=formulaire" method="POST" class="form-inline">
 				<div class="form-group"><input type="text" name="titre" id="titre" class="form-control" placeholder="Titre du sondage"></div>
 				<div class="form-group"><input type="text" name="nbQuestions" id="nbQuestions" class="form-control" placeholder="Nombre de questions"></div>
 				<button class="btn btn-primary">Nouveau sondage</button>

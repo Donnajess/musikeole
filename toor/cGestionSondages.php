@@ -25,12 +25,13 @@
 			include("vues/sondages/liste.php");
 			break;
 		
-		case 'formulaireCreation':
-			// Récupérer les variables (nom, nombre de questions)
+		case 'formulaire':
+			$titre = $_POST['titre'];
+			$nbQuestions = $_POST['nbQuestions'];
 			include("vues/sondages/formulaire.php");
 			break;
 
-		case 'validerCreation':
+		case 'valider':
 			// Récupérer les variables et créer les objets
 			$manager.creerSondage($nouveauSondage);
 			$message = "Le sondage *insérer nom* a bien été créé.";
