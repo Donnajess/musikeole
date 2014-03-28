@@ -47,18 +47,18 @@
 				}
 				array_push($questionsSondages, new Question(0, $question, $type, $propositionsQuestion));
 			}
-			$nouveauSondage = new Sondage(0, $titre, time(), 1, $questionsSondages);
-			$manager.creerSondage($nouveauSondage); // à faire
+			$nouveauSondage = new Sondage(0, $titre, 0, time(), 1, $questionsSondages);
+			$manager->creerSondage($nouveauSondage);
 			$message = 'Le sondage "'.$titre.'" a bien été créé.';
-			$listeSondages = $manager.getSondages();
+			$listeSondages = $manager->getSondages();
 			include("vues/sondages/liste.php");
 			break;
 
 		case 'supprimer':
-			// Récupérer la variable
-			$manager.supprimerSondage($id);
+			$idSondage = $_GET['id'];
+			$manager->supprimerSondage($idSondage);
 			$message = "Le sondage a bien été supprimé.";
-			$listeSondages = $manager.getSondages();
+			$listeSondages = $manager->getSondages();
 			include("vues/sondages/liste.php");
 			break;
 

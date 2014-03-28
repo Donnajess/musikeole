@@ -16,7 +16,7 @@
 		function __construct($pid){
 			$this->id = $pid;
 			if ($pid == 1) {
-				$this->$nom = 'radio';
+				$this->nom = 'radio';
 			}else{
 				$this->nom = 'liste déroulante';
 			}

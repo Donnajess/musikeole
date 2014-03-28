@@ -1,6 +1,19 @@
 <?php include("includes/header.php"); ?>
 <div class="container">
-	<h1>Liste des sondages</h1>
+	<div class="row">
+		<div class="dol-md-12">
+			<h1>Liste des sondages</h1>
+			<p>Explications à venir</h1>
+			<?php
+				if (isset($message)) {
+					echo '<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						'.$message.'
+					</div>';
+				}
+			?>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<form action="cGestionSondages.php?action=formulaire" method="POST" class="form-inline">
@@ -23,13 +36,13 @@
 					</tr>
 					<?php
 						foreach ($listeSondages as $sondage) {
-							$actif = ($sondage->getActif()) ? '<button type="button" class="btn btn-primary">Actif</button>' : '<button type="button" class="btn btn-default">Activer</button>' ;
+							$actif = ($sondage->getActif()) ? '<button type="button" class="btn btn-primary disabled">Actif</button>' : '<button type="button" class="btn btn-default">Activer</button>' ;
 							echo '<tr>
-								<td>'.$sondage.getTitre().'</td>
-								<td>'.$sondage.getDate().'</td>
-								<td>'.$sondage.getVotants().'</td>
+								<td>'.$sondage->getTitre().'</td>
+								<td>'.$sondage->getDate().'</td>
+								<td>'.$sondage->getVotants().'</td>
 								<td>'.$actif.'</td>
-								<td><a href="cGestionsondages.php?action=supprimer&id='.$sondage->getId().'">Supprimer</a></td>
+								<td><a href="cGestionSondages.php?action=supprimer&id='.$sondage->getId().'">Supprimer</a></td>
 							</tr>';
 						}
 					?>

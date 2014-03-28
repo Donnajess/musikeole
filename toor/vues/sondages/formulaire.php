@@ -22,13 +22,13 @@
 								<div class="col-sm-6"><input type="text" name="question'.$num.'" id="question'.$num.'" class="form-control" /></div>
 							</div>';
 							echo '<div class="form-group">
-								<label class="radio-inline"><input type="radio" id="type'.$num.'" value="1">Case à cocher</label>
-								<label class="radio-inline"><input type="radio" id="type'.$num.'" value="2">Liste déroulante</label>
+								<label class="radio-inline"><input name="type'.$num.'" type="radio" id="1" value="1">Case à cocher</label>
+								<label class="radio-inline"><input name="type'.$num.'" type="radio" id="2" value="2">Liste déroulante</label>
 							</div>';
 							for ($j=1; $j < 6; $j++) { 
 								echo '<div class="form-group">
-									<label for="proposition1-'.$num.'">Réponse '.$j.'</label>
-									<div class="col-sm-6"><input type="text" name="proposition'.$j.'-'.$num.'" id="proposition1-'.$num.'" class="form-control" /></div>
+									<label for="proposition'.$j.'-'.$num.'">Réponse '.$j.'</label>
+									<div class="col-sm-6"><input type="text" name="proposition'.$j.'-'.$num.'" id="proposition'.$j.'-'.$num.'" class="form-control" /></div>
 								</div>';								
 							}
 							echo '</fieldset>';
