@@ -8,7 +8,7 @@
 		require "$classDir/$file";
 	}
 
-	include($_SERVER['DOCUMENT_ROOT'].'/www/musikeole/toor/modeles/ManagerSondages.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/web/musikeole/toor/modeles/ManagerSondages.php');
 
 	$manager = new ManagerSondages();
 
@@ -32,9 +32,24 @@
 			break;
 
 		case 'valider':
-			// Récupérer les variables et créer les objets
-			$manager.creerSondage($nouveauSondage);
-			$message = "Le sondage *insérer nom* a bien été créé.";
+			$titre = $_POST['titre'];
+			$nbQuestions = $_POST['nbQuestions'];
+			$questionsSondages = array();
+			for ($i=0; $i < $nbQuestions; $i++) { 
+				$num = $i + 1;
+				$question = $_POST['question'.$num];
+				$type = new Type($_POST['type'.$num]);
+				$propositionsQuestion = array();
+				$numProposition = 1;
+				while (isset($_POST['proposition'.$numProposition.'-'.$num]) && !empty($_POST['proposition'.$numProposition.'-'.$num])) {
+					array_push($propositionsQuestion, new Proposition(0, $_POST['proposition'.$numProposition.'-'.$num]));
+					$numProposition++;
+				}
+				array_push($questionsSondages, new Question(0, $question, $type, $propositionsQuestion));
+			}
+			$nouveauSondage = new Sondage(0, $titre, time(), 1, $questionsSondages);
+			$manager.creerSondage($nouveauSondage); // à faire
+			$message = 'Le sondage "'.$titre.'" a bien été créé.';
 			$listeSondages = $manager.getSondages();
 			include("vues/sondages/liste.php");
 			break;

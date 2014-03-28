@@ -8,6 +8,7 @@
 
 		protected $id;
 		protected $valeur;
+		protected $type;
 		protected $propositions;
 
 		/**
@@ -16,11 +17,11 @@
 		 * @param string $pvaleur    					contenu de la question
 		 * @param array<Proposition> $ppropositions 	Liste des réponses possibles à la question
 		 */
-		function __construct($pid, $pvaleur, $ppropositions)
+		function __construct($pid, $pvaleur, $ptype, $ppropositions)
 		{
 			$this->id = $pid;
 			$this->valeur = $pvaleur;
-			$this->propositions = array();
+			$this->type = $ptype;
 			$this->propositions = $ppropositions;
 		}
 
@@ -42,6 +43,15 @@
 		}
 
 		/**
+		* Accesseur de type.
+		* @return Type type de la question (radio ou liste déroulante)
+		*/
+		public function getType()
+		{
+			return $this->type;
+		}
+
+		/**
 		* Accesseur de propositions.
 		* @return array<Proposition> propositions de la question
 		*/
@@ -49,6 +59,7 @@
 		{
 			return $this->propositions;
 		}
+
 }
 
 ?>
