@@ -21,7 +21,7 @@
 		}
 
 		/**
-		 * récupère tous les sondages
+		 * récupère tous les sondages dans la base de données
 		 * @return array<Sondage> liste des sondages
 		 */
 		public function getSondages()
@@ -35,6 +35,10 @@
 			return $liste;
 		}
 
+		/**
+		 * Enregistre un sondage dans la base de données
+		 * @param  Sondage $psondage l'objet sondage à enregistrer
+		 */
 		public function creerSondage($psondage)
 		{
 			$reqEnleverSondageActif = $this->connexion->getConnexion()->prepare('UPDATE sondages SET actif = 0 WHERE actif = 1');
@@ -46,6 +50,11 @@
 			$this->creerQuestions($questions, $idSondage);
 		}
 
+		/**
+		 * Enregiste les questions d'un sondage à la base de données
+		 * @param  array<Question> $pquestions 		liste des questions à ajouter
+		 * @param  int $pidSondage 					identifiant du sondage correspondant
+		 */
 		public function creerQuestions($pquestions, $pidSondage)
 		{
 			foreach ($pquestions as $question) {
@@ -58,6 +67,11 @@
 			}
 		}
 
+		/**
+		 * Enregistre les propositions des questions à la base de données
+		 * @param  array<Proposition> $pReponses    liste des propositions d'une question
+		 * @param  int $pidQuestion 				identifiant de la question
+		 */
 		public function creerPropositions($pReponses, $pidQuestion)
 		{
 			foreach ($pReponses as $reponse) {
@@ -66,12 +80,21 @@
 			}
 		}
 
+		/**
+		 * Supprime un sondage de la base de données
+		 * @param  int $pid identifiant du sondage à supprimer
+		 */
 		public function supprimerSondage($pid)
 		{
 			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM sondages WHERE id = ?');
 			$reqSuppression->execute(array($pid));
 		}
 
+		/**
+		 * Ouvre un sondage aux votes dans la partie Front-End. Renvoie le nom du sondage qui a été activé. Il ne peut y avoir qu'un seul sondage actif à la fois.
+		 * @param  int $pid 		  identifiant du sondage à activer
+		 * @return string $titre      titre du sondage qui a été activé
+		 */
 		public function activerSondage($pid)
 		{
 			$reqEnleverSondageActif = $this->connexion->getConnexion()->prepare('UPDATE sondages SET actif = 0 WHERE actif = 1');
@@ -81,7 +104,8 @@
 			$reqTitreSondage = $this->connexion->getConnexion()->prepare('SELECT titre FROM sondages WHERE id = ?');
 			$reqTitreSondage->execute(array($pid));
 			$res = $reqTitreSondage->fetch();
-			return $res['titre'];
+			$titre = $res['titre'];
+			return $titre;
 		}
 
 	}
