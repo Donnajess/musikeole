@@ -36,13 +36,13 @@
 					</tr>
 					<?php
 						foreach ($listeSondages as $sondage) {
-							$actif = ($sondage->getActif()) ? '<button type="button" class="btn btn-primary disabled">Actif</button>' : '<button type="button" class="btn btn-default">Activer</button>' ;
+							$actif = ($sondage->getActif()) ? '<button type="button" class="btn btn-primary disabled">Actif</button>' : '<button type="button" class="btn btn-default"><a href="cGestionSondages.php?action=activer&id='.$sondage->getId().'">Activer</a></button>' ;
 							echo '<tr>
 								<td>'.$sondage->getTitre().'</td>
 								<td>'.$sondage->getDate().'</td>
 								<td>'.$sondage->getVotants().'</td>
 								<td>'.$actif.'</td>
-								<td><a href="cGestionSondages.php?action=supprimer&id='.$sondage->getId().'">Supprimer</a></td>
+								<td><button type="button" class="btn btn-danger"><a href="cGestionSondages.php?action=supprimer&id='.$sondage->getId().'">Supprimer</a></button></td>
 							</tr>';
 						}
 					?>

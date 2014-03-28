@@ -23,6 +23,10 @@ body{
 	vertical-align: middle;
 }
 
+.btn-danger a{
+	color: white;
+}
+
 /* Menu */
 
 

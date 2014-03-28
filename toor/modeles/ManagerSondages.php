@@ -27,7 +27,7 @@
 		public function getSondages()
 		{
 			$liste = array();
-			$reqSondages = $this->connexion->getConnexion()->prepare('SELECT * FROM sondages ORDER BY id DESC');
+			$reqSondages = $this->connexion->getConnexion()->prepare('SELECT * FROM sondages ORDER BY actif DESC, id DESC');
 			$reqSondages->execute();
 			while ($ligne = $reqSondages->fetch()) {
 				array_push($liste, new Sondage($ligne['id'], $ligne['titre'], $ligne['votants'], $ligne['dateCreation'], $ligne['actif']));
@@ -70,6 +70,18 @@
 		{
 			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM sondages WHERE id = ?');
 			$reqSuppression->execute(array($pid));
+		}
+
+		public function activerSondage($pid)
+		{
+			$reqEnleverSondageActif = $this->connexion->getConnexion()->prepare('UPDATE sondages SET actif = 0 WHERE actif = 1');
+			$reqEnleverSondageActif->execute();
+			$reqNouveauSondageActif = $this->connexion->getConnexion()->prepare('UPDATE sondages SET actif = 1 WHERE id = ?');
+			$reqNouveauSondageActif->execute(array($pid));
+			$reqTitreSondage = $this->connexion->getConnexion()->prepare('SELECT titre FROM sondages WHERE id = ?');
+			$reqTitreSondage->execute(array($pid));
+			$res = $reqTitreSondage->fetch();
+			return $res['titre'];
 		}
 
 	}

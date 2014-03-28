@@ -62,8 +62,16 @@
 			include("vues/sondages/liste.php");
 			break;
 
+		case 'activer':
+			$titreSondage = $manager->activerSondage($_GET['id']);
+			$message = 'Le sondage "'.$titreSondage.'" a été activé. Il est maintenant visible sur le site.';
+			$listeSondages = $manager->getSondages();
+			include("vues/sondages/liste.php");
+			break;
+
 		case 'detail':
-			// Traitement
+			$sondage = $manager->getSondage($_GET['id']);
+			include("vues/sondages/detail.php");
 			break;
 
 		default:
