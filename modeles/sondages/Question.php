@@ -17,7 +17,7 @@
 		 * @param string $pvaleur    					contenu de la question
 		 * @param array<Proposition> $ppropositions 	Liste des réponses possibles à la question
 		 */
-		function __construct($pid, $pvaleur, $ptype, $ppropositions)
+		function __construct($pid, $pvaleur, $ptype, $ppropositions = null)
 		{
 			$this->id = $pid;
 			$this->valeur = $pvaleur;
@@ -60,6 +60,14 @@
 			return $this->propositions;
 		}
 
+		/**
+		* Mutateur de propositions.
+		* @param array<Proposition> $propositions liste des réponses à la question
+		*/
+		public function setPropositions($propositions)
+		{
+			$this->propositions = $propositions;
+		}
 }
 
 ?>

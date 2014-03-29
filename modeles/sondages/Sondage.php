@@ -85,6 +85,24 @@
 		{
 			return $this->questions;
 		}
+
+		/**
+		* Mutateur de questions.
+		* @param array<Question> $questions liste des questions du sondage
+		*/
+		public function setQuestions($questions)
+		{
+			$this->questions = $questions;
+		}
+
+		/**
+		 * Retourne le nombre de questions du sondage
+		 * @return int nombre de questions
+		 */
+		public function nombreQuestions()
+		{
+			return count($this->questions);
+		}
 }
 
 ?>

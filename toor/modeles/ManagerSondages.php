@@ -75,7 +75,7 @@
 		public function creerPropositions($pReponses, $pidQuestion)
 		{
 			foreach ($pReponses as $reponse) {
-				$reqReponse = $this->connexion->getConnexion()->prepare('INSERT INTO propositionssondages VALUES (0, ?, ?)');
+				$reqReponse = $this->connexion->getConnexion()->prepare('INSERT INTO propositionssondages VALUES (0, ?, 0, ?)');
 				$reqReponse->execute(array($reponse->getValeur(), $pidQuestion));
 			}
 		}
@@ -106,6 +106,44 @@
 			$res = $reqTitreSondage->fetch();
 			$titre = $res['titre'];
 			return $titre;
+		}
+
+		public function getSondage($pid)
+		{
+			$reqSondage = $this->connexion->getConnexion()->prepare('SELECT * FROM sondages WHERE id = ?');
+			$reqSondage->execute(array($pid));
+			$resSondage = $reqSondage->fetch();
+			$sondage = new Sondage($resSondage['id'], $resSondage['titre'], $resSondage['votants'], $resSondage['dateCreation'], $resSondage['actif']);
+			$listeQuestions = $this->getQuestions($pid);
+			$sondage->setQuestions($listeQuestions);
+			return $sondage;
+		}
+
+		public function getQuestions($pidSondage)
+		{
+			$reqQuestions = $this->connexion->getConnexion()->prepare('SELECT * FROM questions WHERE idSondage = ?');
+			$reqQuestions->execute(array($pidSondage));
+			$listeQuestions = array();
+			while ($ligne = $reqQuestions->fetch()) {
+				$question = new Question($ligne['id'], $ligne['question'], new Type($ligne['idType']));
+				$listePropositions = $this->getPropositions($ligne['id']);
+				$question->setPropositions($listePropositions);
+				array_push($listeQuestions, $question);
+			}
+			return $listeQuestions;
+		}
+
+		public function getPropositions($pidQuestion)
+		{
+			$reqReponses = $this->connexion->getConnexion()->prepare('SELECT * FROM propositionssondages WHERE idQuestion = ?');
+			$reqReponses->execute(array($pidQuestion));
+			$listePropositions = array();
+			while ($ligne = $reqReponses->fetch()) {
+				$proposition = new Proposition($ligne['id'], $ligne['proposition']);
+				$proposition->setVotes($ligne['votes']);
+				array_push($listePropositions, $proposition);
+			}
+			return $listePropositions;
 		}
 
 	}

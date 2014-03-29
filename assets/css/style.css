@@ -23,12 +23,16 @@ body{
 	vertical-align: middle;
 }
 
-.btn-danger a{
+.btn-danger a, .btn-primary a{
 	color: white;
 }
 
 .tab-content .tab-pane{
 	padding-top: 20px;
+}
+
+.jumbotron{
+	height: 250px;
 }
 
 /* Menu */
