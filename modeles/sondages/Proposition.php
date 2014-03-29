@@ -54,6 +54,11 @@
 			$this->votes = $votes;
 		}
 
+		/**
+		 * Calcule le pourcentage de votes pour cette proposition
+		 * @param  int $nombreVotesTotal 		nombre total des votes
+		 * @return int $pourcentage             le poucentage de votes de la proposition
+		 */
 		public function pourcentageVotes($nombreVotesTotal)
 		{
 			$pourcentage = ($nombreVotesTotal > 0) ? round($this->votes *100 / $nombreVotesTotal) : 0 ;

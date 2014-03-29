@@ -108,6 +108,11 @@
 			return $titre;
 		}
 
+		/**
+		 * Rècupère un sondage et ses résultats dans la base de données
+		 * @param  int $pid 			 identifiant du sondage à récupérer
+		 * @return Sondage $sondage      objet sondage avec les résultats
+		 */
 		public function getSondage($pid)
 		{
 			$reqSondage = $this->connexion->getConnexion()->prepare('SELECT * FROM sondages WHERE id = ?');
@@ -119,6 +124,11 @@
 			return $sondage;
 		}
 
+		/**
+		 * Récupère les questions d'un sondage dans la base de données
+		 * @param  int $pidSondage 			   identifiant du sondage
+		 * @return array<Question>             questions du sondage
+		 */
 		public function getQuestions($pidSondage)
 		{
 			$reqQuestions = $this->connexion->getConnexion()->prepare('SELECT * FROM questions WHERE idSondage = ?');
@@ -133,6 +143,11 @@
 			return $listeQuestions;
 		}
 
+		/**
+		 * Récupère les propositions d'une question (avec le nombre de votes de chaque proposition)
+		 * @param  int $pidQuestion 			   identifiant de la question
+		 * @return array<Proposition>              liste des propositions de la question concernée
+		 */	
 		public function getPropositions($pidQuestion)
 		{
 			$reqReponses = $this->connexion->getConnexion()->prepare('SELECT * FROM propositionssondages WHERE idQuestion = ?');

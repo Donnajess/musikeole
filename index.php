@@ -12,7 +12,17 @@
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<h1>Index</h1>
-		
+		<div class="container">
+			<div class="jumbotron">
+				<h1>Musik'Eole</h1>
+				<p>Site de l'association</p>
+			</div>
+			<div class="row">
+				<div class="col-md-8">&nbsp;</div>
+				<div class="col-md-4">
+					<?php include('cSondages.php'); ?>
+				</div>
+			</div>
+		</div>
 	</body>	
 </html>
