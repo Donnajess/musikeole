@@ -19,12 +19,12 @@
 							echo '<fieldset><legend>Question '.$num.'</legend>';
 							echo '<div class="form-group">
 								<label for="question'.$num.'" class="col-sm-3" >Question</label>
-								<div class="col-sm-6"><input type="text" name="question'.$num.'" id="question'.$num.'" class="form-control" /></div>
+								<div class="col-sm-6"><input type="text" name="question'.$num.'" id="question'.$num.'" class="form-control" required/></div>
 							</div>';
 							echo '<div class="form-group">
 								<div class="col-sm-9 pull-right">
-								<label class="radio-inline"><input name="type'.$num.'" type="radio" id="1" value="1">Case à cocher</label>
-								<label class="radio-inline"><input name="type'.$num.'" type="radio" id="2" value="2">Liste déroulante</label>
+								<label class="radio-inline"><input name="type'.$num.'" type="radio" id="1" value="1" required>Case à cocher</label>
+								<label class="radio-inline"><input name="type'.$num.'" type="radio" id="2" value="2" required>Liste déroulante</label>
 								</div>
 							</div>';
 							for ($j=1; $j < 6; $j++) { 
