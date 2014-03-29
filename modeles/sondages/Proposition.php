@@ -64,6 +64,7 @@
 			$pourcentage = ($nombreVotesTotal > 0) ? round($this->votes *100 / $nombreVotesTotal) : 0 ;
 			return $pourcentage;
 		}
+
 }
 
 ?>

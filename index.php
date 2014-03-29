@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-md-8">&nbsp;</div>
 				<div class="col-md-4">
-					<?php include('cSondages.php'); ?>
+					<?php include('cSondage.php'); ?>
 				</div>
 			</div>
 		</div>

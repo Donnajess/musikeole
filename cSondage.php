@@ -1,20 +1,21 @@
 <?php
 	
 	include('includes/packageSondages.php');
-	include(''); // Classe manager
+	include('modeles/ConnexionBDD.php');
+	include('modeles/ManagerVotes.php');
 
-	$manager = new (); //manager
+	$manager = new ManagerVotes();
 
 	if (isset($_POST['validerSondage'])) {
 		// Récupération du vote, création du cookie
 	}
 
-	if () { // Cookie vote
-		// Récupérer sondage actif
-		include('sondages/dejaVote.php');
+	if (!true) { // Cookie vote
+		$titre = $manager->getTitre();
+		include('vues/sondages/dejaVote.php');
 	}else{
-		// Récupérer titre sondage
-		include('sondages/sondage.php');
+		$sondage = $manager->getSondage();
+		include('vues/sondages/sondage.php');
 	}
 
 ?>
