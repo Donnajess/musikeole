@@ -81,6 +81,12 @@
 			return $listePropositions;
 		}
 
+		/**
+		 * Enregistre la réponse à une question dans la base de données
+		 * @param  int $idQuestion 		identifiant de la question répondue
+		 * @param  int $idReponse  		identifiant de la réponse donnée
+		 * @param  string $ip           adresse IP du votant
+		 */
 		public function enregistrerReponse($idQuestion, $idReponse, $ip)
 		{
 			$reqAjout = $this->connexion->getConnexion()->prepare('INSERT INTO reponsessondages VALUES (0, ?, ?, ?)');
@@ -89,6 +95,11 @@
 			$reqIncrementationReponse->execute(array($idReponse));
 		}
 
+		/**
+		 * Retrouve le sondage auquel appartient la question
+		 * @param  int $idQuestion 		identifiant de la question
+		 * @return int $idSondage       identifiant du sondage recherché
+		 */
 		public function trouverSondageAvecQuestion($idQuestion)
 		{
 			$reqSondage = $this->connexion->getConnexion()->prepare('SELECT idSondage FROM questions WHERE id = ?');
@@ -98,6 +109,10 @@
 			return $idSondage;
 		}
 
+		/**
+		 * Ajoute un vote au total des votes du sondage dans la base de données
+		 * @param  int $idSondage identifiant du sondage à incrémenter
+		 */
 		public function ajoutVoteSondage($idSondage)
 		{
 			$reqIncrementationSondage = $this->connexion->getConnexion()->prepare('UPDATE sondages SET votants = votants + 1 WHERE id = ?');

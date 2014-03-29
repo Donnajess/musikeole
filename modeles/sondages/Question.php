@@ -69,31 +69,49 @@
 			$this->propositions = $propositions;
 		}
 
+		/**
+		 * ouvre le tag d'affichage des réponses du sondage
+		 * @return string $tag tag d'ouverture
+		 */
 		public function ouvrirTags()
 		{
 			if ($this->type->getId() == 1) {
-				$tags = '';
+				$tag = '';
 			}else{
-				$tags = '<select class="form-control" name="'.$this->id.'" id="'.$this->id.'" required>';
+				$tag = '<select class="form-control" name="'.$this->id.'" id="'.$this->id.'" required>';
 			}
-			return $tags;
+			return $tag;
 		}
 
+		/**
+		 * ferme le tag d'affichage des réponses du sondage
+		 * @return string $tag tag de fermeture
+		 */
 		public function fermerTags()
 		{
 			if ($this->type->getId() == 1) {
-				$tags = '';
+				$tag = '';
 			}else{
-				$tags = '</select>';
+				$tag = '</select>';
 			}
-			return $tags;
+			return $tag;
 		}
 
+		/**
+		 * retourne le nombre de propositions de la question
+		 * @return int $nombre nombre de propositions
+		 */
 		public function nombrePropositions()
 		{
-			return count($this->propositions);
+			$nombre = count($this->propositions);
+			return $nombre;
 		}
 
+		/**
+		 * Formate l'affichage de la proposition selon le type de la question
+		 * @param  int $numProposition 		 numéro de la proposition dans la liste des propositions
+		 * @return strin $reponseFormatee    réponse "balisée" à afficher dans le sondage
+		 */
 		public function formaterReponse($numProposition)
 		{
 			$reponse = $this->propositions[$numProposition];
