@@ -16,14 +16,9 @@
 		}
 		$idSondage = $manager->trouverSondageAvecQuestion($idQuestionSondage);
 		$manager->ajoutVoteSondage($idSondage);
-	}
-
-	if (!true) { // Cookie vote
-		$titre = $manager->getTitre();
-		include('vues/sondages/dejaVote.php');
-	}else{
-		$sondage = $manager->getSondage();
-		include('vues/sondages/sondage.php');
+		$manager->creerCookie();
+		header('location: index.php');
+		exit;
 	}
 
 ?>

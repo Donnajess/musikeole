@@ -1,10 +1,11 @@
+<?php include('includes/traiterSondage.php'); ?>
 <!doctype html>
 <html lang="fr">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="utf-8">
 
-		<title>Titre</title>
+		<title>Musik'Eole</title>
 
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/css/style.css">
@@ -20,7 +21,7 @@
 			<div class="row">
 				<div class="col-md-8">&nbsp;</div>
 				<div class="col-md-4">
-					<?php include('cSondage.php'); ?>
+					<?php include('includes/afficherSondage.php'); ?>
 				</div>
 			</div>
 		</div>

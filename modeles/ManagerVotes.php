@@ -119,6 +119,42 @@
 			$reqIncrementationSondage->execute(array($idSondage));
 		}
 
+		/**
+		 * Retourne l'id du sondage actif
+		 * @return int identifiant du sondage
+		 */
+		public function getIdSondageActif()
+		{
+			$reqSondage = $this->connexion->getConnexion()->prepare('SELECT id FROM sondages WHERE actif = 1');
+			$reqSondage->execute();
+			$resSondage = $reqSondage->fetch();
+			$idSondage = $resSondage['id'];
+			return $idSondage;
+		}
+
+		/**
+		 * Créée un cookie nommé selon l'identifiant du sondage actif et contenant true pour signaler que le navigateur a répondu au sondage
+		 */
+		public function creerCookie()
+		{
+			$nomCookie = 'sondage'.$this->getIdSondageActif();
+			setcookie($nomCookie, true, time() + 365*24*3600*3, null, null, false, true);
+		}
+
+		/**
+		 * Vérifie si le cookie portant sur le sondage actif existe et est vrai
+		 * @return [type] [description]
+		 */
+		public function getCookie()
+		{
+			$bool = false;
+			$nomCookie = 'sondage'.$this->getIdSondageActif();
+			if (isset($_COOKIE[$nomCookie]) && $_COOKIE[$nomCookie]) {
+				$bool = true;
+			}
+			return $bool;
+		}
+
 	}
 
 ?>
