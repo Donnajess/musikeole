@@ -74,7 +74,7 @@
 			if ($this->type->getId() == 1) {
 				$tags = '';
 			}else{
-				$tags = '<select class="form-control" name="'.$this->id.'" id="'.$this->id.'">';
+				$tags = '<select class="form-control" name="'.$this->id.'" id="'.$this->id.'" required>';
 			}
 			return $tags;
 		}
@@ -98,7 +98,7 @@
 		{
 			$reponse = $this->propositions[$numProposition];
 			if ($this->type->getId() == 1) {
-				$reponseFormatee = '<div class="radio"><label><input type="radio" name="'.$this->id.'" id="'.$this->id.'-'.$reponse->getId().'" value="'.$reponse->getId().'">'.$reponse->getValeur().'</label></div>';
+				$reponseFormatee = '<div class="radio"><label><input type="radio" name="'.$this->id.'" id="'.$this->id.'-'.$reponse->getId().'" value="'.$reponse->getId().'" required>'.$reponse->getValeur().'</label></div>';
 			} else {
 				$reponseFormatee = '<option value="'.$reponse->getId().'">'.$reponse->getValeur().'</option>';
 			}

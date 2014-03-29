@@ -17,7 +17,7 @@
 					echo '</fieldset>';
 				}
 			?>
-			<button type="submit" class="btn btn-primary" name="validerSondage" id="validerSondage" >Valider</button>
+			<button type="submit" class="btn btn-primary" name="validerSondage" id="validerSondage" value="validerSondage" >Valider</button>
 		</form>
 	</div>
 </div>

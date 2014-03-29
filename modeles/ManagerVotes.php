@@ -81,6 +81,29 @@
 			return $listePropositions;
 		}
 
+		public function enregistrerReponse($idQuestion, $idReponse, $ip)
+		{
+			$reqAjout = $this->connexion->getConnexion()->prepare('INSERT INTO reponsessondages VALUES (0, ?, ?, ?)');
+			$reqAjout->execute(array($ip, $idReponse, $idQuestion));
+			$reqIncrementationReponse = $this->connexion->getConnexion()->prepare('UPDATE propositionssondages SET votes = votes + 1 WHERE id = ?');
+			$reqIncrementationReponse->execute(array($idReponse));
+		}
+
+		public function trouverSondageAvecQuestion($idQuestion)
+		{
+			$reqSondage = $this->connexion->getConnexion()->prepare('SELECT idSondage FROM questions WHERE id = ?');
+			$reqSondage->execute(array($idQuestion));
+			$resSondage = $reqSondage->fetch();
+			$idSondage = $resSondage['idSondage'];
+			return $idSondage;
+		}
+
+		public function ajoutVoteSondage($idSondage)
+		{
+			$reqIncrementationSondage = $this->connexion->getConnexion()->prepare('UPDATE sondages SET votants = votants + 1 WHERE id = ?');
+			$reqIncrementationSondage->execute(array($idSondage));
+		}
+
 	}
 
 ?>
