@@ -6,9 +6,9 @@
 
 		<title>Administration - Musik'Eole</title>
 
-		<link rel="stylesheet" href="/web/musikeole/assets/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/web/musikeole/assets/css/style.css">
-		<script type="text/javascript" src="/web/musikeole/assets/js/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/web/musikeole/assets/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../assets/css/style.css">
+		<script type="text/javascript" src="../assets/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>

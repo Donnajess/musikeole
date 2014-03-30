@@ -8,7 +8,10 @@
 		require "$classDir/$file";
 	}
 
-	include($_SERVER['DOCUMENT_ROOT'].'/web/musikeole/toor/modeles/ManagerSondages.php');
+	// Chargement des classes
+	include('../modeles/ConnexionBDD.php');
+	include('includes/packageSondages.php');
+	include('modeles/ManagerSondages.php');
 
 	$manager = new ManagerSondages();
 

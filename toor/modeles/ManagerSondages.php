@@ -1,9 +1,5 @@
 <?php
 
-	// Classes à charger
-	include($_SERVER['DOCUMENT_ROOT'].'/web/musikeole/modeles/ConnexionBDD.php');
-	include($_SERVER['DOCUMENT_ROOT'].'/web/musikeole/includes/packageSondages.php');
-
 	/**
 	* Classe manager de la fonctionnalité des sondages
 	*/
