@@ -45,6 +45,10 @@ body{
 	text-align: center;
 }
 
+.panel-collapse .btn{
+	margin-top: 20px;
+}
+
 /* Menu */
 
 

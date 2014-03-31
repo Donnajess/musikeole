@@ -1,4 +1,20 @@
 <?php include("includes/header.php"); ?>
+<script type="text/javascript" src="../assets/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+	selector: "textarea#formPresentation",
+	language : 'fr_FR',
+});
+tinymce.init({
+	selector: "textarea#formAccueil",
+	language : 'fr_FR',
+});
+tinymce.init({
+	selector: "textarea#formAssociation",
+	language : 'fr_FR',
+});
+</script>
+
 <div class="container">
 
 	<div class="row">
@@ -52,7 +68,10 @@
 					</div>
 					<div id="collapsePresentation" class="panel-collapse collapse">
 						<div class="panel-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, sunt, nisi, enim, ipsum quas modi repellat autem nostrum asperiores molestias architecto laudantium recusandae consectetur at quia repudiandae fuga eum dolores.</p>
+							<form action="cGestionContenuMusikEole.php?action=presentation" method="POST" role="form">
+								<textarea class="form-control" name="formPresentation" id="formPresentation" rows="10"></textarea>
+								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -62,7 +81,10 @@
 					</div>
 					<div id="collapseAccueil" class="panel-collapse collapse">
 						<div class="panel-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, enim, ea, facere quibusdam rerum alias dolores eos at voluptatibus officia itaque facilis voluptas assumenda minus accusantium quidem eaque magni autem!</p>
+							<form action="cGestionContenuMusikEole.php?action=accueil" method="POST" role="form">
+								<textarea class="form-control" name="formAccueil" id="formAccueil" rows="10"></textarea>
+								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -72,7 +94,10 @@
 					</div>
 					<div id="collapseAssociation" class="panel-collapse collapse">
 						<div class="panel-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem quo reiciendis unde tenetur nihil provident. Hic, repudiandae, aspernatur, sequi beatae quam perferendis animi vero laudantium odit impedit a iste sapiente.</p>
+							<form action="cGestionContenuMusikEole.php?action=association" method="POST" role="form">
+								<textarea class="form-control" name="formAssociation" id="formAssociation" rows="10"></textarea>
+								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -82,7 +107,30 @@
 					</div>
 					<div id="collapseCoordonnees" class="panel-collapse collapse">
 						<div class="panel-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, sunt eligendi omnis natus excepturi cum ullam perferendis fuga. Neque error dolore repellat veniam temporibus fugit exercitationem nobis rem voluptatum laboriosam!</p>
+							<form action="cGestionContenuMusikEole.php?action=coordonnees" method="POST" role="form">
+								<div class="row">
+									<div class="col-md-12">
+										<input type="text" name="adresse" id="adresse" class="form-control" placeholder="Adresse" required>
+									</div>									
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<input type="text" name="codePostal" id="codePostal" class="form-control" placeholder="Code postal" required>
+									</div>
+									<div class="col-md-9">
+										<input type="text" name="ville" id="ville" class="form-control" placeholder="Ville" required>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<input type="tel" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" required>
+									</div>
+									<div class="col-md-6">
+										<input type="email" name="mail" id="mail" class="form-control" placeholder="Adresse mail" required>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
+							</form>
 						</div>
 					</div>
 				</div>
