@@ -12,7 +12,7 @@
 	include('../modeles/ConnexionBDD.php');
 	include('modeles/ManagerContenu.php');
 
-	$manager = new ManagerSondages();
+	$manager = new ManagerContenu();
 
 	if (isset($_GET['action'])) {
 		$action = htmlentities($_GET['action']);
@@ -23,6 +23,24 @@
 	switch ($action) {
 
 		case 'index':
+			include('vues/contenu/musikeole/index.php');
+			break;
+
+		case 'presentation':
+			$manager->enregistrerTexteMusikEole('presentation.txt', $_POST['formPresentation']);
+			$message = 'La présentation a été enregistrée.';
+			include('vues/contenu/musikeole/index.php');
+			break;
+
+		case 'accueil':
+			$manager->enregistrerTexteMusikEole('accueil.txt', $_POST['formAccueil']);
+			$message = 'Le message d\'accueil a été enregistrée.';
+			include('vues/contenu/musikeole/index.php');
+			break;
+
+		case 'association':
+			$manager->enregistrerTexteMusikEole('association.txt', $_POST['formAssociation']);
+			$message = 'La page de l\'association a été enregistrée.';
 			include('vues/contenu/musikeole/index.php');
 			break;
 

@@ -1,0 +1,1 @@
+<p>Oui, c'est <strong>totalement</strong> pas &ccedil;a !</p>
