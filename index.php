@@ -13,17 +13,114 @@
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+
+
 		<div class="container">
 			<div class="jumbotron">
 				<h1>Musik'Eole</h1>
 				<p>Site de l'association</p>
 			</div>
-			<div class="row">
+			
+		<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+   
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      
+        <li><a href="#">Accueil</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Présentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Présentation de l'association</a></li>
+            <li><a href="#">Présentation des membres</a></li>
+            <li><a href="#">Présentation de l'école et des autres associations</a></li>
+            <li><a href="#">Coordonnées de l'association</a></li>
+            <li><a href="#">Statut et réglement intérieur</a></li>
+            <li><a href="#">Charte de l'utilisateur du site</a></li>
+            <li><a href="#">Adresses utiles</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav">
+        <li><a href="#">Galerie Photos</a></li>
+     	 <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exprimez vous ! <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">La boîte à idée</a></li>
+            <li><a href="#">Editez votre profil</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+       <ul class="nav navbar-nav">
+     	 <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Boutique<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">La bourse au matériel Musical</a></li>
+            <li><a href="#">La boutique de l'assoctaion</a></li>
+          </ul>
+        </li>
+      </ul>
+
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row">
 				<div class="col-md-8">&nbsp;</div>
 				<div class="col-md-4">
 					<?php include('includes/afficherSondage.php'); ?>
 				</div>
 			</div>
 		</div>
+
+<form class="form-horizontal" role="form">
+	  <a href="inscription.php">Inscrivez vous ici</a>
+  <div class="form-group">
+
+    <div class="col-md-2">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+  
+    <div class="col-md-2">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-2 col-sm-10">
+      <div class="checkbox">
+   
+
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Valider</button>
+    </div>
+  </div>
+
+</form>
+
+
+
+
 	</body>	
 </html>
