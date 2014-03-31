@@ -22,10 +22,6 @@
 
 	switch ($action) {
 
-		case 'index':
-			include('vues/contenu/index.php');
-			break;
-
 		default:
 			$messageErreur = 'Désolé, une erreur est survenue.';
 			include('vues/erreur.php');

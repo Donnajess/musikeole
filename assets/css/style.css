@@ -35,6 +35,16 @@ body{
 	height: 250px;
 }
 
+.panel-body .glyphicon{
+	font-size: 5em;
+	text-align: center;
+	width: 100%;
+}
+
+.panel-body h3{
+	text-align: center;
+}
+
 /* Menu */
 
 
