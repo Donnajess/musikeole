@@ -22,6 +22,10 @@
 
 	switch ($action) {
 
+		case 'index':
+			include('vues/contenu/musikeole/index.php');
+			break;
+
 		default:
 			$messageErreur = 'Désolé, une erreur est survenue.';
 			include('vues/erreur.php');

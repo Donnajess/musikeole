@@ -43,7 +43,7 @@
 		<div class="col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<a href="#">
+					<a href="cGestionContenuMusikEole.php?action=index">
 						<span class="glyphicon glyphicon-home"></span>
 						<h3>Musik'Eole</h3>						
 					</a>
