@@ -61,6 +61,10 @@
 			include('vues/contenu/musikeole/index.php');
 			break;
 
+		case 'ajouterMembreBureau':
+			include('vues/contenu/musikeole/formulaire.php');
+			break;
+
 		default:
 			$messageErreur = 'Désolé, une erreur est survenue.';
 			include('vues/erreur.php');

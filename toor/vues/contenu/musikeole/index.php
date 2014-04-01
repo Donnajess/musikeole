@@ -1,18 +1,18 @@
 <?php include("includes/header.php"); ?>
 <script type="text/javascript" src="../assets/js/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
-tinymce.init({
-	selector: "textarea#formPresentation",
-	language : 'fr_FR',
-});
-tinymce.init({
-	selector: "textarea#formAccueil",
-	language : 'fr_FR',
-});
-tinymce.init({
-	selector: "textarea#formAssociation",
-	language : 'fr_FR',
-});
+	tinymce.init({
+		selector: "textarea#formPresentation",
+		language : 'fr_FR',
+	});
+	tinymce.init({
+		selector: "textarea#formAccueil",
+		language : 'fr_FR',
+	});
+	tinymce.init({
+		selector: "textarea#formAssociation",
+		language : 'fr_FR',
+	});
 </script>
 
 <div class="container">
@@ -154,7 +154,7 @@ tinymce.init({
 	<div class="row">
 		<div class="col-md-12">
 			<hr>
-			<h2>Membres du bureau <button class="btn btn-primary pull-right">Ajouter un membre</button></h2>
+			<h2>Membres du bureau <button type="btn" class="btn btn-primary pull-right"><a href="cGestionContenuMusikEole.php?action=ajouterMembreBureau">Ajouter un membre</a></button></h2>
 		</div>
 	</div>
 

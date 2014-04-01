@@ -1,2 +1,2 @@
-<h1>Musik'Eole</h1>
-<p>Pr&eacute;sentation compl&egrave;te de l'association qui appara&icirc;tra sur la page qui lui est d&eacute;di&eacute;e</p>
+<h1>Pr&eacute;sentation de l'association</h1>
+<p>La pr&eacute;sentation compl&egrave;te de l'association telle qu'elle appara&icirc;tra dans la page d&eacute;di&eacute;e.</p>
