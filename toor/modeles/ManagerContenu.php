@@ -74,7 +74,7 @@
 						$nomImage = md5(uniqid(rand(), true));
 						$nomImage = $nomImage.'.jpg';
 					}
-					$this->creerImage($image, $nomImage);
+					$this->creerImage($image, $nomImage, 200, '../data/images/membresBureau/');
 					$info = array(true, $nomImage);
 				}else{
 					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');
@@ -83,10 +83,7 @@
 			return $info;
 		}
 
-		function creerImage($image, $nomImage){
-			$largeur = 200;
-			$dossier = "../data/images/membresBureau/";
-
+		function creerImage($image, $nomImage, $largeur, $dossier){
 			$imageRedimensionnee = imagecreatefromjpeg($image['tmp_name']);
 			$tailleImage = getimagesize($image['tmp_name']);
 			$reduction = ($largeur * 100)/$tailleImage[0];
@@ -155,6 +152,32 @@
 			$nomPhoto = $nomPhoto['photo'];
 			$this->supprimerImageMembreBureau($nomPhoto);
 			$info = $this->enregistrerImage($photo, $nomPhoto);
+			return $info;
+		}
+
+		public function supprimerBanniere($nomImage)
+		{
+			$fichier = '../data/images/bannieres/'.$nomImage;
+			if (file_exists($fichier)) {
+				unlink($fichier);
+			}
+		}
+
+		public function changerBanniere($zone, $image)
+		{
+			if($image['error'] = 0){
+				$info = array(false, 'Erreur lors du transfert de l\'image');
+			}else{
+				$extensions_valides = array('jpg','jpeg');
+				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
+				if(in_array($extension_upload,$extensions_valides)){
+					$this->supprimerBanniere($zone.'.jpg');
+					$this->creerImage($image, $zone.'.jpg', 1000, '../data/images/bannieres/');
+					$info = array(true, $zone);					
+				}else{
+					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');
+				}
+			}
 			return $info;
 		}
 

@@ -5,7 +5,20 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Gestion des bannières</h1>
-			<p>Chaque élément de menu possède une bannière (photo d'en-tête) individuelle. C'est ici que vous pouvez les changer. Si possible leur largeur doit être d'au moins 950 pixels, et ne pas être trop hautes.</p>
+			<p>Chaque élément de menu possède une bannière (photo d'en-tête) individuelle. C'est ici que vous pouvez les changer. Si possible leur largeur doit être d'au moins 1000 pixels, et ne pas être trop hautes, ainsi qu'elles fassent la même taille, pour ne pas perturber la navigation de l'utilisateur.</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<?php
+				if (isset($message)) {
+					echo '<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<p>'.$message.'</p>
+					</div>';
+				}
+			?>
 		</div>
 	</div>
 
@@ -17,6 +30,7 @@
 			<h2>Accueil</h2>
 			<form action="cGestionBannieres.php?action=changerBanniere" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="zone" id="zone" value="accueil">
+				<input type="hidden" name="nom" id="nom" value="Accueil">
 				<div class="form-group">
 					<label for="banniere" class="col-sm-2 control-label">Fichier</label>
 					<div class="col-sm-10">
@@ -39,6 +53,7 @@
 			<h2>Présentation</h2>
 			<form action="cGestionBannieres.php?action=changerBanniere" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="zone" id="zone" value="presentation">
+				<input type="hidden" name="nom" id="nom" value="Présentation">
 				<div class="form-group">
 					<label for="banniere" class="col-sm-2 control-label">Fichier</label>
 					<div class="col-sm-10">
@@ -61,6 +76,7 @@
 			<h2>Agenda</h2>
 			<form action="cGestionBannieres.php?action=changerBanniere" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="zone" id="zone" value="agenda">
+				<input type="hidden" name="nom" id="nom" value="Agenda">
 				<div class="form-group">
 					<label for="banniere" class="col-sm-2 control-label">Fichier</label>
 					<div class="col-sm-10">
@@ -83,6 +99,7 @@
 			<h2>Photos</h2>
 			<form action="cGestionBannieres.php?action=changerBanniere" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="zone" id="zone" value="photos">
+				<input type="hidden" name="nom" id="nom" value="Photos">
 				<div class="form-group">
 					<label for="banniere" class="col-sm-2 control-label">Fichier</label>
 					<div class="col-sm-10">
@@ -105,6 +122,7 @@
 			<h2>Exprimez vous!</h2>
 			<form action="cGestionBannieres.php?action=changerBanniere" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="zone" id="zone" value="exprimezVous">
+				<input type="hidden" name="nom" id="nom" value="Exprimez vous">
 				<div class="form-group">
 					<label for="banniere" class="col-sm-2 control-label">Fichier</label>
 					<div class="col-sm-10">
@@ -127,6 +145,7 @@
 			<h2>Boutique</h2>
 			<form action="cGestionBannieres.php?action=changerBanniere" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="zone" id="zone" value="boutique">
+				<input type="hidden" name="nom" id="nom" value="Boutique">
 				<div class="form-group">
 					<label for="banniere" class="col-sm-2 control-label">Fichier</label>
 					<div class="col-sm-10">

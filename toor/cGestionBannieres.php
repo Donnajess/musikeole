@@ -17,13 +17,22 @@
 	if (isset($_GET['action'])) {
 		$action = htmlentities($_GET['action']);
 	}else{
-		$action = 0;
+		$action = 'index';
 	}
 
 	switch ($action) {
 
 		case 'changerBanniere':
-			
+			$message = 'La bannière de la zone "'.$_POST['nom'].'" a été changée.';
+			$info = $manager->changerBanniere($_POST['zone'], $_FILES['banniere']);
+			if (!$info[0]) {
+				$message = $info[1];
+			}
+			include('vues/contenu/bannieres/index.php');
+			break;
+
+		case 'index':
+			include('vues/contenu/bannieres/index.php');
 			break;
 
 		default:
