@@ -25,7 +25,7 @@
 
 		case 'index':
 			$textes = $manager->getTextesMusikEole();
-			// + membres du bureau
+			$membresBureau = $manager->getMembresBureau();
 			include('vues/contenu/musikeole/index.php');
 			break;
 
@@ -33,7 +33,7 @@
 			$manager->enregistrerTexteMusikEole('presentation.txt', $_POST['formPresentation']);
 			$message = 'La présentation a été enregistrée.';
 			$textes = $manager->getTextesMusikEole();
-			// + membres du bureau
+			$membresBureau = $manager->getMembresBureau();
 			include('vues/contenu/musikeole/index.php');
 			break;
 
@@ -41,7 +41,7 @@
 			$manager->enregistrerTexteMusikEole('accueil.txt', $_POST['formAccueil']);
 			$message = 'Le message d\'accueil a été enregistrée.';
 			$textes = $manager->getTextesMusikEole();
-			// + membres du bureau
+			$membresBureau = $manager->getMembresBureau();
 			include('vues/contenu/musikeole/index.php');
 			break;
 
@@ -49,7 +49,7 @@
 			$manager->enregistrerTexteMusikEole('association.txt', $_POST['formAssociation']);
 			$message = 'La page de l\'association a été enregistrée.';
 			$textes = $manager->getTextesMusikEole();
-			// + membres du bureau
+			$membresBureau = $manager->getMembresBureau();
 			include('vues/contenu/musikeole/index.php');
 			break;
 
@@ -57,12 +57,25 @@
 			$manager->modifierAdresseMusikEole($_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['mail']);
 			$message = 'Les informations de contact de l\'association ont été enregistrées.';
 			$textes = $manager->getTextesMusikEole();
-			// + membres du bureau
+			$membresBureau = $manager->getMembresBureau();
 			include('vues/contenu/musikeole/index.php');
 			break;
 
 		case 'ajouterMembreBureau':
 			include('vues/contenu/musikeole/formulaire.php');
+			break;
+
+		case 'valider':
+			$membre = new MembreBureau($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['dateEntree'], $_POST['indice'], $_POST['activite']);
+			$info = $manager->creerMembreBureau($membre, $_FILES['photo']);
+			if ($info[0]) {
+				$message = $_POST['nom'].' '.$_POST['prenom'].' a été ajouté en temps que membre du bureau.';
+			}else{
+				$message = $info[1];
+			}
+			$textes = $manager->getTextesMusikEole();
+			$membresBureau = $manager->getMembresBureau();
+			include('vues/contenu/musikeole/index.php');
 			break;
 
 		default:

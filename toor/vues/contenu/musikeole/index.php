@@ -165,33 +165,19 @@
 					<tr>
 						<th>Nom</th>
 						<th>Rôle</th>
+						<th>Indice</th>
 						<th>Supprimer</th>
 					</tr>
-					<tr>
-						<td>Lorem ipsum.</td>
-						<td>Lorem ipsum.</td>
-						<td><button class="btn btn-danger">Supprimer</button></td>
-					</tr>
-					<tr>
-						<td>Ipsam, nostrum.</td>
-						<td>A, eius.</td>
-						<td><button class="btn btn-danger">Supprimer</button></td>
-					</tr>
-					<tr>
-						<td>Fugit, veritatis?</td>
-						<td>Ea, omnis.</td>
-						<td><button class="btn btn-danger">Supprimer</button></td>
-					</tr>
-					<tr>
-						<td>Tempore, cum.</td>
-						<td>Facilis, debitis!</td>
-						<td><button class="btn btn-danger">Supprimer</button></td>
-					</tr>
-					<tr>
-						<td>Doloribus, ducimus?</td>
-						<td>Quidem, ut!</td>
-						<td><button class="btn btn-danger">Supprimer</button></td>
-					</tr>
+					<?php
+						foreach ($membresBureau as $membre) {
+							echo '<tr>';
+								echo '<td>'.$membre->getNom().' '.$membre->getPrenom().'</td>';
+								echo '<td>'.$membre->getRole().'</td>';
+								echo '<td>'.$membre->getIndice().'</td>';
+								echo '<td><button type="button" class="btn btn-danger"><a href="cGestionContenuMusikEole.php?action=supprimer&id='.$membre->getId().'">Supprimer</a></button></td>';
+							echo '</tr>';
+						}
+					?>
 				</table>
 			</div>
 		</div>

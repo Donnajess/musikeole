@@ -53,6 +53,61 @@
 			$reqAdresse->execute(array($rue, $codePostal, $ville, $telephone, $mail));
 		}
 
+		public function creerMembreBureau($membre, $photo)
+		{
+			$info = $this->enregistrerImage($photo);
+			if ($info[0]) {
+				$reqMembre = $this->connexion->getConnexion()->prepare('INSERT INTO membresBureau VALUES (0, ?, ?, ?, ?, ?, ?, ?)');
+				$reqMembre->execute(array($membre->getNom(), $membre->getPrenom(), $membre->getRole(), $membre->getActivite(), $membre->getDateEntree(), $info[1], $membre->getIndice()));
+			}
+			return $info;
+		}
+
+		function enregistrerImage($image){
+			if($image['error'] = 0){
+				$info = array(false, 'Erreur lors du transfert de l\'image');
+			}else{
+				$extensions_valides = array('jpg','jpeg');
+				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
+				if(in_array($extension_upload,$extensions_valides)){
+					$nomImage = md5(uniqid(rand(), true));
+					$nomImage = $nomImage.".".$extension_upload;
+					$this->creerImage($image, $nomImage);
+					$info = array(true, $nomImage);
+				}else{
+					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');
+				}
+			}
+			return $info;
+		}
+
+		function creerImage($image, $nomImage){
+			$largeur = 200;
+			$dossier = "../data/images/membresBureau/";
+
+			$imageRedimensionnee = imagecreatefromjpeg($image['tmp_name']);
+			$tailleImage = getimagesize($image['tmp_name']);
+			$reduction = ($largeur * 100)/$tailleImage[0];
+			$hauteur = (($tailleImage[1] * $reduction)/100);
+			$imageFinale = imagecreatetruecolor($largeur , $hauteur);
+			imagecopyresampled($imageFinale , $imageRedimensionnee, 0, 0, 0, 0, $largeur, $hauteur, $tailleImage[0],$tailleImage[1]);
+			imagejpeg($imageFinale, $dossier.$nomImage.'.jpg', 100);
+		}
+
+		public function getMembresBureau()
+		{
+			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM membresBureau ORDER BY indice DESC, nom');
+			$reqMembres->execute();
+			$membresBureau = array();
+			while ($ligne = $reqMembres->fetch()) {
+				$membre = new MembreBureau($ligne['nom'], $ligne['prenom'], $ligne['role'], $ligne['dateEntree'], $ligne['indice'], $ligne['activite']);
+				$membre->setId($ligne['id']);
+				$membre->setPhoto($ligne['photo']);
+				array_push($membresBureau, $membre);
+			}
+			return $membresBureau;
+		}
+
 	}
 
 ?>

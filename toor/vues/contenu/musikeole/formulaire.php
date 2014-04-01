@@ -11,7 +11,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<form action="cGestionContenuMusikEole.php?action=valider" method="POST" role="form" class="form-horizontal">
+			<form action="cGestionContenuMusikEole.php?action=valider" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<div class="form-group">
 					<label for="nom" class="col-md-1">Nom</label>
 					<div class="col-md-4">
@@ -29,7 +29,7 @@
 					</div>
 					<label for="dateEntree" class="col-md-1">Date d'entrée</label>
 					<div class="col-md-4">
-						<input type="text" class="form-control" name="dateEntree" id="dateEntree" placeholder="Date" required>						
+						<input type="text" class="form-control" name="dateEntree" id="dateEntree" data-date-format="dd-mm-yyyy" placeholder="Date" required>						
 					</div>
 				</div>
 				<div class="form-group">
@@ -46,7 +46,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-10">
-						<textarea class="form-control" rows="10" placeholder="Activité du membre à l'école de musique." id="activite" name="activite"></textarea>
+						<textarea class="form-control" rows="10" id="activite" name="activite"><p>Activité du membre à l'école de musique.</p></textarea>
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary btn-lg">Valider</button>
