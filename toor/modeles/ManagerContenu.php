@@ -71,7 +71,7 @@
 				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
 				if(in_array($extension_upload,$extensions_valides)){
 					$nomImage = md5(uniqid(rand(), true));
-					$nomImage = $nomImage.".".$extension_upload;
+					$nomImage = $nomImage.'.jpg';
 					$this->creerImage($image, $nomImage);
 					$info = array(true, $nomImage);
 				}else{
@@ -91,7 +91,7 @@
 			$hauteur = (($tailleImage[1] * $reduction)/100);
 			$imageFinale = imagecreatetruecolor($largeur , $hauteur);
 			imagecopyresampled($imageFinale , $imageRedimensionnee, 0, 0, 0, 0, $largeur, $hauteur, $tailleImage[0],$tailleImage[1]);
-			imagejpeg($imageFinale, $dossier.$nomImage.'.jpg', 100);
+			imagejpeg($imageFinale, $dossier.$nomImage, 100);
 		}
 
 		public function getMembresBureau()
@@ -106,6 +106,19 @@
 				array_push($membresBureau, $membre);
 			}
 			return $membresBureau;
+		}
+
+		public function supprimerMembreBureau($id)
+		{
+			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresBureau WHERE id = ?');
+			$reqNomPhoto->execute(array($id));
+			$nomPhoto = $reqNomPhoto->fetch();
+			$fichier = '../data/images/membresBureau/'.$nomPhoto['photo'];
+			if (file_exists($fichier)) {
+				unlink($fichier);
+			}
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM membresBureau WHERE id=?');
+			$reqSuppression->execute(array($id));
 		}
 
 	}

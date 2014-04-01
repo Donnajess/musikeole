@@ -78,6 +78,14 @@
 			include('vues/contenu/musikeole/index.php');
 			break;
 
+		case 'supprimer':
+			$manager->supprimerMembreBureau($_GET['id']);
+			$message = 'Le membre a été supprimé.';
+			$textes = $manager->getTextesMusikEole();
+			$membresBureau = $manager->getMembresBureau();
+			include('vues/contenu/musikeole/index.php');			
+			break;
+
 		default:
 			$messageErreur = 'Désolé, une erreur est survenue.';
 			include('vues/erreur.php');
