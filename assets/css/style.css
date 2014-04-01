@@ -53,6 +53,10 @@ body{
 	vertical-align: middle;
 }
 
+.panel-collapse .form-horizontal .btn{
+	margin-top: 0px;
+}
+
 /* Menu */
 
 
