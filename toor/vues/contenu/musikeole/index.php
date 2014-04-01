@@ -82,7 +82,7 @@ tinymce.init({
 					<div id="collapsePresentation" class="panel-collapse collapse">
 						<div class="panel-body">
 							<form action="cGestionContenuMusikEole.php?action=presentation" method="POST" role="form">
-								<textarea class="form-control" name="formPresentation" id="formPresentation" rows="10"></textarea>
+								<textarea class="form-control" name="formPresentation" id="formPresentation" rows="10"><?php echo $textes['presentation']; ?></textarea>
 								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
 							</form>
 						</div>
@@ -95,7 +95,7 @@ tinymce.init({
 					<div id="collapseAccueil" class="panel-collapse collapse">
 						<div class="panel-body">
 							<form action="cGestionContenuMusikEole.php?action=accueil" method="POST" role="form">
-								<textarea class="form-control" name="formAccueil" id="formAccueil" rows="10"></textarea>
+								<textarea class="form-control" name="formAccueil" id="formAccueil" rows="10"><?php echo $textes['accueil']; ?></textarea>
 								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
 							</form>
 						</div>
@@ -108,7 +108,7 @@ tinymce.init({
 					<div id="collapseAssociation" class="panel-collapse collapse">
 						<div class="panel-body">
 							<form action="cGestionContenuMusikEole.php?action=association" method="POST" role="form">
-								<textarea class="form-control" name="formAssociation" id="formAssociation" rows="10"></textarea>
+								<textarea class="form-control" name="formAssociation" id="formAssociation" rows="10"><?php echo $textes['association']; ?></textarea>
 								<button type="submit" class="btn btn-primary btn-lg">Valider</button>
 							</form>
 						</div>

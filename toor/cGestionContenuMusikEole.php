@@ -23,24 +23,32 @@
 	switch ($action) {
 
 		case 'index':
+			$textes = $manager->getTextesMusikEole();
+			// + membres du bureau
 			include('vues/contenu/musikeole/index.php');
 			break;
 
 		case 'presentation':
 			$manager->enregistrerTexteMusikEole('presentation.txt', $_POST['formPresentation']);
 			$message = 'La présentation a été enregistrée.';
+			$textes = $manager->getTextesMusikEole();
+			// + membres du bureau
 			include('vues/contenu/musikeole/index.php');
 			break;
 
 		case 'accueil':
 			$manager->enregistrerTexteMusikEole('accueil.txt', $_POST['formAccueil']);
 			$message = 'Le message d\'accueil a été enregistrée.';
+			$textes = $manager->getTextesMusikEole();
+			// + membres du bureau
 			include('vues/contenu/musikeole/index.php');
 			break;
 
 		case 'association':
 			$manager->enregistrerTexteMusikEole('association.txt', $_POST['formAssociation']);
 			$message = 'La page de l\'association a été enregistrée.';
+			$textes = $manager->getTextesMusikEole();
+			// + membres du bureau
 			include('vues/contenu/musikeole/index.php');
 			break;
 

@@ -25,6 +25,22 @@
 			fclose($fichier);
 		}
 
+		public function getTextesMusikEole()
+		{
+			$nomsFichiers = array('presentation', 'accueil', 'association');
+			$textes = array();
+			foreach ($nomsFichiers as $nomFichier) {
+				$fichier = fopen('../data/contenu/musikeole/'.$nomFichier.'.txt', 'r');
+				$contenu = '';
+				while ($ligne = fgets($fichier)) {
+					$contenu.=$ligne;
+				}
+				$textes[$nomFichier] = $contenu;
+				fclose($fichier);
+			}
+			return $textes;
+		}
+
 	}
 
 ?>
