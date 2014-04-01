@@ -1,1 +1,2 @@
-<p>Oui, c'est <strong>totalement</strong> pas &ccedil;a !</p>
+<h1>Message d'accueil</h1>
+<p>Ce texte sera en dessous de la pr&eacute;sentation sur la page d'accueil (et &agrave; c&ocirc;t&eacute; du prochain &eacute;v&egrave;nement de l'agenda)</p>

@@ -123,23 +123,23 @@ tinymce.init({
 							<form action="cGestionContenuMusikEole.php?action=coordonnees" method="POST" role="form">
 								<div class="row">
 									<div class="col-md-12">
-										<input type="text" name="adresse" id="adresse" class="form-control" placeholder="Adresse" required>
+										<input type="text" name="adresse" id="adresse" class="form-control" placeholder="Rue"<?php echo 'value="'.$textes['coordonnees']->getRue().'"'; ?> required>
 									</div>									
 								</div>
 								<div class="row">
 									<div class="col-md-3">
-										<input type="text" name="codePostal" id="codePostal" class="form-control" placeholder="Code postal" required>
+										<input type="text" name="codePostal" id="codePostal" class="form-control" placeholder="Code postal" <?php echo 'value="'.$textes['coordonnees']->getCodePostal().'"'; ?> required>
 									</div>
 									<div class="col-md-9">
-										<input type="text" name="ville" id="ville" class="form-control" placeholder="Ville" required>
+										<input type="text" name="ville" id="ville" class="form-control" placeholder="Ville" <?php echo 'value="'.$textes['coordonnees']->getVille().'"'; ?> required>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-6">
-										<input type="tel" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" required>
+										<input type="tel" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" <?php echo 'value="'.$textes['coordonnees']->getTelephone().'"'; ?> required>
 									</div>
 									<div class="col-md-6">
-										<input type="email" name="mail" id="mail" class="form-control" placeholder="Adresse mail" required>
+										<input type="email" name="mail" id="mail" class="form-control" placeholder="Adresse mail" <?php echo 'value="'.$textes['coordonnees']->getMail().'"'; ?> required>
 									</div>
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg">Valider</button>

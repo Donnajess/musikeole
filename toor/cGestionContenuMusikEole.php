@@ -10,6 +10,7 @@
 
 	// Chargement des classes
 	include('../modeles/ConnexionBDD.php');
+	include('includes/packageContenus.php');
 	include('modeles/ManagerContenu.php');
 
 	$manager = new ManagerContenu();
@@ -47,6 +48,14 @@
 		case 'association':
 			$manager->enregistrerTexteMusikEole('association.txt', $_POST['formAssociation']);
 			$message = 'La page de l\'association a été enregistrée.';
+			$textes = $manager->getTextesMusikEole();
+			// + membres du bureau
+			include('vues/contenu/musikeole/index.php');
+			break;
+
+		case 'coordonnees':
+			$manager->modifierAdresseMusikEole($_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['mail']);
+			$message = 'Les informations de contact de l\'association ont été enregistrées.';
 			$textes = $manager->getTextesMusikEole();
 			// + membres du bureau
 			include('vues/contenu/musikeole/index.php');
