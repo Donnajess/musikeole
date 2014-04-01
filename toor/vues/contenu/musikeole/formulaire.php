@@ -13,32 +13,32 @@
 		<div class="col-md-12">
 			<form action="cGestionContenuMusikEole.php?action=valider" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<div class="form-group">
-					<label for="nom" class="col-md-1">Nom</label>
+					<label for="nom" class="col-md-1 control-label">Nom</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" required>						
 					</div>
-					<label for="prenom" class="col-md-1">Prénom</label>
+					<label for="prenom" class="col-md-1 control-label">Prénom</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom" required>						
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="role" class="col-md-1">Rôle</label>
+					<label for="role" class="col-md-1 control-label">Rôle</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="role" id="role" placeholder="Rôle" required>						
 					</div>
-					<label for="dateEntree" class="col-md-1">Date d'entrée</label>
+					<label for="dateEntree" class="col-md-1 control-label">Date d'entrée</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="dateEntree" id="dateEntree" data-date-format="dd-mm-yyyy" placeholder="Date" required>						
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="photo" class="col-md-1">Photo</label>
+					<label for="photo" class="col-md-1 control-label">Photo</label>
 					<div class="col-md-4">
 						<input type="file" class="form-control" name="photo" id="photo" required>
 						<p class="help-block">Extension .jpg, .jpeg uniquement.</p>						
 					</div>
-					<label for="indice" class="col-md-1">Indice</label>
+					<label for="indice" class="col-md-1 control-label">Indice</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="indice" id="indice" placeholder="indice" required>
 						<p class="help-block">Ordre d'apparition du membre sur la page.</p>						

@@ -14,32 +14,32 @@
 			<form action="cGestionContenuMusikEole.php?action=validerModification" method="POST" enctype="multipart/form-data" role="form" class="form-horizontal">
 				<input type="hidden" name="id" id="id" <?php echo 'value="'.$membre->getId().'"'; ?> >
 				<div class="form-group">
-					<label for="nom" class="col-md-2">Nom</label>
+					<label for="nom" class="col-md-2 control-label">Nom</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="nom" id="nom" placeholder="Nom" <?php echo 'value="'.$membre->getNom().'"'; ?> required>
 					</div>
-					<label for="prenom" class="col-md-2">Prénom</label>
+					<label for="prenom" class="col-md-2 control-label">Prénom</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="prenom" id="prenom" placeholder="Prénom" <?php echo 'value="'.$membre->getPrenom().'"'; ?> required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="role" class="col-md-2">Rôle</label>
+					<label for="role" class="col-md-2 control-label">Rôle</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="role" id="role" placeholder="Rôle" <?php echo 'value="'.$membre->getRole().'"'; ?> required>
 					</div>
-					<label for="dateEntree" class="col-md-2">Date d'entrée</label>
+					<label for="dateEntree" class="col-md-2 control-label">Date d'entrée</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="dateEntree" id="dateEntree" data-date-format="dd-mm-yyyy" placeholder="Date" <?php echo 'value="'.$membre->getDateEntreeFr().'"'; ?> required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="photo" class="col-md-2">Photo</label>
+					<label for="photo" class="col-md-2 control-label">Photo</label>
 					<div class="col-md-4">
 						<input type="file" class="form-control" name="photo" id="photo" >
 						<p class="help-block">Extension .jpg, .jpeg uniquement.</p>
 					</div>
-					<label for="indice" class="col-md-2">Indice</label>
+					<label for="indice" class="col-md-2 control-label">Indice</label>
 					<div class="col-md-4">
 						<input type="text" class="form-control" name="indice" id="indice" placeholder="indice" <?php echo 'value="'.$membre->getIndice().'"'; ?> required>
 						<p class="help-block">Ordre d'apparition du membre sur la page.</p>

@@ -63,7 +63,7 @@
 		<div class="col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<a href="#">
+					<a href="cGestionBannieres.php?action=index">
 						<span class="glyphicon glyphicon-picture"></span>
 						<h3>Bannières</h3>
 					</a>
