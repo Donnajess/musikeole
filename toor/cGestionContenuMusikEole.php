@@ -83,7 +83,28 @@
 			$message = 'Le membre a été supprimé.';
 			$textes = $manager->getTextesMusikEole();
 			$membresBureau = $manager->getMembresBureau();
-			include('vues/contenu/musikeole/index.php');			
+			include('vues/contenu/musikeole/index.php');
+			break;
+
+		case 'modifier':
+			$membre = $manager->getMembreBureau($_GET['id']);
+			include('vues/contenu/musikeole/modification.php');
+			break;
+
+		case 'validerModification':
+			$membre = new MembreBureau($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['dateEntree'], $_POST['indice'], $_POST['activite']);
+			$membre->setId($_POST['id']);
+			$manager->modifierMembreBureau($membre);
+			$message = $_POST['nom'].' '.$_POST['prenom'].' a été modifié.';
+			if ($_FILES['photo']['size'] > 0) {
+				$info = $manager->modifierPhotoMembre($_POST['id'], $_FILES['photo']);
+				if (!$info[0]) {
+					$message = $info[1];
+				}
+			}
+			$textes = $manager->getTextesMusikEole();
+			$membresBureau = $manager->getMembresBureau();
+			include('vues/contenu/musikeole/index.php');
 			break;
 
 		default:

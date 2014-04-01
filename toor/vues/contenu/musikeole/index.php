@@ -171,7 +171,7 @@
 					<?php
 						foreach ($membresBureau as $membre) {
 							echo '<tr>';
-								echo '<td>'.$membre->getNom().' '.$membre->getPrenom().'</td>';
+								echo '<td><a href="cGestionContenuMusikEole.php?action=modifier&id='.$membre->getId().'">'.$membre->getNom().' '.$membre->getPrenom().'</a></td>';
 								echo '<td>'.$membre->getRole().'</td>';
 								echo '<td>'.$membre->getIndice().'</td>';
 								echo '<td><button type="button" class="btn btn-danger"><a href="cGestionContenuMusikEole.php?action=supprimer&id='.$membre->getId().'">Supprimer</a></button></td>';

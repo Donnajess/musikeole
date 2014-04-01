@@ -63,15 +63,17 @@
 			return $info;
 		}
 
-		function enregistrerImage($image){
+		function enregistrerImage($image, $nomImage = false){
 			if($image['error'] = 0){
 				$info = array(false, 'Erreur lors du transfert de l\'image');
 			}else{
 				$extensions_valides = array('jpg','jpeg');
 				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
 				if(in_array($extension_upload,$extensions_valides)){
-					$nomImage = md5(uniqid(rand(), true));
-					$nomImage = $nomImage.'.jpg';
+					if (!$nomImage) {
+						$nomImage = md5(uniqid(rand(), true));
+						$nomImage = $nomImage.'.jpg';
+					}
 					$this->creerImage($image, $nomImage);
 					$info = array(true, $nomImage);
 				}else{
@@ -113,12 +115,47 @@
 			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresBureau WHERE id = ?');
 			$reqNomPhoto->execute(array($id));
 			$nomPhoto = $reqNomPhoto->fetch();
-			$fichier = '../data/images/membresBureau/'.$nomPhoto['photo'];
+			$this->supprimerImageMembreBureau($nomPhoto['photo']);
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM membresBureau WHERE id=?');
+			$reqSuppression->execute(array($id));
+		}
+
+		public function supprimerImageMembreBureau($nomImage)
+		{
+			$fichier = '../data/images/membresBureau/'.$nomImage;
 			if (file_exists($fichier)) {
 				unlink($fichier);
 			}
-			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM membresBureau WHERE id=?');
-			$reqSuppression->execute(array($id));
+		}
+
+		public function getMembreBureau($id)
+		{
+			$reqMembre = $this->connexion->getConnexion()->prepare('SELECT * FROM membresBureau WHERE id = ?');
+			$reqMembre->execute(array($id));
+			$ligne = $reqMembre->fetch();
+			$date = explode('-', $ligne['dateEntree']);
+			$date = $date[2].'-'.$date[1].'-'.$date[0];
+			$membre = new MembreBureau($ligne['nom'], $ligne['prenom'], $ligne['role'], $date, $ligne['indice'], $ligne['activite']);
+			$membre->setId($ligne['id']);
+			$membre->setPhoto($ligne['photo']);
+			return $membre;
+		}
+
+		public function modifierMembreBureau($membre)
+		{
+			$reqModification = $this->connexion->getConnexion()->prepare('UPDATE membresBureau SET nom = ?, prenom = ?, role = ?, activite = ?, dateEntree = ?, indice = ? WHERE id = ?');
+			$reqModification->execute(array($membre->getNom(), $membre->getPrenom(), $membre->getRole(), $membre->getActivite(), $membre->getDateEntree(), $membre->getIndice(), $membre->getId()));
+		}
+
+		public function modifierPhotoMembre($id, $photo)
+		{
+			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresBureau WHERE id = ?');
+			$reqNomPhoto->execute(array($id));
+			$nomPhoto = $reqNomPhoto->fetch();
+			$nomPhoto = $nomPhoto['photo'];
+			$this->supprimerImageMembreBureau($nomPhoto);
+			$info = $this->enregistrerImage($photo, $nomPhoto);
+			return $info;
 		}
 
 	}

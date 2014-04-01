@@ -108,6 +108,13 @@
 			return $this->dateEntree;
 		}
 
+		public function getDateEntreeFr()
+		{
+			$date = explode('-', $this->dateEntree);
+			$date = $date[2].'-'.$date[1].'-'.$date[0];
+			return $date;
+		}
+
 		/**
 		* Mutateur de date entree.
 		* @param string $dateEntree  date entree
