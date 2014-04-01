@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.4
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Jeu 20 Mars 2014 à 18:18
--- Version du serveur :  5.6.15-log
--- Version de PHP :  5.5.8
+-- Client: localhost
+-- Généré le: Mar 01 Avril 2014 à 15:45
+-- Version du serveur: 5.6.14
+-- Version de PHP: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `musikeole`
+-- Base de données: `musikeole`
 --
 
 -- --------------------------------------------------------
@@ -51,6 +51,27 @@ CREATE TABLE IF NOT EXISTS `adherentsassociations` (
   KEY `adherentsAssociations_associations` (`idAssociation`),
   KEY `idAdherent` (`idAdherent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `adresse`
+--
+
+CREATE TABLE IF NOT EXISTS `adresse` (
+  `rue` varchar(200) NOT NULL,
+  `codePostal` varchar(5) NOT NULL,
+  `ville` varchar(50) NOT NULL,
+  `telephone` varchar(15) NOT NULL,
+  `mail` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `adresse`
+--
+
+INSERT INTO `adresse` (`rue`, `codePostal`, `ville`, `telephone`, `mail`) VALUES
+('13 rue FranÃ§ois Mauriac', '59123', 'Zuydcoote', '33625340992', 'wavelet.alexandre@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -271,11 +292,39 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mail` varchar(50) NOT NULL,
   `nom` varchar(30) NOT NULL,
+  `pseudo` varchar(30) NOT NULL,
+  `motDePasse` varchar(100) NOT NULL,
   `prenom` varchar(30) NOT NULL,
   `idAutorisation` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAutorisation` (`idAutorisation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `membresBureau`
+--
+
+CREATE TABLE IF NOT EXISTS `membresBureau` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
+  `role` varchar(100) NOT NULL,
+  `activite` varchar(1000) NOT NULL,
+  `dateEntree` date NOT NULL,
+  `photo` varchar(50) NOT NULL,
+  `indice` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `membresBureau`
+--
+
+INSERT INTO `membresBureau` (`id`, `nom`, `prenom`, `role`, `activite`, `dateEntree`, `photo`, `indice`) VALUES
+(2, 'Wavelet', 'Alexandre', 'DÃ©veloppeur', '<h1>D&eacute;veloppeur1</h1>\r\n<p>D&eacute;veloppeur du site internet, des modules sondages et gestion de contenu.</p>', '2014-03-25', 'c208ad5c6a1c4e66e755a3f2639f3375.jpg', 100),
+(5, 'Doe', 'Alexandre1tg,jjk', '122', '<p>Activit&eacute; du membre &agrave; l''&eacute;cole de musique.</p>', '2014-05-02', '057a67a30291637a1c01ddbf919cef9a.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -399,10 +448,30 @@ CREATE TABLE IF NOT EXISTS `propositionsidees` (
 CREATE TABLE IF NOT EXISTS `propositionssondages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `proposition` varchar(50) NOT NULL,
+  `votes` int(11) NOT NULL DEFAULT '0',
   `idQuestion` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idQuestion` (`idQuestion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Contenu de la table `propositionssondages`
+--
+
+INSERT INTO `propositionssondages` (`id`, `proposition`, `votes`, `idQuestion`) VALUES
+(1, 'Super', 8, 2),
+(2, 'Moyen', 7, 2),
+(3, 'Bof', 4, 2),
+(4, '42', 5, 3),
+(5, '42', 3, 3),
+(6, '42', 3, 3),
+(7, '42', 7, 3),
+(8, '42', 2, 3),
+(9, 'foo', 10, 4),
+(10, 'bar', 7, 4),
+(11, 'Aucun des 12', 3, 4),
+(12, 'Pourquoi pas?', 15, 5),
+(13, 'Oui, mais non, mais je sais pas', 5, 5);
 
 -- --------------------------------------------------------
 
@@ -434,23 +503,118 @@ CREATE TABLE IF NOT EXISTS `questions` (
   PRIMARY KEY (`id`),
   KEY `idType` (`idType`),
   KEY `idSondage` (`idSondage`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `questions`
+--
+
+INSERT INTO `questions` (`id`, `question`, `idType`, `idSondage`) VALUES
+(2, 'Comment trouvez vous le site?', 1, 8),
+(3, 'Quelle est la rÃ©ponse?', 1, 9),
+(4, 'PÃ¢tes ou patates?', 2, 9),
+(5, 'Faut-il une 3Ã¨me question?', 1, 9);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `responsessondages`
+-- Structure de la table `reponsessondages`
 --
 
-CREATE TABLE IF NOT EXISTS `responsessondages` (
+CREATE TABLE IF NOT EXISTS `reponsessondages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(50) NOT NULL,
-  `idQuestion` int(11) NOT NULL,
   `idProposition` int(11) NOT NULL,
+  `idQuestion` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `idQuestion` (`idQuestion`),
-  KEY `idProposition` (`idProposition`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `idProposition` (`idProposition`),
+  KEY `idQuestion` (`idQuestion`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+
+--
+-- Contenu de la table `reponsessondages`
+--
+
+INSERT INTO `reponsessondages` (`id`, `ip`, `idProposition`, `idQuestion`) VALUES
+(1, '127.0.0.1', 6, 3),
+(2, '127.0.0.1', 9, 4),
+(3, '127.0.0.1', 12, 5),
+(4, '127.0.0.1', 5, 3),
+(5, '127.0.0.1', 10, 4),
+(6, '127.0.0.1', 12, 5),
+(7, '127.0.0.1', 4, 3),
+(8, '127.0.0.1', 11, 4),
+(9, '127.0.0.1', 12, 5),
+(10, '127.0.0.1', 7, 3),
+(11, '127.0.0.1', 10, 4),
+(12, '127.0.0.1', 12, 5),
+(13, '127.0.0.1', 8, 3),
+(14, '127.0.0.1', 10, 4),
+(15, '127.0.0.1', 13, 5),
+(16, '127.0.0.1', 8, 3),
+(17, '127.0.0.1', 10, 4),
+(18, '127.0.0.1', 12, 5),
+(19, '127.0.0.1', 7, 3),
+(20, '127.0.0.1', 10, 4),
+(21, '127.0.0.1', 12, 5),
+(22, '127.0.0.1', 7, 3),
+(23, '127.0.0.1', 9, 4),
+(24, '127.0.0.1', 13, 5),
+(25, '127.0.0.1', 7, 3),
+(26, '127.0.0.1', 9, 4),
+(27, '127.0.0.1', 12, 5),
+(28, '127.0.0.1', 5, 3),
+(29, '127.0.0.1', 10, 4),
+(30, '127.0.0.1', 12, 5),
+(31, '127.0.0.1', 1, 2),
+(32, '127.0.0.1', 2, 2),
+(33, '127.0.0.1', 3, 2),
+(34, '127.0.0.1', 1, 2),
+(35, '127.0.0.1', 1, 2),
+(36, '127.0.0.1', 1, 2),
+(37, '127.0.0.1', 1, 2),
+(38, '127.0.0.1', 1, 2),
+(39, '127.0.0.1', 3, 2),
+(40, '127.0.0.1', 1, 2),
+(41, '127.0.0.1', 1, 2),
+(42, '127.0.0.1', 3, 2),
+(43, '127.0.0.1', 3, 2),
+(44, '127.0.0.1', 2, 2),
+(45, '127.0.0.1', 2, 2),
+(46, '127.0.0.1', 2, 2),
+(47, '127.0.0.1', 2, 2),
+(48, '127.0.0.1', 2, 2),
+(49, '127.0.0.1', 2, 2),
+(50, '127.0.0.1', 7, 3),
+(51, '127.0.0.1', 9, 4),
+(52, '127.0.0.1', 13, 5),
+(53, '127.0.0.1', 4, 3),
+(54, '127.0.0.1', 9, 4),
+(55, '127.0.0.1', 12, 5),
+(56, '127.0.0.1', 5, 3),
+(57, '127.0.0.1', 9, 4),
+(58, '127.0.0.1', 12, 5),
+(59, '127.0.0.1', 7, 3),
+(60, '127.0.0.1', 9, 4),
+(61, '127.0.0.1', 12, 5),
+(62, '127.0.0.1', 7, 3),
+(63, '127.0.0.1', 9, 4),
+(64, '127.0.0.1', 12, 5),
+(65, '127.0.0.1', 6, 3),
+(66, '127.0.0.1', 10, 4),
+(67, '127.0.0.1', 12, 5),
+(68, '127.0.0.1', 4, 3),
+(69, '127.0.0.1', 9, 4),
+(70, '127.0.0.1', 12, 5),
+(71, '127.0.0.1', 4, 3),
+(72, '127.0.0.1', 11, 4),
+(73, '127.0.0.1', 13, 5),
+(74, '127.0.0.1', 6, 3),
+(75, '127.0.0.1', 9, 4),
+(76, '127.0.0.1', 13, 5),
+(77, '127.0.0.1', 4, 3),
+(78, '127.0.0.1', 11, 4),
+(79, '127.0.0.1', 12, 5);
 
 -- --------------------------------------------------------
 
@@ -461,9 +625,19 @@ CREATE TABLE IF NOT EXISTS `responsessondages` (
 CREATE TABLE IF NOT EXISTS `sondages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(50) NOT NULL,
+  `votants` int(11) NOT NULL,
+  `dateCreation` date NOT NULL,
   `actif` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Contenu de la table `sondages`
+--
+
+INSERT INTO `sondages` (`id`, `titre`, `votants`, `dateCreation`, `actif`) VALUES
+(8, 'Premier sondage', 19, '2014-03-28', 0),
+(9, 'Sondage de fifou', 20, '2014-03-28', 0);
 
 -- --------------------------------------------------------
 
@@ -491,8 +665,17 @@ CREATE TABLE IF NOT EXISTS `sujets` (
 CREATE TABLE IF NOT EXISTS `typequestions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(20) NOT NULL,
+  `nom` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `typequestions`
+--
+
+INSERT INTO `typequestions` (`id`, `type`, `nom`) VALUES
+(1, 'radio', 'Case à cocher'),
+(2, 'select', 'Liste déroulante');
 
 --
 -- Contraintes pour les tables exportées
@@ -502,8 +685,8 @@ CREATE TABLE IF NOT EXISTS `typequestions` (
 -- Contraintes pour la table `adherents`
 --
 ALTER TABLE `adherents`
-  ADD CONSTRAINT `adherents_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `adherents_familles` FOREIGN KEY (`idFamille`) REFERENCES `familles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `adherents_familles` FOREIGN KEY (`idFamille`) REFERENCES `familles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `adherents_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `adherentsassociations`
@@ -535,8 +718,8 @@ ALTER TABLE `demandesphotos`
 -- Contraintes pour la table `inscriptionsmanifestations`
 --
 ALTER TABLE `inscriptionsmanifestations`
-  ADD CONSTRAINT `inscriptionsmanifestations_manifestations` FOREIGN KEY (`idManifestation`) REFERENCES `manifestations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `inscriptionsmanifestations_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `inscriptionsmanifestations_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inscriptionsmanifestations_manifestations` FOREIGN KEY (`idManifestation`) REFERENCES `manifestations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `inscritsnewsletter`
@@ -568,8 +751,8 @@ ALTER TABLE `membres`
 -- Contraintes pour la table `messages`
 --
 ALTER TABLE `messages`
-  ADD CONSTRAINT `messages_sujets` FOREIGN KEY (`idSujet`) REFERENCES `sujets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `messages_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `messages_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `messages_sujets` FOREIGN KEY (`idSujet`) REFERENCES `sujets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `photos`
@@ -610,11 +793,11 @@ ALTER TABLE `questions`
   ADD CONSTRAINT `questions_types` FOREIGN KEY (`idType`) REFERENCES `typequestions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `responsessondages`
+-- Contraintes pour la table `reponsessondages`
 --
-ALTER TABLE `responsessondages`
-  ADD CONSTRAINT `reponsessondage_propositions` FOREIGN KEY (`idProposition`) REFERENCES `propositionssondages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reponsessondage_questions` FOREIGN KEY (`idQuestion`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `reponsessondages`
+  ADD CONSTRAINT `reponses_propositions` FOREIGN KEY (`idProposition`) REFERENCES `propositionssondages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reponses_questions` FOREIGN KEY (`idQuestion`) REFERENCES `questions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `sujets`
