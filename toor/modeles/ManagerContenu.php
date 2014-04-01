@@ -181,6 +181,36 @@
 			return $info;
 		}
 
+		public function enregistrerPDF($nomFichier, $fichier)
+		{
+			if($fichier['error'] = 0){
+				$info = array(false, 'Erreur lors du transfert du fichier');
+			}else{
+				$extensions_valides = array('pdf');
+				$extension_upload = strtolower(substr(strrchr($fichier['name'],'.'),1));
+				if(in_array($extension_upload,$extensions_valides)){
+					$this->supprimerPDFReglement($nomFichier.'.pdf');
+					$resultat = move_uploaded_file($fichier['tmp_name'], '../data/contenu/legal/'.$nomFichier.'.pdf');
+					if ($resultat) {
+						$info = array(true, $nomFichier);
+					}else{
+						$info = array(false, 'Le fichier n\'a pas pu être enregistré.');
+					}
+				}else{
+					$info = array(false, 'Le fichier uploadé n\'est pas un document .pdf.');
+				}
+			}
+			return $info;
+		}
+
+		public function supprimerPDFReglement($nomPDF)
+		{
+			$fichier = '../data/contenu/legal/'.$nomPDF;
+			if (file_exists($fichier)) {
+				unlink($fichier);
+			}
+		}
+
 	}
 
 ?>

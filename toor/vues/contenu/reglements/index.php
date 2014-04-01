@@ -32,7 +32,7 @@
 					</div>
 					<div id="collapseReglementInterieur" class="panel-collapse collapse">
 						<div class="panel-body">
-							<form action="cGestionreglements.php?action=modifier" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+							<form action="cGestionReglements.php?action=modifier" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
 								<input type="hidden" name="pdf" id="pdf" value="reglementInterieur">
 								<input type="hidden" name="nom" id="nom" value="Le règlement intérieur">
 								<div class="form-group">
@@ -56,7 +56,7 @@
 					</div>
 					<div id="collapseCharte" class="panel-collapse collapse">
 						<div class="panel-body">
-							<form action="cGestionreglements.php?action=modifier" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+							<form action="cGestionReglements.php?action=modifier" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
 								<input type="hidden" name="pdf" id="pdf" value="charteSite">
 								<input type="hidden" name="nom" id="nom" value="La charte du site internet">
 								<div class="form-group">
