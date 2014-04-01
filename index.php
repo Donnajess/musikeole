@@ -82,34 +82,26 @@
 </nav>
 
 
-
-<div class="panel panel-default">
+        <div class="panel panel-default">
   <div class="panel-body">
     <legend>Présentation</legend>
     Texte
-  </div>
-</div>
-
+  </div></div>
 
 
 <div class="row">
-  <div class="col-md-4">
-
-
-
+  <div class="col-xs-6 col-md-2">
+ 
 <div class="panel panel-default">
   <div class="panel-body">
   
     <legend>Connectez vous</legend>
   <div class="form-group">
 
-    <div class="col-md-2">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-    </div>
-  </div>
-  <div class="form-group">
   
-    <div class="col-md-2">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+   
+  <div class="form-group">
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
@@ -127,59 +119,42 @@
       <button type="submit" class="btn btn-default">Valider</button>
     </div>
   </div>
-  </div>
-</div>
-
-
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <legend>Sondage</legend>
-<div class="row">
-        <div class="col-md-10">&nbsp;</div>
-        <div class="col-md-3">
-          <?php include('includes/afficherSondage.php'); ?>
         </div>
-      </div>
-    </div>
-      </div>
+      </div></div>
+
+    
 
 
 
 
 
-
-
-
-
-
-<div class="row">
-  <div class="col-md-4">
+ <div class="col-md-4">
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <legend>Informations</legend>
-    Texte personnalisé
+    <legend>Information</legend>
+    Texte Personnalisé 
   </div>
 </div>
-</div>
+    </div>
 
-<div class="row">
-  <div class="col-md-4">
+ <div class="col-md-4">
+
 <div class="panel panel-default">
   <div class="panel-body">
     <legend>Evènement</legend>
     Prochain évènement 
   </div>
 </div>
-</div>
-</div>
+    </div>
 
 
 
 
-<div class="row">
-  <div class="col-md-4">
+
+  <div class="col-xs-6 col-md-2">
+
+
 <div class="panel panel-default">
   <div class="panel-body">
     <legend>Newletter</legend>
@@ -191,33 +166,62 @@
   <button type="submit" class="btn btn-default">Valider</button>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
 
 <div class="row">
-  <div class="col-md-4">
-<div class="panel panel-default">
+<div class="col-md-2 col-md-offset-10">
+         <div class="panel panel-default">
+  <div class="panel-body">
+    <legend>Sondage</legend>
+
+      </div></div></div>
+
+
+
+  <div class="col-md-2 col-md-offset-10">
+    <div class="panel panel-default">
   <div class="panel-body">
     <legend>Pub</legend>
 <img src="http://lorempixel.com/output/fashion-h-c-64-98-4.jpg" alt="img1" />   </div>
 </div>
 </div>
-</div>
+</div></div>
 
-
-
-
-
-
-
-
-
+ 
+    <div class="panel panel-default">
+  <div class="panel-body">
+    <legend>Logo des partenaires</legend>
 <img src="http://lorempixel.com/output/fashion-h-c-64-98-4.jpg" alt="img1" /> 
 <img src="http://lorempixel.com/output/nocturne-q-c-130-120-6.jpg" alt="img1" /> 
+</div></div>
 
    <div align="center">
     Mentions légales - Noms des divers groupes, ect ect 
   
    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	</body>	
 </html>
