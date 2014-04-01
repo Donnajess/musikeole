@@ -24,7 +24,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<img src="../data/images/bannieres/accueil.jpg" alt="" class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/bannieres/accueil.jpg?v='.filemtime('../data/images/bannieres/accueil.jpg').'"'; ?> alt="" class="img-responsive img-thumbnail">
 		</div>
 		<div class="col-md-4">
 			<h2>Accueil</h2>
@@ -47,7 +47,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<img src="../data/images/bannieres/presentation.jpg" alt="" class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/bannieres/presentation.jpg?v='.filemtime('../data/images/bannieres/presentation.jpg').'"'; ?> alt="" class="img-responsive img-thumbnail">
 		</div>
 		<div class="col-md-4">
 			<h2>Présentation</h2>
@@ -70,7 +70,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<img src="../data/images/bannieres/agenda.jpg" alt="" class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/bannieres/agenda.jpg?v='.filemtime('../data/images/bannieres/agenda.jpg').'"'; ?> alt="" class="img-responsive img-thumbnail">
 		</div>
 		<div class="col-md-4">
 			<h2>Agenda</h2>
@@ -93,7 +93,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<img src="../data/images/bannieres/photos.jpg" alt="" class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/bannieres/photos.jpg?v='.filemtime('../data/images/bannieres/photos.jpg').'"'; ?> alt="" class="img-responsive img-thumbnail">
 		</div>
 		<div class="col-md-4">
 			<h2>Photos</h2>
@@ -116,7 +116,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<img src="../data/images/bannieres/exprimezVous.jpg" alt="" class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/bannieres/exprimezVous.jpg?v='.filemtime('../data/images/bannieres/exprimezVous.jpg').'"'; ?> alt="" class="img-responsive img-thumbnail">
 		</div>
 		<div class="col-md-4">
 			<h2>Exprimez vous!</h2>
@@ -139,7 +139,7 @@
 
 	<div class="row">
 		<div class="col-md-8">
-			<img src="../data/images/bannieres/boutique.jpg" alt="" class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/bannieres/boutique.jpg?v='.filemtime('../data/images/bannieres/boutique.jpg').'"'; ?> alt="" class="img-responsive img-thumbnail">
 		</div>
 		<div class="col-md-4">
 			<h2>Boutique</h2>
