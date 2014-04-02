@@ -82,14 +82,16 @@
 		<div class="col-md-12">
 			<h2>Publicités</h2>
 			<hr>
-			<form action="cGestionPartenaires.php?action=modfierPublicite" method="POST" enctype="multipart/form-data" class="form-horizontal">
+			<form action="cGestionPartenaires.php?action=modifierPublicite" method="POST" enctype="multipart/form-data" class="form-horizontal">
 				<div class="form-group">
 					<label for="nomPartenaire" class="control-label col-md-3">Sélectionnez une publicité</label>
 					<div class="col-md-4">
 						<select class="form-control" name="idPublicite" id="idPublicite">
-							<option value="1">Publicité 1</option>
-							<option value="2">Publicité 2</option>
-							<option value="3">Publicité 3</option>
+							<?php
+								foreach ($publicites as $pub) {
+									echo '<option value="'.$pub->getId().'">'.$pub->getNom().'</option>';
+								}
+							?>
 						</select>
 					</div>
 					<div class="col-md-3">
@@ -103,45 +105,24 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Lorem ipsum dolor.</h3>
-				</div>
-				<div class="panel-body">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta sed vel deleniti ratione consectetur culpa delectus eius. Eius, in, et, minima voluptatem ducimus architecto cum doloremque ex minus vel illum.</p>
-				</div>
-				<div class="panel-footer">
-					<button class="btn btn-primary"><a href="#">Contacter l'annonceur</a></button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Lorem ipsum dolor.</h3>
-				</div>
-				<div class="panel-body">
-					<p>Doloremque sequi dicta nihil fugiat consequuntur enim quasi minima ipsa dolorem vel. Vel, eos, alias, sequi, officiis modi hic illum et eligendi quidem porro quae odio placeat omnis cumque odit.</p>
-				</div>
-				<div class="panel-footer">
-					<button class="btn btn-primary"><a href="#">Contacter l'annonceur</a></button>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Lorem ipsum dolor.</h3>
-				</div>
-				<div class="panel-body">
-					<p>Voluptate, possimus, doloribus nisi nesciunt itaque repellat minima officia praesentium nulla facere error delectus cum sapiente quaerat illum laudantium at earum quasi sint culpa! Impedit, saepe modi non consequuntur hic.</p>
-				</div>
-				<div class="panel-footer">
-					<button class="btn btn-primary"><a href="#">Contacter l'annonceur</a></button>
-				</div>
-			</div>
-		</div>
+		<?php
+			foreach ($publicites as $pub) {
+				$stylePanel = ($pub->getActive()) ? 'panel-info' : 'panel-danger' ;
+				echo '<div class="col-md-4">';
+					echo '<div class="panel '.$stylePanel.'">';
+						echo '<div class="panel-heading">';
+							echo '<h3 class="panel-title">'.$pub->getNom().'</h3>';
+						echo '</div>';
+						echo '<div class="panel-body">';
+							echo '<a href="'.$pub->getLien().'" target="_blank"><img src="../data/images/publicites/'.$pub->getImage().'" alt="'.$pub->getNom().'" class="img-responsive img-thumbnail" ></a>';
+						echo '</div>';
+						echo '<div class="panel-footer">';
+							echo '<button class="btn btn-primary"><a href="mailto:'.$pub->getMail().'">Contacter l\'annonceur</a></button>';
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
+			}
+		?>
 	</div>
 			
 </div>

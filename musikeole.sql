@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 01 Avril 2014 à 15:45
+-- Généré le: Mer 02 Avril 2014 à 23:20
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -116,9 +116,19 @@ CREATE TABLE IF NOT EXISTS `annoncesbourse` (
 CREATE TABLE IF NOT EXISTS `associations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `fichier` varchar(255) NOT NULL,
+  `indice` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `associations`
+--
+
+INSERT INTO `associations` (`id`, `nom`, `fichier`, `indice`) VALUES
+(1, 'Les Clar''minettes', 'les-clar-minettes.txt', 30),
+(2, 'Ensemble orchestral', 'ensemble-orchestral.txt', 50),
+(3, 'Orchestre minime', 'orchestre-minime.txt', 40);
 
 -- --------------------------------------------------------
 
@@ -360,6 +370,31 @@ CREATE TABLE IF NOT EXISTS `newsletters` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `partenaires`
+--
+
+CREATE TABLE IF NOT EXISTS `partenaires` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `fichier` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Contenu de la table `partenaires`
+--
+
+INSERT INTO `partenaires` (`id`, `nom`, `fichier`) VALUES
+(1, 'IUT de Calais', 'iut-de-calais.jpg'),
+(2, 'Lorem ipsum', 'lorem-ipsum.jpg'),
+(4, 'Terminal des Flandres', 'terminal-des-flandres.jpg'),
+(5, 'Musik''Eole', 'musik-eole.jpg'),
+(6, '#YOLO', '-yolo.jpg'),
+(8, 'Foo Bar', 'foo-bar.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `photos`
 --
 
@@ -485,9 +520,19 @@ CREATE TABLE IF NOT EXISTS `publicites` (
   `image` varchar(50) NOT NULL,
   `lien` varchar(150) NOT NULL,
   `mailAnnonceur` varchar(100) NOT NULL,
-  `affichee` tinyint(1) NOT NULL,
+  `indice` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `publicites`
+--
+
+INSERT INTO `publicites` (`id`, `nom`, `image`, `lien`, `mailAnnonceur`, `indice`, `active`) VALUES
+(1, 'John Doe', 'pub1.jpg', 'http://loremipsum.com', 'wavelet.alexandre@gmail.com', 10, 1),
+(2, 'yolo ohÃ©', 'pub2.jpg', 'http://yolo.com', 'yolo@yolo.com', 5, 0),
+(3, 'Lorem ipsum', 'pub3.jpg', 'http://random.com', 'lorem@ipsum.com', 50, 1);
 
 -- --------------------------------------------------------
 

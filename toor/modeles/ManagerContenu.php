@@ -339,8 +339,12 @@
 
 		public function remplacerPublicite($pub, $image)
 		{
-			$this->supprimerFichier('../data/images/publicites/'.$pub->getImage());
-			$info = $this->enregistrerImagePublicite($image, $pub->getImage());
+			if ($image['size'] > 0) {
+				$this->supprimerFichier('../data/images/publicites/'.$pub->getImage());
+				$info = $this->enregistrerImagePublicite($image, $pub->getImage());
+			}else{
+				$info = true;
+			}
 			if ($info) {
 				$reqRemplacementPub = $this->connexion->getConnexion()->prepare('UPDATE publicites SET nom = ?, lien = ?, mailAnnonceur = ?, indice = ?, active = ? WHERE id = ?');
 				$reqRemplacementPub->execute(array($pub->getNom(), $pub->getLien(), $pub->getMail(), $pub->getIndice(), $pub->getActive(), $pub->getId()));
@@ -363,6 +367,17 @@
 				}
 			}
 			return $info;
+		}
+
+		public function getPublicites()
+		{
+			$reqPublicites = $this->connexion->getConnexion()->prepare('SELECT * FROM publicites ORDER BY active DESC, indice DESC');
+			$reqPublicites->execute();
+			$listePublicites = array();
+			while ($ligne = $reqPublicites->fetch()) {
+				array_push($listePublicites, new Publicite($ligne['id'], $ligne['nom'], $ligne['image'], $ligne['lien'], $ligne['mailAnnonceur'], $ligne['indice'], $ligne['active']));
+			}
+			return $listePublicites;			
 		}
 
 	}

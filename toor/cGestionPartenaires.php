@@ -30,6 +30,7 @@
 				$message = $info[1];
 			}
 			$partenaires = $manager->getPartenaires();
+			$publicites = $manager->getPublicites();
 			include('vues/contenu/partenaires/index.php');
 			break;
 
@@ -37,6 +38,7 @@
 			$manager->supprimerPartenaire($_GET['id']);
 			$message = 'Le partenaire a été supprimé.';
 			$partenaires = $manager->getPartenaires();
+			$publicites = $manager->getPublicites();
 			include('vues/contenu/partenaires/index.php');
 			break;
 
@@ -45,24 +47,33 @@
 			include('vues/contenu/partenaires/nouvellePublicite.php');
 			break;
 
+		case 'modifierPublicite':
+			$publicite = $manager->getPublicite($_POST['idPublicite']);
+			include('vues/contenu/partenaires/modificationPublicite.php');
+			break;
+
 		case 'validerRemplacement':
-			$pub = new Publicite($_POST['id'], $_POST['nom'], $_POST['nomImage'], $_POST['lien'], $_POST['mail'], $_POST['indice'], $_POST['active']);
+			$active = (isset($_POST['active'])) ? 1 : 0 ;
+			$pub = new Publicite($_POST['id'], $_POST['nom'], $_POST['nomImage'], $_POST['lien'], $_POST['mail'], $_POST['indice'], $active);
 			$info = $manager->remplacerPublicite($pub, $_FILES['image']);
-			$message = 'La publicité "'.$_POST['nom'].'" a bien été créée';
+			$message = 'La publicité "'.$_POST['nom'].'" a bien été modifiée';
 			if (!$info[0]) {
 				$message = $info[1];
 			}
 			$partenaires = $manager->getPartenaires();
+			$publicites = $manager->getPublicites();
 			include('vues/contenu/partenaires/index.php');			
 			break;
 
 		case 'index':
 			$partenaires = $manager->getPartenaires();
+			$publicites = $manager->getPublicites();
 			include('vues/contenu/partenaires/index.php');
 			break;
 
 		default:
 			$partenaires = $manager->getPartenaires();
+			$publicites = $manager->getPublicites();
 			include('vues/contenu/partenaires/index.php');
 			break;
 
