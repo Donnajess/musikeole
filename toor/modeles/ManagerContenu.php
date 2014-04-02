@@ -211,6 +211,29 @@
 			}
 		}
 
+		public function getPresentationEcole()
+		{
+			$fichier = '../data/contenu/associations/presentationEcole.txt';
+			$fichier = fopen($fichier, 'r');
+			$contenu = '';
+			while ($ligne = fgets($fichier)) {
+				$contenu.=$ligne;
+			}
+			fclose($fichier);
+			return $contenu;
+		}
+
+		public function getAssociations()
+		{
+			$reqAssociations = $this->connexion->getConnexion()->prepare('SELECT * FROM associations');
+			$reqAssociations->execute();
+			$listeAssociations = array();
+			while ($ligne = $reqAssociations->fetch()) {
+				array_push($listeAssociations, new Association($ligne['id'], $ligne['nom'], $ligne['fichier'], $ligne['indice'], '../data/contenu/associations/'));
+			}
+			return $listeAssociations;
+		}
+
 	}
 
 ?>
