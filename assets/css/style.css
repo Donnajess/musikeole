@@ -63,6 +63,11 @@ body{
 
 .panel-partenaire{
 	text-align: center;
+	height: 200px;
+}
+
+.imgPartenaire{
+	height: 75px;
 }
 
 /* Menu */
