@@ -83,7 +83,7 @@
 		<div class="col-md-3">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<a href="#">
+					<a href="cGestionPartenaires.php">
 						<span class="glyphicon glyphicon-comment"></span>
 						<h3>Partenaires</h3>
 					</a>
