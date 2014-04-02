@@ -49,6 +49,7 @@
 					</div>					
 					<div class="col-sm-4">
 						<input type="file" name="logoPartenaire" id="logoPartenaire" class="form-control" required>
+						<p class="help-block">Les logos doivent être au format .jpg</p>
 					</div>
 					<div class="col-sm-2">
 						<button type="submit" class="btn btn-primary">Valider</button>
@@ -61,10 +62,10 @@
 		<?php
 			foreach ($partenaires as $partenaire) {
 				echo '<div class="col-md-2">';
-					echo '';
-						echo '';
-							echo '<img src="'.$partenaire->getLogo().'" alt="'.$partenaire->getNom().'" class="imgLogoPartenaire" >';
-							echo '<h3>'.$partenaire->getNom().'</h3>';
+					echo '<div class="panel panel-default">';
+						echo '<div class="panel-body panel-partenaire">';
+							echo '<img src="'.$partenaire->getLogo().'" alt="'.$partenaire->getNom().'" class="img-responsive img-thumbnail imgLogoPartenaire" >';
+							echo '<h4>'.$partenaire->getNom().'</h4>';
 							echo '<button class="btn btn-danger btn-partenaire"><a href="cGestionPartenaires.php?action=supprimerPartenaire&id='.$partenaire->getId().'">Supprimer</a></button>';
 						echo '</div>';
 					echo '</div>';

@@ -290,6 +290,44 @@
 			return $listePartenaires;
 		}
 
+		public function enregistrerPartenaire($nom, $logo)
+		{
+			$nomFichier = $this->formaterNomFichier($nom).'.jpg';
+			$info = $this->enregistrerLogoPartenaire($logo, $nomFichier);
+			if ($info[0]) {
+				$reqAjout = $this->connexion->getConnexion()->prepare('INSERT INTO partenaires VALUES (0, ?, ?)');
+				$reqAjout->execute(array($nom, $nomFichier));
+			}
+			return $info;
+		}
+
+		public function enregistrerLogoPartenaire($image, $nomImage)
+		{
+			if($image['error'] = 0){
+				$info = array(false, 'Erreur lors du transfert de l\'image');
+			}else{
+				$extensions_valides = array('jpg','jpeg');
+				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
+				if(in_array($extension_upload,$extensions_valides)){
+					$this->creerImage($image, $nomImage, 100, '../data/images/partenaires/');
+					$info = array(true, $nomImage);
+				}else{
+					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');
+				}
+			}
+			return $info;
+		}
+
+		public function supprimerPartenaire($id)
+		{
+			$reqNomFichier = $this->connexion->getConnexion()->prepare('SELECT fichier FROM partenaires WHERE id = ?');
+			$reqNomFichier->execute(array($id));
+			$resNomFichier = $reqNomFichier->fetch();
+			$this->supprimerFichier('../data/images/partenaires/'.$resNomFichier['fichier']);
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM partenaires WHERE id = ?');
+			$reqSuppression->execute(array($id));
+		}
+
 	}
 
 ?>

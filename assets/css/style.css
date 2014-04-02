@@ -61,9 +61,8 @@ body{
 	margin-top: 20px;
 }
 
-.btn-partenaire{
-	width: 100%;
-	margin: auto;
+.panel-partenaire{
+	text-align: center;
 }
 
 /* Menu */

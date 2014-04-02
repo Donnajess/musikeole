@@ -24,11 +24,20 @@
 	switch ($action) {
 
 		case 'ajouterPartenaire':
-			
+			$info = $manager->enregistrerPartenaire($_POST['nomPartenaire'], $_FILES['logoPartenaire']);
+			$message = 'Le partenaire "'.$_POST['nomPartenaire'].'" a été ajouté.';
+			if (!$info[0]) {
+				$message = $info[1];
+			}
+			$partenaires = $manager->getPartenaires();
+			include('vues/contenu/partenaires/index.php');
 			break;
 
 		case 'supprimerPartenaire':
-			
+			$manager->supprimerPartenaire($_GET['id']);
+			$message = 'Le partenaire a été supprimé.';
+			$partenaires = $manager->getPartenaires();
+			include('vues/contenu/partenaires/index.php');
 			break;
 
 		case 'index':
