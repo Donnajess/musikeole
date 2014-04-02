@@ -10,6 +10,7 @@
 
 	// Chargement des classes
 	include('../modeles/ConnexionBDD.php');
+	include('../modeles/contenus/Partenaire.php');
 	include('modeles/ManagerContenu.php');
 
 	$manager = new ManagerContenu();
@@ -22,11 +23,21 @@
 
 	switch ($action) {
 
+		case 'ajouterPartenaire':
+			
+			break;
+
+		case 'supprimerPartenaire':
+			
+			break;
+
 		case 'index':
+			$partenaires = $manager->getPartenaires();
 			include('vues/contenu/partenaires/index.php');
 			break;
 
 		default:
+			$partenaires = $manager->getPartenaires();
 			include('vues/contenu/partenaires/index.php');
 			break;
 

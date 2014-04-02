@@ -279,6 +279,17 @@
 			return $chaine;
 		}
 
+		public function getPartenaires()
+		{
+			$reqPartenaires = $this->connexion->getConnexion()->prepare('SELECT * FROM partenaires');
+			$reqPartenaires->execute();
+			$listePartenaires = array();
+			while ($ligne = $reqPartenaires->fetch()) {
+				array_push($listePartenaires, new Partenaire($ligne['id'], $ligne['nom'], $ligne['fichier'], '../data/images/partenaires/'));
+			}
+			return $listePartenaires;
+		}
+
 	}
 
 ?>

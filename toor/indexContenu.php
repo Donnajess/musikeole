@@ -45,7 +45,7 @@
 				<div class="panel-body">
 					<a href="cGestionContenuMusikEole.php?action=index">
 						<span class="glyphicon glyphicon-home"></span>
-						<h3>Musik'Eole</h3>						
+						<h3>Musik'Eole</h3>
 					</a>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 				<div class="panel-body">
 					<a href="cGestionAssociations.php">
 						<span class="glyphicon glyphicon-list"></span>
-						<h3>Associations</h3>						
+						<h3>Associations</h3>
 					</a>
 				</div>
 			</div>
