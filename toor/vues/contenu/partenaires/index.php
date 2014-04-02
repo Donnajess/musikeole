@@ -94,7 +94,7 @@
 					</div>
 					<div class="col-md-3">
 						<button type="submit" class="btn btn-success">Modifier</button>
-						<button type="submit" class="btn btn-primary">Remplacer</button>
+						<button type="submit" formaction="cGestionPartenaires.php?action=nouvellePublicite" class="btn btn-primary">Remplacer</button>
 					</div>
 				</div>
 			</form>

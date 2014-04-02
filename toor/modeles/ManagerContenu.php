@@ -328,6 +328,43 @@
 			$reqSuppression->execute(array($id));
 		}
 
+		public function getPublicite($id)
+		{
+			$reqPublicite = $this->connexion->getConnexion()->prepare('SELECT * FROM publicites WHERE id = ?');
+			$reqPublicite->execute(array($id));
+			$ligne = $reqPublicite->fetch();
+			$pub = new Publicite($ligne['id'], $ligne['nom'], $ligne['image'], $ligne['lien'], $ligne['mailAnnonceur'], $ligne['indice'], $ligne['active']);
+			return $pub;
+		}
+
+		public function remplacerPublicite($pub, $image)
+		{
+			$this->supprimerFichier('../data/images/publicites/'.$pub->getImage());
+			$info = $this->enregistrerImagePublicite($image, $pub->getImage());
+			if ($info) {
+				$reqRemplacementPub = $this->connexion->getConnexion()->prepare('UPDATE publicites SET nom = ?, lien = ?, mailAnnonceur = ?, indice = ?, active = ? WHERE id = ?');
+				$reqRemplacementPub->execute(array($pub->getNom(), $pub->getLien(), $pub->getMail(), $pub->getIndice(), $pub->getActive(), $pub->getId()));
+			}
+			return $info;
+		}
+
+		public function enregistrerImagePublicite($image, $nomImage)
+		{
+			if($image['error'] = 0){
+				$info = array(false, 'Erreur lors du transfert de l\'image');
+			}else{
+				$extensions_valides = array('jpg','jpeg');
+				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
+				if(in_array($extension_upload,$extensions_valides)){
+					$this->creerImage($image, $nomImage, 450, '../data/images/publicites/');
+					$info = array(true, $nomImage);
+				}else{
+					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');
+				}
+			}
+			return $info;
+		}
+
 	}
 
 ?>

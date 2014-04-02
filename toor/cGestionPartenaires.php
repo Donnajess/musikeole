@@ -3,7 +3,7 @@
 
 	function __autoload($class)
 	{
-		static $classDir = '/modeles';
+		static $classDir = '../modeles/contenus';
 		$file = str_replace('\\', DIRECTORY_SEPARATOR, ltrim($class, '\\')) . '.php';
 		require "$classDir/$file";
 	}
@@ -38,6 +38,22 @@
 			$message = 'Le partenaire a été supprimé.';
 			$partenaires = $manager->getPartenaires();
 			include('vues/contenu/partenaires/index.php');
+			break;
+
+		case 'nouvellePublicite':
+			$publicite = $manager->getPublicite($_POST['idPublicite']);
+			include('vues/contenu/partenaires/nouvellePublicite.php');
+			break;
+
+		case 'validerRemplacement':
+			$pub = new Publicite($_POST['id'], $_POST['nom'], $_POST['nomImage'], $_POST['lien'], $_POST['mail'], $_POST['indice'], $_POST['active']);
+			$info = $manager->remplacerPublicite($pub, $_FILES['image']);
+			$message = 'La publicité "'.$_POST['nom'].'" a bien été créée';
+			if (!$info[0]) {
+				$message = $info[1];
+			}
+			$partenaires = $manager->getPartenaires();
+			include('vues/contenu/partenaires/index.php');			
 			break;
 
 		case 'index':
