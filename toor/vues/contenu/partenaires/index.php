@@ -84,16 +84,17 @@
 			<hr>
 			<form action="cGestionPartenaires.php?action=modfierPublicite" method="POST" enctype="multipart/form-data" class="form-horizontal">
 				<div class="form-group">
-					<label for="nomPartenaire" class="control-label col-sm-2">Modifier la publicité</label>
-					<div class="col-sm-4">
+					<label for="nomPartenaire" class="control-label col-md-3">Sélectionnez une publicité</label>
+					<div class="col-md-4">
 						<select class="form-control" name="idPublicite" id="idPublicite">
 							<option value="1">Publicité 1</option>
 							<option value="2">Publicité 2</option>
 							<option value="3">Publicité 3</option>
 						</select>
 					</div>
-					<div class="col-sm-2">
-						<button type="submit" class="btn btn-primary">Valider</button>
+					<div class="col-md-3">
+						<button type="submit" class="btn btn-success">Modifier</button>
+						<button type="submit" class="btn btn-primary">Remplacer</button>
 					</div>
 				</div>
 			</form>
@@ -110,6 +111,9 @@
 				<div class="panel-body">
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta sed vel deleniti ratione consectetur culpa delectus eius. Eius, in, et, minima voluptatem ducimus architecto cum doloremque ex minus vel illum.</p>
 				</div>
+				<div class="panel-footer">
+					<button class="btn btn-primary"><a href="#">Contacter l'annonceur</a></button>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -120,6 +124,9 @@
 				<div class="panel-body">
 					<p>Doloremque sequi dicta nihil fugiat consequuntur enim quasi minima ipsa dolorem vel. Vel, eos, alias, sequi, officiis modi hic illum et eligendi quidem porro quae odio placeat omnis cumque odit.</p>
 				</div>
+				<div class="panel-footer">
+					<button class="btn btn-primary"><a href="#">Contacter l'annonceur</a></button>
+				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -129,6 +136,9 @@
 				</div>
 				<div class="panel-body">
 					<p>Voluptate, possimus, doloribus nisi nesciunt itaque repellat minima officia praesentium nulla facere error delectus cum sapiente quaerat illum laudantium at earum quasi sint culpa! Impedit, saepe modi non consequuntur hic.</p>
+				</div>
+				<div class="panel-footer">
+					<button class="btn btn-primary"><a href="#">Contacter l'annonceur</a></button>
 				</div>
 			</div>
 		</div>
