@@ -1,3 +1,2 @@
-<h1>#YIHAWWW !</h1>
-<h2>Pomme</h2>
-<p>&ccedil;a c'est du test ma biche !</p>
+<h1>L'&eacute;cole de musique</h1>
+<p>Ceci est la pr&eacute;sentation de l'&eacute;cole qui se trouvera sur la page de l'&eacute;cole de musique du site.</p>

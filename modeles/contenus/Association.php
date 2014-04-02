@@ -23,7 +23,7 @@
 			if (file_exists($lienFichier)) {
 				$fichier = fopen($lienFichier, 'r');
 				while ($ligne = fgets($fichier)) {
-					$contenu.=$ligne;
+					$this->contenu.=$ligne;
 				}
 				fclose($fichier);
 			}
@@ -117,6 +117,12 @@
 		public function setIndice($indice)
 		{
 			$this->indice = $indice;
+		}
+
+		public function alias()
+		{
+			$alias = explode('.', $this->fichier);
+			return $alias[0];
 		}
 
 	}

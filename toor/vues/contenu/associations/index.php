@@ -57,25 +57,26 @@
 					foreach ($associations as $association) {
 						echo '<div class="panel panel-default">';
 							echo '<div class="panel-heading">
-								<h4 class="panel-title"><a href="#collapse'.$association->getFichier().'" data-parent="#accordion2" data-toggle="collapse">'.$association->getNom().'</a></h4>
+								<h4 class="panel-title"><a href="#collapse-'.$association->alias().'" data-parent="#accordion2" data-toggle="collapse">'.$association->getNom().'</a></h4>
 							</div>';
-							echo '<div id="collapse'.$association->getFichier().'" class="panel-collapse collapse">';
+							echo '<div id="collapse-'.$association->alias().'" class="panel-collapse collapse">';
 								echo '<div class="panel-body">';
 									echo '<form action="cGestionAssociations.php?action=modifierAssociation" method="POST" class="form-horizontal" role="form">';
+										echo '<input type="hidden" name="id" id="id" value="'.$association->getId().'" >';
 										echo '<input type="hidden" name="association" id="association" value="'.$association->getNom().'" >';
 										echo '<input type="hidden" name="fichier" id="fichier" value="'.$association->getFichier().'" >';
 										echo '<div class="form-group">';
-											echo '<label for="nom" class="col-md-1 control-label">Nom</label>';
-											echo '<div class="col-md-2">';
-												echo '<input type="text" class="form-control" name="nom" id="nom" value="'.$association->getNom().'" placeholder="Nom de l\'association" required>';
+											echo '<label for="nom-'.$association->alias().'" class="col-md-1 control-label">Nom</label>';
+											echo '<div class="col-md-8">';
+												echo '<input type="text" class="form-control" name="nom" id="nom-'.$association->alias().'" value="'.$association->getNom().'" placeholder="Nom de l\'association" required>';
 											echo '</div>';
-											echo '<label for="indice" class="col-md-1 control-label">Indice</label>';
+											echo '<label for="indice-'.$association->alias().'" class="col-md-1 control-label">Indice</label>';
 											echo '<div class="col-md-2">';
-												echo '<input type="text" class="form-control" name="indice" id="indice" value="'.$association->getIndice().'" placeholder="Indice" required>';
+												echo '<input type="text" class="form-control" name="indice" id="indice-'.$association->alias().'" value="'.$association->getIndice().'" placeholder="Indice" required>';
 											echo '</div>';
 										echo '</div>';
-										echo '<textarea name="texte id="texte" rows="10">'.$association->getContenu().'</textarea>';
-										echo '<button type="submit" name="valider" class="btn btn-primary btn-lg">Valider</button>';
+										echo '<textarea name="texte" rows="10">'.$association->getContenu().'</textarea>';
+										echo '<button type="submit" name="valider" class="btn btn-primary btn-lg btn-margin-top">Valider</button>';
 									echo '</form>';
 								echo '</div>';
 							echo '</div>';

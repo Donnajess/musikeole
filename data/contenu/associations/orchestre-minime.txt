@@ -1,0 +1,2 @@
+<h1>L'orchestre minime</h1>
+<p>Pr&eacute;sentation de l'orchestre minime telle qu'elle appara&icirc;tra dans sa page d&eacute;di&eacute;e sur le site.</p>

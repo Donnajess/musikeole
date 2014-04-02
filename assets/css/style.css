@@ -45,7 +45,7 @@ body{
 	text-align: center;
 }
 
-.panel-collapse .btn{
+.panel-collapse .btn, .btn-margin-top{
 	margin-top: 20px;
 }
 
@@ -55,6 +55,10 @@ body{
 
 .panel-collapse .form-horizontal .btn{
 	margin-top: 0px;
+}
+
+.panel-collapse .form-horizontal .btn-margin-top{
+	margin-top: 20px;
 }
 
 /* Menu */

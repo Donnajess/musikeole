@@ -10,6 +10,7 @@
 
 	// Chargement des classes
 	include('../modeles/ConnexionBDD.php');
+	include('../modeles/contenus/Association.php');
 	include('modeles/ManagerContenu.php');
 
 	$manager = new ManagerContenu();
@@ -23,11 +24,28 @@
 	switch ($action) {
 
 		case 'ajouterAssociation':
-			
+			include('vues/contenu/associations/formulaire.php');
+			break;
+
+		case 'valider':
+			$fichier = $manager->formaterNomFichier($_POST['nom']).'.txt';
+			$association = new Association(0, $_POST['nom'], $fichier, $_POST['indice'], '../data/contenu/associations/');
+			$association->setContenu($_POST['texte']);
+			$manager->enregistrerNouvelleAssociation($association);
+			$message = 'L\'association "'.$_POST['nom'].'" a été créée.';
+			$presentationEcole = $manager->getPresentationEcole();
+			$associations = $manager->getAssociations();
+			include('vues/contenu/associations/index.php');
 			break;
 
 		case 'modifierAssociation':
-
+			$association = new Association($_POST['id'], $_POST['nom'], $_POST['fichier'], $_POST['indice'], '../data/contenu/associations/');
+			$association->setContenu($_POST['texte']);
+			$manager->modifierAssociation($association);
+			$message = 'L\'association "'.$_POST['nom'].'" a été modifiée.';
+			$presentationEcole = $manager->getPresentationEcole();
+			$associations = $manager->getAssociations();
+			include('vues/contenu/associations/index.php');
 			break;
 
 		case 'modifierEcole':

@@ -225,7 +225,7 @@
 
 		public function getAssociations()
 		{
-			$reqAssociations = $this->connexion->getConnexion()->prepare('SELECT * FROM associations');
+			$reqAssociations = $this->connexion->getConnexion()->prepare('SELECT * FROM associations ORDER BY indice DESC, nom');
 			$reqAssociations->execute();
 			$listeAssociations = array();
 			while ($ligne = $reqAssociations->fetch()) {
@@ -248,6 +248,35 @@
 			if (file_exists($chemin)) {
 				unlink($chemin);
 			}
+		}
+
+		public function enregistrerNouvelleAssociation($association)
+		{
+			$reqAssociation = $this->connexion->getConnexion()->prepare('INSERT INTO associations VALUES (0, ?, ?, ?)');
+			$reqAssociation->execute(array($association->getNom(), $association->getFichier(), $association->getIndice()));
+			$fichier = fopen('../data/contenu/associations/'.$association->getFichier(), 'w+');
+			fputs($fichier, $association->getContenu());
+			fclose($fichier);
+		}
+
+		public function modifierAssociation($association)
+		{
+			$reqAssociation = $this->connexion->getConnexion()->prepare('UPDATE associations SET nom = ?, indice = ? WHERE id = ?');
+			$reqAssociation->execute(array($association->getNom(), $association->getIndice(), $association->getId()));
+			$fichier = fopen('../data/contenu/associations/'.$association->getFichier(), 'w+');
+			fputs($fichier, $association->getContenu());
+			fclose($fichier);
+		}
+
+		public function formaterNomFichier($chaine)
+		{
+			$accents = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ');
+			$sans = array('A','A','A','A','A','A','C','E','E','E','E','I','I','I','I','O','O','O','O','O','U','U','U','U','Y','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i','o','o','o','o','o','o','u','u','u','u','y','y');
+			$chaine = str_replace($accents, $sans, $chaine);
+			$symboles = array("?","!","@","#","%","&amp;","*","(",")","[","]","=","+"," ",";",":","'",".","_","&");
+			$chaine = str_replace($symboles, "-", $chaine);
+			$chaine = strtolower(strip_tags($chaine));
+			return $chaine;
 		}
 
 	}
