@@ -234,6 +234,22 @@
 			return $listeAssociations;
 		}
 
+		public function modifierPresentationEcole($texte)
+		{
+			$fichier = '../data/contenu/associations/presentationEcole.txt';
+			$this->supprimerFichier($fichier);
+			$fichier = fopen($fichier, 'w+');
+			fputs($fichier, $texte);
+			fclose($fichier);
+		}
+
+		public function supprimerFichier($chemin)
+		{
+			if (file_exists($chemin)) {
+				unlink($chemin);
+			}
+		}
+
 	}
 
 ?>

@@ -31,7 +31,11 @@
 			break;
 
 		case 'modifierEcole':
-			
+			$manager->modifierPresentationEcole($_POST['presentationEcole']);
+			$message = 'La présentation de l\' école a été mise à jour.';
+			$presentationEcole = $manager->getPresentationEcole();
+			$associations = $manager->getAssociations();
+			include('vues/contenu/associations/index.php');
 			break;
 
 		case 'index':
