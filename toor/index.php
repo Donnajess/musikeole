@@ -6,6 +6,7 @@
 			<ul>
 				<li><a href="cGestionSondages.php?action=liste">Gérer les sondages</a></li>
 				<li><a href="indexContenu.php">Gérer le contenu</a></li>
+				<li><a href="cGestionAgenda.php">Gérer l'agenda</a></li>
 			</ul>
 		</div>
 	</div>

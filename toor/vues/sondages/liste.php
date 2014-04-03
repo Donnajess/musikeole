@@ -74,7 +74,7 @@
 					</tr>
 					<?php
 						foreach ($listeSondages as $sondage) {
-							$actif = ($sondage->getActif()) ? '<button type="button" class="btn btn-primary disabled">Actif</button>' : '<button type="button" class="btn btn-default"><a href="cGestionSondages.php?action=activer&id='.$sondage->getId().'">Activer</a></button>' ;
+							$actif = ($sondage->getActif()) ? '<button type="button" class="btn btn-primary btn-sondage disabled">Actif</button>' : '<button type="button" class="btn btn-default btn-sondage"><a href="cGestionSondages.php?action=activer&id='.$sondage->getId().'">Activer</a></button>' ;
 							echo '<tr>
 								<td><a href="cGestionSondages.php?action=detail&id='.$sondage->getId().'">'.$sondage->getTitre().'</a></td>
 								<td>'.$sondage->getDate().'</td>
