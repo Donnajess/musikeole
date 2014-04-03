@@ -56,7 +56,7 @@
 			</form>
 		</div>
 		<div class="col-md-2">
-			<img <?php echo 'src="../data/images/publicites/'.$publicite->getImage().'"'; ?> class="img-responsive img-thumbnail">
+			<img <?php echo 'src="../data/images/promotions/'.$publicite->getImage().'"'; ?> class="img-responsive img-thumbnail">
 			<p class="help-block">Image actuelle.</p>
 			<hr>
 		</div>

@@ -340,10 +340,10 @@
 		public function remplacerPublicite($pub, $image)
 		{
 			if ($image['size'] > 0) {
-				$this->supprimerFichier('../data/images/publicites/'.$pub->getImage());
+				$this->supprimerFichier('../data/images/promotions/'.$pub->getImage());
 				$info = $this->enregistrerImagePublicite($image, $pub->getImage());
 			}else{
-				$info = true;
+				$info = array(true, $pub->getImage());
 			}
 			if ($info) {
 				$reqRemplacementPub = $this->connexion->getConnexion()->prepare('UPDATE publicites SET nom = ?, lien = ?, mailAnnonceur = ?, indice = ?, active = ? WHERE id = ?');
@@ -360,7 +360,7 @@
 				$extensions_valides = array('jpg','jpeg');
 				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
 				if(in_array($extension_upload,$extensions_valides)){
-					$this->creerImage($image, $nomImage, 450, '../data/images/publicites/');
+					$this->creerImage($image, $nomImage, 450, '../data/images/promotions/');
 					$info = array(true, $nomImage);
 				}else{
 					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');

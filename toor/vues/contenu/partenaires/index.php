@@ -114,7 +114,7 @@
 							echo '<h3 class="panel-title">'.$pub->getNom().'</h3>';
 						echo '</div>';
 						echo '<div class="panel-body">';
-							echo '<a href="'.$pub->getLien().'" target="_blank"><img src="../data/images/publicites/'.$pub->getImage().'" alt="'.$pub->getNom().'" class="img-responsive img-thumbnail" ></a>';
+							echo '<a href="'.$pub->getLien().'" target="_blank"><img src="../data/images/promotions/'.$pub->getImage().'?v='.filemtime('../data/images/promotions/'.$pub->getImage()).'" alt="'.$pub->getNom().'" class="img-responsive img-thumbnail" ></a>';
 						echo '</div>';
 						echo '<div class="panel-footer">';
 							echo '<button class="btn btn-primary"><a href="mailto:'.$pub->getMail().'">Contacter l\'annonceur</a></button>';
