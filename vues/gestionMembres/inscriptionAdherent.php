@@ -1,4 +1,3 @@
-<?php include('includes/traiterSondage.php'); ?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -7,10 +6,10 @@
 
 		<title>Musik'Eole</title>
 
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/css/style.css">
-		<script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../assets/css/style.css">                                                              
+		<script type="text/javascript" src="../../assets/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 
@@ -113,7 +112,7 @@
       </div>
     </div>
   </div>
-      <a href="vues/gestionMembres/inscriptionMembre.php">Inscrivez vous ici</a>
+      <a href="inscription.php">Inscrivez vous ici</a>
   <div class="form-group">
     <div class="col-md-10 col-sm-10">
       <button type="submit" class="btn btn-default">Valider</button>
@@ -128,25 +127,51 @@
 
 
 
- <div class="col-md-4">
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <legend>Information</legend>
-    Texte Personnalisé 
-  </div>
+<div class="col-md-8">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title inscription_title">Devenir membre de l'association</h3>
+		</div>
+		<div class="panel-body">
+				<form role="form" class="form-inline" action="inscriptionMembre.php" method="POST">	
+					<label class="reglement">Vous inscrire permettra de vous connecter sur l'espace forum, mais aussi de continuer vers l'adhésion à l'association. </label>		
+					<div class="form-group">
+                		<input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
+          			</div>		  	    		  	  	                
+					<div class="form-group">                  
+			    	    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
+			    	</div>	    
+					<div class="form-group">					
+			    		<input type="email" class="form-control" id="mail" name="mail" placeholder="Adresse mail">
+			    	</div>
+					<div class="form-group">				
+			    		<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Téléphone">
+			    	</div>
+					<div class="form-group">	
+			    		<input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse">
+			    	</div>
+			    	<div class="form-group">
+			    		<input type="text" class="form-control" id="codepostal" name="codepostal" placeholder="Code Postal">
+			    	</div>
+			    	<div class="form-group">
+			    		<input type="text" class="form-control" id="ville" name="ville" placeholder="Ville">
+			    	</div>
+			    	<label class="reglement">Voici le règlement de l'association, veuillez le lire avant de soumettre votre adhésion.</label>
+			    	<iframe src="../../data/contenu/legal/reglementInterieur.pdf" class="iframe" width="100%" height="350"px;>
+			    	</iframe>
+			    	<label class="reglement">Une cotisation de 5€ sera demandée pour souscrire à l'association</label>
+			    	<br>
+			    	<div class="checkbox">
+			    		<input type="checkbox" name="checkbox">Cochez cette case si vous confirmez vos informations et si vous avez lu le règlement de l'association.
+			    	</div>
+			    	<br>
+			  		<div class="form-group">
+						<button type="submit" class="btn btn-primary adhesion" name="inscription" id="inscription" value="inscription" >Soumettre l'adhésion</button>
+					</div>
+				</form>
+		</div>
+	</div>
 </div>
-    </div>
-
- <div class="col-md-4">
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <legend>Evènement</legend>
-    Prochain évènement 
-  </div>
-</div>
-    </div>
 
 
 
@@ -207,21 +232,6 @@
   
    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</body>	
 </html>
+

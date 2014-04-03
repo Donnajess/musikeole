@@ -1,4 +1,3 @@
-<?php include('includes/traiterSondage.php'); ?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -7,10 +6,10 @@
 
 		<title>Musik'Eole</title>
 
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/css/style.css">
-		<script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../../assets/css/style.css">                                                              
+		<script type="text/javascript" src="../../assets/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="../../assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 
@@ -113,7 +112,7 @@
       </div>
     </div>
   </div>
-      <a href="vues/gestionMembres/inscriptionMembre.php">Inscrivez vous ici</a>
+      <a href="inscription.php">Inscrivez vous ici</a>
   <div class="form-group">
     <div class="col-md-10 col-sm-10">
       <button type="submit" class="btn btn-default">Valider</button>
@@ -123,34 +122,43 @@
       </div></div>
 
     
-
-
-
-
-
- <div class="col-md-4">
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <legend>Information</legend>
-    Texte Personnalisé 
+<div class="col-md-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title inscription_title">Inscription</h3>
+    </div>
+    <div class="panel-body">
+      <div class="col-md-5">
+        <form role="form" action="inscriptionMembre.php" method="POST">     
+          <div class="form-group">
+                      <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
+                    </div>                                        
+          <div class="form-group">                  
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
+            </div>      
+          <div class="form-group">          
+              <input type="email" class="form-control" id="mail" name="mail" placeholder="Adresse mail">
+            </div>
+          <div class="form-group">        
+              <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Pseudo">
+            </div>
+          <div class="form-group">  
+              <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password_verif" name="password_verif" placeholder="Confirmation du mot de passe">
+            </div>
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary inscription" name="inscription" id="inscription" value="inscription" >S'inscrire</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7">
+          <p>Vous inscrire permettra de vous connecter sur l'espace forum, mais aussi de continuer vers l'adhésion à l'association.</p>
+      </div>
+    </div>
   </div>
 </div>
-    </div>
-
- <div class="col-md-4">
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <legend>Evènement</legend>
-    Prochain évènement 
-  </div>
-</div>
-    </div>
-
-
-
-
 
   <div class="col-xs-6 col-md-2">
 
@@ -207,21 +215,6 @@
   
    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</body>	
 </html>
+

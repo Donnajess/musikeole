@@ -84,3 +84,30 @@ body{
 
 /* Pages */
 
+
+
+/* Formulaires inscription */
+.inscription_title {
+	font-size: 18px;
+}
+.form-control {
+	margin: 5px;
+}
+.iframe {
+	margin-top: 10px;
+}
+.reglement {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.checkbox {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.adhesion {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.inscription {
+	margin-left: 5px;
+}
