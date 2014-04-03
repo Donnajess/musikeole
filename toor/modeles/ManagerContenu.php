@@ -225,7 +225,7 @@
 
 		public function getAssociations()
 		{
-			$reqAssociations = $this->connexion->getConnexion()->prepare('SELECT * FROM associations ORDER BY indice DESC, nom');
+			$reqAssociations = $this->connexion->getConnexion()->prepare('SELECT * FROM associations WHERE id > 0 ORDER BY indice DESC, nom');
 			$reqAssociations->execute();
 			$listeAssociations = array();
 			while ($ligne = $reqAssociations->fetch()) {

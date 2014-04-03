@@ -98,7 +98,7 @@
 
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Manifestations à venir <button class="btn btn-primary pull-right"><a href="#">Nouvelle manifestation</a></button></h2>
+			<h2>Manifestations à venir <button class="btn btn-primary pull-right"><a href="cGestionAgenda.php?action=ajouterManifestation">Nouvelle manifestation</a></button></h2>
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<tr>

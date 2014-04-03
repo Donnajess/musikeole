@@ -10,9 +10,10 @@
 
 	// Chargement des classes
 	include('../modeles/ConnexionBDD.php');
-	include('modeles/ManagerContenu.php');
+	include('../modeles/contenus/Association.php');
+	include('modeles/ManagerAgenda.php');
 
-	$manager = new ManagerContenu();
+	$manager = new ManagerAgenda();
 
 	if (isset($_GET['action'])) {
 		$action = htmlentities($_GET['action']);
@@ -21,6 +22,11 @@
 	}
 
 	switch ($action) {
+
+		case 'ajouterManifestation':
+			$associations = $manager->getAssociations();
+			include('vues/agenda/formulaire.php');
+			break;
 
 		case 'index':
 			include('vues/agenda/index.php');
