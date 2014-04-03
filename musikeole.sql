@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 02 Avril 2014 à 23:20
+-- Généré le: Jeu 03 Avril 2014 à 23:10
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -126,6 +126,7 @@ CREATE TABLE IF NOT EXISTS `associations` (
 --
 
 INSERT INTO `associations` (`id`, `nom`, `fichier`, `indice`) VALUES
+(0, 'Musik''Eole', '', 10000000),
 (1, 'Les Clar''minettes', 'les-clar-minettes.txt', 30),
 (2, 'Ensemble orchestral', 'ensemble-orchestral.txt', 50),
 (3, 'Orchestre minime', 'orchestre-minime.txt', 40);
@@ -279,15 +280,20 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
   `nom` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `date` date NOT NULL,
+  `heure` text NOT NULL,
   `placesDisponibles` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
+  `gratuit` tinyint(1) NOT NULL,
   `prixAdherent` double(2,2) NOT NULL,
   `prixExterieur` double(2,2) NOT NULL,
   `prixEnfant` double(2,2) NOT NULL,
   `dateCreation` date NOT NULL,
+  `valide` tinyint(1) NOT NULL DEFAULT '1',
   `idAssociation` int(11) NOT NULL,
   `idAlbum` int(11) NOT NULL,
+  `idMembre` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `idAdherent` (`idMembre`),
   KEY `idAssociation` (`idAssociation`,`idAlbum`),
   KEY `idAlbum` (`idAlbum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -530,8 +536,8 @@ CREATE TABLE IF NOT EXISTS `publicites` (
 --
 
 INSERT INTO `publicites` (`id`, `nom`, `image`, `lien`, `mailAnnonceur`, `indice`, `active`) VALUES
-(1, 'John Doe', 'pub1.jpg', 'http://loremipsum.com', 'wavelet.alexandre@gmail.com', 10, 1),
-(2, 'yolo ohÃ©', 'pub2.jpg', 'http://yolo.com', 'yolo@yolo.com', 5, 0),
+(1, 'Jane Doe', 'pub1.jpg', 'http://loremipsum.com', 'wavelet.alexandre@gmail.com', 10, 1),
+(2, 'yolo ohÃ©', 'pub2.jpg', 'http://yolo.com', 'yolo@yolo.com', 40, 0),
 (3, 'Lorem ipsum', 'pub3.jpg', 'http://random.com', 'lorem@ipsum.com', 50, 1);
 
 -- --------------------------------------------------------
@@ -682,7 +688,7 @@ CREATE TABLE IF NOT EXISTS `sondages` (
 
 INSERT INTO `sondages` (`id`, `titre`, `votants`, `dateCreation`, `actif`) VALUES
 (8, 'Premier sondage', 19, '2014-03-28', 0),
-(9, 'Sondage de fifou', 20, '2014-03-28', 0);
+(9, 'Sondage de fifou', 20, '2014-03-28', 1);
 
 -- --------------------------------------------------------
 
@@ -784,7 +790,8 @@ ALTER TABLE `lignescommande`
 --
 ALTER TABLE `manifestations`
   ADD CONSTRAINT `manifestations_albums` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `manifestations_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `membres`
