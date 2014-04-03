@@ -11,6 +11,7 @@
 	// Chargement des classes
 	include('../modeles/ConnexionBDD.php');
 	include('../modeles/contenus/Association.php');
+	include('../modeles/agenda/Manifestation.php');
 	include('modeles/ManagerAgenda.php');
 
 	$manager = new ManagerAgenda();
@@ -26,6 +27,17 @@
 		case 'ajouterManifestation':
 			$associations = $manager->getAssociations();
 			include('vues/agenda/formulaire.php');
+			break;
+
+		case 'creerManifestation':
+			$nomImage = $manager->getNomFichierAleatoire();
+			$manifestation = new Manifestation(0, $_POST['nom'], $_POST['description'], $_POST['date'], $_POST['heure'], $_POST['places'], $nomImage, $_POST['gratuit'], $_POST['prixAdh'], $_POST['prixExt'], $_POST['prixEnf'], $_POST['Association']);
+			$info = $manager->ajouterManifestation($manifestation, $_FILES['image']);
+			$message = 'La manifestation "'.$_POST['nom'].'" a été ajoutée.';
+			if (!$info[0]) {
+				$message = $info[1];
+			}
+			include('vues/agenda/index.php');
 			break;
 
 		case 'index':

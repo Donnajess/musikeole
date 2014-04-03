@@ -27,6 +27,18 @@
 			return $listeAssociations;
 		}
 
+		public function getNomFichierAleatoire()
+		{
+			$nomImage = md5(uniqid(rand(), true));
+			$nomImage = $nomImage.'.jpg';
+			return $nomImage;
+		}
+
+		public function ajouterManifestation($manifestation, $image)
+		{
+			// à faire
+		}
+
 	}
 
 ?>
