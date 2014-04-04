@@ -133,14 +133,16 @@
 			<h3 class="panel-title inscription_title">Devenir membre de l'association</h3>
 		</div>
 		<div class="panel-body">
-				<form role="form" class="form-inline" action="inscriptionMembre.php" method="POST">	
-					<label class="reglement">Vous inscrire permettra de vous connecter sur l'espace forum, mais aussi de continuer vers l'adhésion à l'association. </label>		
+				<form role="form" class="form-inline" action="../../modeles/gestionMembres/inscriptionAdherent.php" method="POST">
 					<div class="form-group">
                 		<input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
           			</div>		  	    		  	  	                
 					<div class="form-group">                  
 			    	    <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prénom">
-			    	</div>	    
+			    	</div>	
+          <div class="form-group">                  
+                <input type="text" class="form-control" id="datenaissance" name="datenaissance" placeholder="Date de naissance">
+            </div>    
 					<div class="form-group">					
 			    		<input type="email" class="form-control" id="mail" name="mail" placeholder="Adresse mail">
 			    	</div>
@@ -166,7 +168,7 @@
 			    	</div>
 			    	<br>
 			  		<div class="form-group">
-						<button type="submit" class="btn btn-primary adhesion" name="inscription" id="inscription" value="inscription" >Soumettre l'adhésion</button>
+						<button type="submit" class="btn btn-primary adhesion" name="inscriptionAd" id="inscriptionAd" value="inscriptionAd" >Soumettre l'adhésion</button>
 					</div>
 				</form>
 		</div>
