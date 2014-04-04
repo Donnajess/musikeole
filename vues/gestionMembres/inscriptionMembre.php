@@ -129,7 +129,7 @@
     </div>
     <div class="panel-body">
       <div class="col-md-5">
-        <form role="form" action="inscriptionMembre.php" method="POST">     
+        <form role="form" action="../../modeles/gestionMembres/inscriptionMembre.php" method="POST">     
           <div class="form-group">
                       <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
                     </div>                                        
