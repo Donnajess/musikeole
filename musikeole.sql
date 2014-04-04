@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 03 Avril 2014 à 23:10
+-- Généré le: Ven 04 Avril 2014 à 20:51
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -84,7 +84,14 @@ CREATE TABLE IF NOT EXISTS `albums` (
   `nom` varchar(50) NOT NULL,
   `description` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `albums`
+--
+
+INSERT INTO `albums` (`id`, `nom`, `description`) VALUES
+(0, '', '');
 
 -- --------------------------------------------------------
 
@@ -279,24 +286,32 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
-  `date` date NOT NULL,
-  `heure` text NOT NULL,
-  `placesDisponibles` int(11) NOT NULL,
+  `dateManif` date NOT NULL,
+  `heure` varchar(10) NOT NULL,
+  `places` int(11) NOT NULL,
   `image` varchar(50) NOT NULL,
   `gratuit` tinyint(1) NOT NULL,
-  `prixAdherent` double(2,2) NOT NULL,
-  `prixExterieur` double(2,2) NOT NULL,
-  `prixEnfant` double(2,2) NOT NULL,
+  `prixAdherent` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `prixExterieur` decimal(4,2) NOT NULL DEFAULT '0.00',
+  `prixEnfant` decimal(4,2) NOT NULL DEFAULT '0.00',
   `dateCreation` date NOT NULL,
   `valide` tinyint(1) NOT NULL DEFAULT '1',
   `idAssociation` int(11) NOT NULL,
   `idAlbum` int(11) NOT NULL,
   `idMembre` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idAdherent` (`idMembre`),
   KEY `idAssociation` (`idAssociation`,`idAlbum`),
-  KEY `idAlbum` (`idAlbum`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `idAlbum` (`idAlbum`),
+  KEY `idMembre` (`idMembre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Contenu de la table `manifestations`
+--
+
+INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, `places`, `image`, `gratuit`, `prixAdherent`, `prixExterieur`, `prixEnfant`, `dateCreation`, `valide`, `idAssociation`, `idAlbum`, `idMembre`) VALUES
+(1, 'yolo ohÃ©', '<p>46465</p>', '2014-04-15', '19:00', 6365, 'de92893f2265f7d49ad2932a7e47c1f5.jpg', 0, '5.00', '10.00', '2.00', '2014-04-04', 1, 0, 0, 0),
+(6, 'Rendez vous', '<h1>fnjq,ggfd,k;fg</h1>\r\n<p>trjkrqskk</p>', '2014-04-08', '13:00', 50, '6a5678ef0622d7f689fb36dffcb04ff5.jpg', 1, '0.00', '0.00', '0.00', '2014-04-04', 1, 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -314,7 +329,14 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `idAutorisation` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAutorisation` (`idAutorisation`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `membres`
+--
+
+INSERT INTO `membres` (`id`, `mail`, `nom`, `pseudo`, `motDePasse`, `prenom`, `idAutorisation`) VALUES
+(0, '', '', '', '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -789,9 +811,9 @@ ALTER TABLE `lignescommande`
 -- Contraintes pour la table `manifestations`
 --
 ALTER TABLE `manifestations`
+  ADD CONSTRAINT `manifestations_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `manifestations_albums` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `manifestations_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `membres`

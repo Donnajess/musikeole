@@ -37,14 +37,17 @@
 			if (!$info[0]) {
 				$message = $info[1];
 			}
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			include('vues/agenda/index.php');
 			break;
 
 		case 'index':
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			include('vues/agenda/index.php');
 			break;
 
 		default:
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			include('vues/agenda/index.php');
 			break;
 

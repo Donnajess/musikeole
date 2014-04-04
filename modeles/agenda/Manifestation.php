@@ -102,6 +102,10 @@
 			return $this->date;
 		}
 
+		/**
+		 * Renvoie la date au format MySQL (yy-mm-dd)
+		 * @return string date MySQL
+		 */
 		public function getDateMysql()
 		{
 			$dateMysql = explode('-', $this->date);

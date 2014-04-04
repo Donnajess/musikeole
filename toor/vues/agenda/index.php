@@ -100,35 +100,21 @@
 			<div class="table-responsive">
 				<table class="table table-hover">
 					<tr>
+						<th>Image</th>
 						<th>Nom</th>
 						<th>Date</th>
 						<th>Organisateur</th>
 					</tr>
-					<tr>
-						<td>Lorem ipsum dolor.</td>
-						<td>Porro, distinctio, similique.</td>
-						<td>Praesentium, iusto est!</td>
-					</tr>
-					<tr>
-						<td>Lorem ipsum dolor.</td>
-						<td>Non, eum odio!</td>
-						<td>Nulla, porro, perferendis.</td>
-					</tr>
-					<tr>
-						<td>Lorem ipsum dolor.</td>
-						<td>Assumenda, tempore nulla.</td>
-						<td>Modi, aperiam cum.</td>
-					</tr>
-					<tr>
-						<td>Lorem ipsum dolor.</td>
-						<td>Consequatur, perferendis, sapiente.</td>
-						<td>Voluptatibus, nam omnis?</td>
-					</tr>
-					<tr>
-						<td>Lorem ipsum dolor.</td>
-						<td>Facilis, delectus, debitis!</td>
-						<td>Eius, neque, voluptas.</td>
-					</tr>
+					<?php
+						foreach ($manifestationsAVenir as $manif) {
+							echo '<tr>';
+								echo '<td class="cellule-image"><a href="cGestionAgenda.php?action=modifierManifestation&id='.$manif->getId().'"><img src="../data/images/manifestations/miniatures/'.$manif->getImage().'" class="img-responsive img-thumbnail"></a></td>';
+								echo '<td><a href="cGestionAgenda.php?action=modifierManifestation&id='.$manif->getId().'">'.$manif->getNom().'</a></td>';
+								echo '<td>'.$manif->getDate().'</td>';
+								echo '<td>'.$manif->getAssociation()->getNom().'</td>';
+							echo '</tr>';
+						}
+					?>
 				</table>
 			</div>
 		</div>
