@@ -31,7 +31,7 @@
 
 		case 'creerManifestation':
 			$nomImage = $manager->getNomFichierAleatoire();
-			$manifestation = new Manifestation(0, $_POST['nom'], $_POST['description'], $_POST['date'], $_POST['heure'], $_POST['places'], $nomImage, $_POST['gratuit'], $_POST['prixAdh'], $_POST['prixExt'], $_POST['prixEnf'], $_POST['Association']);
+			$manifestation = new Manifestation(0, $_POST['nom'], $_POST['description'], $_POST['date'], $_POST['heure'], $_POST['places'], $nomImage, $_POST['gratuit'], $_POST['prixAdh'], $_POST['prixExt'], $_POST['prixEnf'], $_POST['association']);
 			$info = $manager->ajouterManifestation($manifestation, $_FILES['image']);
 			$message = 'La manifestation "'.$_POST['nom'].'" a été ajoutée.';
 			if (!$info[0]) {

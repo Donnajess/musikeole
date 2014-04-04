@@ -102,6 +102,13 @@
 			return $this->date;
 		}
 
+		public function getDateMysql()
+		{
+			$dateMysql = explode('-', $this->date);
+			$date = $dateMysql[2].'-'.$dateMysql[1].'-'.$dateMysql[0];
+			return $date;
+		}
+
 		/**
 		* Mutateur de date.
 		* @param date $date  date

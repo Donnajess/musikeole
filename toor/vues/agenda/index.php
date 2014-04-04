@@ -44,14 +44,12 @@
 	<div class="row">
 		<div class="col-md-12">
 			<?php
-				$message = 'Il y a des inscriptions en attente pour les manifestations suivantes : $listeManifs';
-				if (isset($message)) {
+				if (isset($messageInscriptions)) {
 					echo '<div class="alert alert-info alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<p>'.$message.'</p>
+						<p>Il y a des inscriptions en attente pour les manifestations suivantes : $listeManifs</p>
 					</div>';
 				}
-				$message = 'La manifestation "$nom"a été ajoutée/validée/modifiée/supprimée.';
 				if (isset($message)) {
 					echo '<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
