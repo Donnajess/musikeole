@@ -48,6 +48,14 @@
 			include('vues/contenu/associations/index.php');
 			break;
 
+		case 'supprimerAssociation':
+			$manager->supprimerAssociation($_GET['id']);
+			$message = 'L\'association a été supprimée.';
+			$presentationEcole = $manager->getPresentationEcole();
+			$associations = $manager->getAssociations();
+			include('vues/contenu/associations/index.php');
+			break;
+
 		case 'modifierEcole':
 			$manager->modifierPresentationEcole($_POST['presentationEcole']);
 			$message = 'La présentation de l\' école a été mise à jour.';

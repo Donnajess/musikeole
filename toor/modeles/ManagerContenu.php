@@ -268,6 +268,16 @@
 			fclose($fichier);
 		}
 
+		public function supprimerAssociation($id)
+		{
+			$reqNomfichier = $this->connexion->getConnexion()->prepare('SELECT fichier FROM associations WHERE id = ?');
+			$reqNomfichier->execute(array($id));
+			$nomFichier = $reqNomfichier->fetch();
+			$this->supprimerFichier('../data/contenu/associations/'.$nomFichier['fichier']);
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM associations WHERE id = ?');
+			$reqSuppression->execute(array($id));
+		}
+
 		public function formaterNomFichier($chaine)
 		{
 			$accents = array('À','Á','Â','Ã','Ä','Å','Ç','È','É','Ê','Ë','Ì','Í','Î','Ï','Ò','Ó','Ô','Õ','Ö','Ù','Ú','Û','Ü','Ý','à','á','â','ã','ä','å','ç','è','é','ê','ë','ì','í','î','ï','ð','ò','ó','ô','õ','ö','ù','ú','û','ü','ý','ÿ');

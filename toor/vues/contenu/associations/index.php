@@ -77,6 +77,7 @@
 										echo '</div>';
 										echo '<textarea name="texte" rows="10">'.$association->getContenu().'</textarea>';
 										echo '<button type="submit" name="valider" class="btn btn-primary btn-lg btn-margin-top">Valider</button>';
+										echo '<button type="button" name="supprimer" class="btn btn-danger btn-lg btn-margin-top pull-right"><a href="cGestionAssociations.php?action=supprimerAssociation&id='.$association->getId().'">Supprimer</a></button>';
 									echo '</form>';
 								echo '</div>';
 							echo '</div>';
