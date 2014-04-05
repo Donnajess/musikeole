@@ -101,6 +101,24 @@
 			return $asso;
 		}
 
+		public function supprimerManifestation($id)
+		{
+			$reqFichier = $this->connexion->getConnexion()->prepare('SELECT image FROM manifestations WHERE id = ?');
+			$reqFichier->execute(array($id));
+			$fichier = $reqFichier->fetch();
+			$this->supprimerFichier('../data/images/manifestations/'.$fichier['image']);
+			$this->supprimerFichier('../data/images/manifestations/miniatures/'.$fichier['image']);
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM manifestations WHERE id = ?');
+			$reqSuppression->execute(array($id));
+		}
+
+		public function supprimerFichier($chemin)
+		{
+			if (file_exists($chemin)) {
+				unlink($chemin);
+			}
+		}
+
 	}
 
 ?>

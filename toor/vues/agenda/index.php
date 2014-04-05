@@ -104,6 +104,7 @@
 						<th>Nom</th>
 						<th>Date</th>
 						<th>Organisateur</th>
+						<th>Supprimer</th>
 					</tr>
 					<?php
 						foreach ($manifestationsAVenir as $manif) {
@@ -112,6 +113,7 @@
 								echo '<td><a href="cGestionAgenda.php?action=modifierManifestation&id='.$manif->getId().'">'.$manif->getNom().'</a></td>';
 								echo '<td>'.$manif->getDate().'</td>';
 								echo '<td>'.$manif->getAssociation()->getNom().'</td>';
+								echo '<td><button class="btn btn-danger"><a href="cGestionAgenda.php?action=supprimerManifestation&id='.$manif->getId().'">Supprimer</a></button></td>';
 							echo '</tr>';
 						}
 					?>

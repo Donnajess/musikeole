@@ -41,6 +41,13 @@
 			include('vues/agenda/index.php');
 			break;
 
+		case 'supprimerManifestation':
+			$manager->supprimerManifestation($_GET['id']);
+			$message = 'La manifestation a été supprimée';
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			include('vues/agenda/index.php');
+			break;
+
 		case 'index':
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			include('vues/agenda/index.php');
