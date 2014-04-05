@@ -119,6 +119,29 @@
 			}
 		}
 
+		public function getManifestationsPassees()
+		{
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() ORDER BY dateManif, idAssociation');
+			$reqManifs->execute();
+			$manifs = array();
+			while ($ligne = $reqManifs->fetch()) {
+				$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+				array_push($manifs, $manif);
+			}
+			return $manifs;
+		}
+
+		public function getManifestationsEnAttente()
+		{
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 0 AND dateManif >= NOW() ORDER BY dateManif');
+			$reqManifs->execute();
+			$manifs = array();
+			while ($ligne = $reqManifs->fetch()) {
+				$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+				array_push($manifs, $manif);
+			}
+			return $manifs;
+		}
 	}
 
 ?>

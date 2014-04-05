@@ -38,6 +38,8 @@
 				$message = $info[1];
 			}
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
 			include('vues/agenda/index.php');
 			break;
 
@@ -45,16 +47,22 @@
 			$manager->supprimerManifestation($_GET['id']);
 			$message = 'La manifestation a été supprimée';
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
 			include('vues/agenda/index.php');
 			break;
 
 		case 'index':
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
 			include('vues/agenda/index.php');
 			break;
 
 		default:
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
 			include('vues/agenda/index.php');
 			break;
 

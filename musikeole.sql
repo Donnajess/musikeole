@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 04 Avril 2014 à 20:51
+-- Généré le: Sam 05 Avril 2014 à 04:06
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `albums` (
   `nom` varchar(50) NOT NULL,
   `description` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `albums`
@@ -303,15 +303,15 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
   KEY `idAssociation` (`idAssociation`,`idAlbum`),
   KEY `idAlbum` (`idAlbum`),
   KEY `idMembre` (`idMembre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `manifestations`
 --
 
 INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, `places`, `image`, `gratuit`, `prixAdherent`, `prixExterieur`, `prixEnfant`, `dateCreation`, `valide`, `idAssociation`, `idAlbum`, `idMembre`) VALUES
-(1, 'yolo ohÃ©', '<p>46465</p>', '2014-04-15', '19:00', 6365, 'de92893f2265f7d49ad2932a7e47c1f5.jpg', 0, '5.00', '10.00', '2.00', '2014-04-04', 1, 0, 0, 0),
-(6, 'Rendez vous', '<h1>fnjq,ggfd,k;fg</h1>\r\n<p>trjkrqskk</p>', '2014-04-08', '13:00', 50, '6a5678ef0622d7f689fb36dffcb04ff5.jpg', 1, '0.00', '0.00', '0.00', '2014-04-04', 1, 3, 0, 0);
+(6, 'Rendez vous', '<h1>fnjq,ggfd,k;fg</h1>\r\n<p>trjkrqskk</p>', '2014-04-08', '13:00', 50, '6a5678ef0622d7f689fb36dffcb04ff5.jpg', 1, '0.00', '0.00', '0.00', '2014-04-04', 1, 3, 0, 0),
+(10, 'Wavelet153', '<p>ykdgl</p>', '2014-03-11', '3:00', 168, 'b369a77de579f0fa17b0fdf7a1f73840.jpg', 1, '0.00', '0.00', '0.00', '2014-04-05', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -329,7 +329,7 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `idAutorisation` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAutorisation` (`idAutorisation`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `membres`
@@ -811,9 +811,9 @@ ALTER TABLE `lignescommande`
 -- Contraintes pour la table `manifestations`
 --
 ALTER TABLE `manifestations`
-  ADD CONSTRAINT `manifestations_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `manifestations_albums` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `manifestations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `manifestations_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `membres`
