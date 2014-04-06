@@ -82,7 +82,7 @@
 														echo '<p>Le '.$manif->getDate().' à '.$manif->getHeure().'</p>';
 													echo '</div>';
 													echo '<div class="col-md-6">';
-														echo '<p>Organisé par "'.$manif->getMembre()->getNom().'"</p>';
+														echo '<p>Organisée par "'.$manif->getMembre()->getNom().'"</p>';
 													echo '</div>';
 												echo '</div>';
 												echo '<hr>';
@@ -166,7 +166,7 @@
 														echo '<p>Le '.$manif->getDate().' à '.$manif->getHeure().'</p>';
 													echo '</div>';
 													echo '<div class="col-md-6">';
-														echo '<p>Organisé par "'.$manif->getAssociation()->getNom().'"</p>';
+														echo '<p>Organisée par "'.$manif->getAssociation()->getNom().'"</p>';
 													echo '</div>';
 												echo '</div>';
 												echo '<hr>';

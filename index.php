@@ -1,4 +1,4 @@
-<?php include('includes/traiterSondage.php'); ?>
+<?php include('includes/recupererDonnees.php'); ?>
 <!doctype html>
 <html lang="fr">
 	<head>
