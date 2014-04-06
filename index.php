@@ -46,6 +46,7 @@
 								<ul class="nav navbar-nav">
 									<li><a href="index.php">Accueil</a></li>
 									<li><a href="cPresentation.php">Présentation</a></li>
+									<li><a href="#">Agenda</a></li>
 									<li><a href="#">Galerie Photos</a></li>
 									<li><a href="#">Exprimez vous !</a></li>
 									<li><a href="#">Boutique</a></li>

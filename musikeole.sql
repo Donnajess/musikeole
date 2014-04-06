@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 05 Avril 2014 à 04:06
+-- Généré le: Dim 06 Avril 2014 à 14:40
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -303,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
   KEY `idAssociation` (`idAssociation`,`idAlbum`),
   KEY `idAlbum` (`idAlbum`),
   KEY `idMembre` (`idMembre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `manifestations`
@@ -709,8 +709,8 @@ CREATE TABLE IF NOT EXISTS `sondages` (
 --
 
 INSERT INTO `sondages` (`id`, `titre`, `votants`, `dateCreation`, `actif`) VALUES
-(8, 'Premier sondage', 19, '2014-03-28', 0),
-(9, 'Sondage de fifou', 20, '2014-03-28', 1);
+(8, 'Premier sondage', 19, '2014-03-28', 1),
+(9, 'Sondage de fifou', 20, '2014-03-28', 0);
 
 -- --------------------------------------------------------
 

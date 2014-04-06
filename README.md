@@ -24,4 +24,4 @@ Création d'un site internet pour l'association de musique Musik'Eole.
 
 - HTML5/CSS3
 - PHP5
-- Framework CSS à définir
+- Framework CSS Bootstrap
