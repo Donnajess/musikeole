@@ -56,6 +56,15 @@
 			return $manifs;
 		}
 
+		public function getManifestation($id)
+		{
+			$reqManif = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE id =?');
+			$reqManif->execute(array($id));
+			$ligne = $reqManif->fetch();
+			$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+			return $manif;
+		}
+
 	}
 
 ?>

@@ -19,13 +19,13 @@
 							echo '<div class="col-md-12">';
 								echo '<h3>Album <button class="btn btn-primary pull-right"><a href="#">Voir les photo</a></button></h3>';
 							echo '</div>';
-							echo '<div class="col-md-4">';
+							echo '<div class="col-sm-4">';
 								echo '<img src="data/images/photos/photo1.jpg" class="img-responsive">';
 							echo '</div>';
-							echo '<div class="col-md-4">';
+							echo '<div class="col-sm-4">';
 								echo '<img src="data/images/photos/photo2.jpg" class="img-responsive">';
 							echo '</div>';
-							echo '<div class="col-md-4">';
+							echo '<div class="col-sm-4">';
 								echo '<img src="data/images/photos/photo3.jpg" class="img-responsive">';
 							echo '</div>';
 						echo '</div>';
@@ -82,7 +82,7 @@
 							echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
 							echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
 						echo '</ul>';
-						echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button>';
+						echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 						echo '<button class="btn btn-success pull-right"><a href="#">Album</a></button>';
 					echo '</div>';
 					$i++;
@@ -95,7 +95,7 @@
 								echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
 								echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
 							echo '</ul>';
-							echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button>';
+							echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 							echo '<button class="btn btn-success pull-right"><a href="#">Album</a></button>';
 						echo '</div>';
 						$i++;
@@ -108,7 +108,7 @@
 									echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
 									echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
 								echo '</ul>';
-								echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button>';
+								echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 								echo '<button class="btn btn-success pull-right"><a href="#">Album</a></button>';
 							echo '</div>';	
 						}

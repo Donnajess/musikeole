@@ -14,6 +14,7 @@
 			echo '</div>';
 			echo '<div class="col-md-6">';
 				echo $manif->getDescription();
+				echo '<button class="btn btn-primary pull-right"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 			echo '</div>';
 			echo '<div class="col-md-12">';
 				echo '<hr>';
@@ -62,7 +63,7 @@
 							echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
 							echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
 						echo '</ul>';
-						echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button>';
+						echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 					echo '</div>';
 					$i++;
 					if (isset($manifestations[$i])) {
@@ -74,7 +75,7 @@
 								echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
 								echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
 							echo '</ul>';
-							echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button>';
+							echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 						echo '</div>';
 						$i++;
 						if (isset($manifestations[$i])) {
@@ -86,7 +87,7 @@
 									echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
 									echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
 								echo '</ul>';
-								echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button>';
+								echo '<button class="btn btn-primary"><a href="cAgenda.php?action=detailManifestation&id='.$manif->getId().'">En savoir plus</a></button>';
 							echo '</div>';	
 						}
 					}

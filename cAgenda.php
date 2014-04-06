@@ -26,6 +26,11 @@
 
 	switch ($action) {
 
+		case 'detailManifestation':
+			$manif = $manager->getManifestation(htmlentities($_GET['id']));
+			include('vues/agenda/detail.php');
+			break;
+
 		case 'historique':
 			$manifestations = $manager->getHistorique();
 			include('vues/agenda/historique.php');
