@@ -1,2 +1,6 @@
 <h1>Pr&eacute;sentation</h1>
-<p>Ce texte appara&icirc;tra en tant que texte principal de la page d'accueil.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, quidem labore neque beatae vero magnam non! Ad, labore, quidem, voluptatibus expedita aut porro corporis adipisci eos consequatur laboriosam quae assumenda!</p>
+<p>Voluptates, magni, quis, perferendis ea dolores modi necessitatibus porro commodi iusto nostrum doloribus ab eligendi officiis assumenda numquam possimus perspiciatis aspernatur laudantium eos vel dolorem recusandae enim rem exercitationem error!</p>
+<h2>Un sous titre !</h2>
+<p>Dolores, expedita, nostrum optio pariatur aut eaque quasi laboriosam tenetur nemo nulla consectetur quos alias rerum vitae neque? Totam, quibusdam dicta quaerat maiores sunt magni deserunt asperiores officiis aliquam dolorum.</p>
+<p>Quisquam, quas, perspiciatis in itaque iusto enim necessitatibus fugit consequatur dolores rem veritatis quod doloribus debitis totam dicta sapiente esse deserunt vitae ex quam vero laborum quo? Et, corporis, dolor!</p>

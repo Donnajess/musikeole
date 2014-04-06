@@ -172,7 +172,7 @@
 				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
 				if(in_array($extension_upload,$extensions_valides)){
 					$this->supprimerBanniere($zone.'.jpg');
-					$this->creerImage($image, $zone.'.jpg', 1000, '../data/images/bannieres/');
+					$this->creerImage($image, $zone.'.jpg', 1200, '../data/images/bannieres/');
 					$info = array(true, $zone);					
 				}else{
 					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');

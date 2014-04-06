@@ -90,6 +90,10 @@ body{
 	margin-top: 5px;
 }
 
+.pub{
+	margin-bottom: 10px;
+}
+
 /* Menu */
 
 
@@ -122,4 +126,49 @@ body{
 }
 .inscription {
 	margin-left: 5px;
+}
+
+/* footer */
+
+html, body{
+	height: 100%;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -210px;
+}
+
+#push, #footer {
+	min-height: 210px;
+}
+
+#footer {
+	background-color: #dfdfdf;
+}
+
+#footer .container{
+	padding-top: 20px;
+}
+
+#footer .glyphicon{
+	margin-right: 10px;
+}
+
+#footer img{
+	vertical-align: baseline;
+	width: 60px;
+	height: auto;
+	margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+	#footer {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }

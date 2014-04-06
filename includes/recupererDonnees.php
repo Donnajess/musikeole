@@ -9,4 +9,7 @@
 	// Publicités
 	include('includes/pubs.php');
 
+	// Coordonnées
+	include('includes/coordonnees.php');
+
 ?>

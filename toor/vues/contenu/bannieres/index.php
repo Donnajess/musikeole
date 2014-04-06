@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Gestion des bannières</h1>
-			<p>Chaque élément de menu possède une bannière (photo d'en-tête) individuelle. C'est ici que vous pouvez les changer. Si possible leur largeur doit être d'au moins 1000 pixels, et ne pas être trop hautes, ainsi qu'elles fassent la même taille, pour ne pas perturber la navigation de l'utilisateur.</p>
+			<p>Chaque élément de menu possède une bannière (photo d'en-tête) individuelle. C'est ici que vous pouvez les changer. Si possible leur largeur doit être d'au moins 1200 pixels, et ne pas être trop hautes, ainsi qu'elles fassent la même taille, pour ne pas perturber la navigation de l'utilisateur.</p>
 		</div>
 	</div>
 
