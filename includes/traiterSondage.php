@@ -1,7 +1,6 @@
 <?php
 	
 	include('includes/packageSondages.php');
-	include('modeles/ConnexionBDD.php');
 	include('modeles/ManagerVotes.php');
 
 	$manager = new ManagerVotes();
