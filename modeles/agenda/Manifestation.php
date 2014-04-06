@@ -103,6 +103,16 @@
 		}
 
 		/**
+		 * Retourne la date avec des '/' en séparateur
+		 * @return string date
+		 */
+		public function getDateSlash()
+		{
+			$date =str_replace('-', '/', $this->date);
+			return $date;
+		}
+
+		/**
 		 * Renvoie la date au format MySQL (yy-mm-dd)
 		 * @return string date MySQL
 		 */
@@ -129,6 +139,16 @@
 		public function getHeure()
 		{
 			return $this->heure;
+		}
+
+		/**
+		 * Heure formatée avec un 'h' au lieu de ':'
+		 * @return string heure
+		 */
+		public function getHeureH()
+		{
+			$heureH = str_replace(':', 'h', $this->heure);
+			return $heureH;
 		}
 
 		/**
