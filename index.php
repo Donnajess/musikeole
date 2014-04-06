@@ -79,7 +79,14 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6">
 								<h3>Agenda</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, doloribus quaerat pariatur quia facilis nam aperiam iste atque sequi expedita cumque commodi asperiores placeat at magnam officiis assumenda nisi cupiditate.</p>
+								<?php
+									echo '<img src="data/images/manifestations/'.$manif->getImage().'" class="img-responsive img-thumbnail">';
+									echo '<h3>'.$manif->getNom().' <button class="btn btn-primary pull-right"><a href="cAgenda.php?action=detailManif&id='.$manif->getId().'">En savoir plus</a></button></h3>';
+									echo '<ul class="list-unstyled">';
+										echo '<li>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</li>';
+										echo '<li>Organisé par "'.$manif->getAssociation()->getNom().'"</li>';
+									echo '</ul>';
+								?>
 							</div>
 						</div>
 					</div>
