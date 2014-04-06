@@ -181,7 +181,7 @@
 															echo '<p><strong>Prix extérieur</strong> : '.$manif->getPrixExterieur().' Euros</p>';
 														echo '</div>';
 														echo '<div class="col-sm-4">';
-															echo '<p><strong>Prix enfant</strong> : '.$manif->getEnfant().' Euros</p>';
+															echo '<p><strong>Prix enfant</strong> : '.$manif->getPrixEnfant().' Euros</p>';
 														echo '</div>';
 													echo '</div>';
 												}

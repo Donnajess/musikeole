@@ -121,7 +121,7 @@
 
 		public function getManifestationsPassees()
 		{
-			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() ORDER BY dateManif, idAssociation');
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() ORDER BY dateManif DESC, idAssociation');
 			$reqManifs->execute();
 			$manifs = array();
 			while ($ligne = $reqManifs->fetch()) {

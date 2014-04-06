@@ -27,6 +27,7 @@
 	switch ($action) {
 
 		case 'historique':
+			$manifestations = $manager->getHistorique();
 			include('vues/agenda/historique.php');
 			break;
 
