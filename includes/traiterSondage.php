@@ -16,7 +16,7 @@
 		$idSondage = $manager->trouverSondageAvecQuestion($idQuestionSondage);
 		$manager->ajoutVoteSondage($idSondage);
 		$manager->creerCookie();
-		header('location: index.php');
+		header('location: '.$_SERVER['REQUEST_URI']);
 		exit;
 	}
 
