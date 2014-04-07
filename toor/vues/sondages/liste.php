@@ -1,10 +1,10 @@
 <?php include("includes/header.php"); ?>
 <div class="container">
 	<div class="row">
-		<div class="dol-md-12">
+		<div class="col-md-12">
 			<h1>Liste des sondages</h1>
 			<p>Cette page est la page principale d'administration des sondages. Plusieurs actions sont disponibles :</p>
-
+			<hr>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#ajouter" data-toggle="tab">Ajouter un sondage</a></li>
 				<li><a href="#details" data-toggle="tab">Détails d'un sondage</a></li>
@@ -57,7 +57,7 @@
 			<form action="cGestionSondages.php?action=formulaire" method="POST" class="form-inline">
 				<div class="form-group"><input type="text" name="titre" id="titre" class="form-control" placeholder="Titre du sondage" required></div>
 				<div class="form-group"><input type="text" name="nbQuestions" id="nbQuestions" class="form-control" placeholder="Nombre de questions" required></div>
-				<button class="btn btn-primary">Nouveau sondage</button>
+				<button class="btn btn-primary btnFormSondage">Nouveau sondage</button>
 			</form>
 		</div>
 	</div>

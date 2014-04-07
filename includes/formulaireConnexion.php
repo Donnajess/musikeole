@@ -44,7 +44,7 @@
         		<h4 class="modal-title" id="myModalLabel">Devenir membre</h4>
       		</div>
       		<div class="modal-body">
-        		<form role="form" action="../modeles/gestionMembres/inscriptionMembre.php" method="POST" id="formInscription">     
+        		<form role="form" action="modeles/gestionMembres/inscriptionMembre.php" method="POST" id="formInscription">     
 		          	<div class="form-group">
 		            	<input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
 		            </div>                                        

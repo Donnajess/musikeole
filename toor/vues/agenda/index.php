@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Agenda</h1>
+			<hr>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#manifestations" data-toggle="tab">À venir</a></li>
 				<li><a href="#inscriptions" data-toggle="tab">Inscriptions</a></li>

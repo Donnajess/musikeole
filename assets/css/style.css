@@ -94,6 +94,10 @@ body{
 	margin-bottom: 10px;
 }
 
+.btnFormSondage{
+	margin-left: 10px;
+}
+
 /* Menu */
 
 
@@ -105,8 +109,6 @@ body{
 /* Formulaires inscription */
 .inscription_title {
 	font-size: 18px;
-}.form-control {
-	margin: 5px;
 }
 .iframe {
 	margin-top: 10px;
@@ -135,7 +137,9 @@ body{
 	width: 300px;
 }
 .btnConnexion {
+	margin: auto;
 	margin-bottom: 5px;
+	width: 100%;
 }
 
 /* footer */

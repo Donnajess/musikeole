@@ -5,6 +5,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Partenaires</h1>
+			<hr>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#partenaires" data-toggle="tab">Partenaires</a></li>
 				<li><a href="#publicites" data-toggle="tab">Publicités</a></li>

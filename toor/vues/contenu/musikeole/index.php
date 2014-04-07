@@ -20,6 +20,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h1>Contenus de Musik'Eole</h1>
+			<hr>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#presentation" data-toggle="tab">Présentation</a></li>
 				<li><a href="#accueil" data-toggle="tab">Message d'accueil</a></li>
