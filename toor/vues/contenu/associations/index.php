@@ -1,4 +1,4 @@
-<?php include("includes/header.php"); ?>
+﻿<?php include("includes/header.php"); ?>
 <script type="text/javascript" src="../assets/js/tinymce/tinymce.min.js"></script>
 
 <div class="container">
