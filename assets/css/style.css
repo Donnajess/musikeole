@@ -105,8 +105,7 @@ body{
 /* Formulaires inscription */
 .inscription_title {
 	font-size: 18px;
-}
-.form-control {
+}.form-control {
 	margin: 5px;
 }
 .iframe {
@@ -126,6 +125,17 @@ body{
 }
 .inscription {
 	margin-left: 5px;
+}
+.formInscription {
+	width: 400px;
+}
+
+/* Connexion */
+.formConnexion {
+	width: 300px;
+}
+.btnConnexion {
+	margin-bottom: 5px;
 }
 
 /* footer */

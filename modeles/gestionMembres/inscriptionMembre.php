@@ -1,9 +1,6 @@
 <?php
-	mysql_connect("localhost","root","");
-	mysql_select_db("musikeole");
 
-
-	if(isset($_POST['inscription'])) 
+	if(isset($_POST['inscriptionM'])) 
 	{
 		$nom = $_POST['nom'];
 		$prenom = $_POST['prenom']; 
@@ -36,7 +33,7 @@
 		//vérification de l'adresse mail
 	    if (!preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$#", $mail))
 	    {
-	        $erreur_mail3 = "Votre adresse mail n'a pas un format valide";
+	        $erreur_mail2 = "Votre adresse mail n'a pas un format valide";
 	        $i++;
 	    }
 		//vérification disponibilité du pseudo
@@ -73,11 +70,10 @@
 	    	$sql2 = "INSERT INTO familles(nom) VALUES ('$nom')";
 	    	mysql_query($sql2);
 	    	$inscription_correct = true;
-	    	header('Location:../../vues/gestionMembres/inscriptionAdherent.php');
 	    } 
 	    else 
 	    {	
-	    	echo $i."Erreurs - Veuillez remplir tous les champs !";
+	    	echo "blabla";
 	    }	
 	}
 ?>
