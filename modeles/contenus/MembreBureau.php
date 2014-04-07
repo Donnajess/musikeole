@@ -115,6 +115,14 @@
 			return $date;
 		}
 
+		public function getDateEntreeSlash()
+		{
+			$date = explode('-', $this->dateEntree);
+			$date = $date[0].'/'.$date[1].'/'.$date[2];
+			return $date;
+		}
+
+
 		/**
 		* Mutateur de date entree.
 		* @param string $dateEntree  date entree

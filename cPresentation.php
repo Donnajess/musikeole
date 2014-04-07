@@ -11,6 +11,7 @@
 	// Chargement des classes
 	include('modeles/ConnexionBDD.php');
 	include('modeles/contenus/Association.php');
+	include('modeles/contenus/MembreBureau.php');
 	include('modeles/ManagerPresentation.php');
 
 	$manager = new ManagerPresentation();
@@ -26,6 +27,11 @@
 	$page = 'presentation';
 
 	switch ($action) {
+
+		case 'membresBureau':
+			$membres = $manager->getMembresBureau();
+			include('vues/presentation/membres.php');
+			break;
 
 		case 'association':
 			$texte = $manager->getPresentationAssociation(htmlentities($_GET['id']));

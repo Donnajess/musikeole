@@ -1,5 +1,6 @@
 <div class="list-group">
 	<a href="cPresentation.php" class="list-group-item">Musik'Eole</a>
+	<a href="cPresentation.php?action=membresBureau" class="list-group-item">Membres du bureau</a>
 	<a href="cPresentation.php?action=ecoleDeMusique" class="list-group-item">École de musique</a>
 	<?php
 		foreach ($associations as $asso) {

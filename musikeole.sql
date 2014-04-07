@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Lun 07 Avril 2014 à 12:14
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.16
+-- Client :  localhost
+-- Généré le :  Lun 07 Avril 2014 à 23:12
+-- Version du serveur :  5.6.16
+-- Version de PHP :  5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,10 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `musikeole`
+-- Base de données :  `musikeole`
 --
-CREATE DATABASE IF NOT EXISTS `musikeole` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `musikeole`;
 
 -- --------------------------------------------------------
 
@@ -32,9 +30,6 @@ CREATE TABLE IF NOT EXISTS `adherents` (
   `id` varchar(20) NOT NULL,
   `dateNaissance` date NOT NULL,
   `telephone` varchar(10) NOT NULL,
-  `adresse` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `codePostal` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `ville` varchar(50) CHARACTER SET utf8 NOT NULL,
   `idFamille` int(11) NOT NULL,
   `idMembre` int(11) NOT NULL,
   `valide` tinyint(1) NOT NULL,
@@ -230,7 +225,6 @@ CREATE TABLE IF NOT EXISTS `demandesphotos` (
 
 CREATE TABLE IF NOT EXISTS `familles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -336,11 +330,11 @@ INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, 
 
 CREATE TABLE IF NOT EXISTS `membres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
   `mail` varchar(50) NOT NULL,
+  `nom` varchar(30) NOT NULL,
   `pseudo` varchar(30) NOT NULL,
   `motDePasse` varchar(100) NOT NULL,
+  `prenom` varchar(30) NOT NULL,
   `idAutorisation` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAutorisation` (`idAutorisation`)
@@ -350,16 +344,16 @@ CREATE TABLE IF NOT EXISTS `membres` (
 -- Contenu de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `nom`, `prenom`, `mail`, `pseudo`, `motDePasse`, `idAutorisation`) VALUES
+INSERT INTO `membres` (`id`, `mail`, `nom`, `pseudo`, `motDePasse`, `prenom`, `idAutorisation`) VALUES
 (0, '', '', '', '', '', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membresbureau`
+-- Structure de la table `membresBureau`
 --
 
-CREATE TABLE IF NOT EXISTS `membresbureau` (
+CREATE TABLE IF NOT EXISTS `membresBureau` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
@@ -369,15 +363,16 @@ CREATE TABLE IF NOT EXISTS `membresbureau` (
   `photo` varchar(50) NOT NULL,
   `indice` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `membresbureau`
+-- Contenu de la table `membresBureau`
 --
 
-INSERT INTO `membresbureau` (`id`, `nom`, `prenom`, `role`, `activite`, `dateEntree`, `photo`, `indice`) VALUES
-(2, 'Wavelet', 'Alexandre', 'DÃ©veloppeur', '<h1>D&eacute;veloppeur1</h1>\r\n<p>D&eacute;veloppeur du site internet, des modules sondages et gestion de contenu.</p>', '2014-03-25', 'c208ad5c6a1c4e66e755a3f2639f3375.jpg', 100),
-(5, 'Doe', 'Alexandre1tg,jjk', '122', '<p>Activit&eacute; du membre &agrave; l''&eacute;cole de musique.</p>', '2014-05-02', '057a67a30291637a1c01ddbf919cef9a.jpg', 1);
+INSERT INTO `membresBureau` (`id`, `nom`, `prenom`, `role`, `activite`, `dateEntree`, `photo`, `indice`) VALUES
+(2, 'Wavelet', 'Alexandre', 'DÃ©veloppeur', '<p>Dum apud Persas, ut supra narravimus, perfidia regis motus agitat insperatos, et in eois tractibus bella rediviva consurgunt, anno sexto decimo et eo diutius post Nepotiani exitium, saeviens per urbem aeternam urebat cuncta Bellona, ex primordiis minimis ad clades excita luctuosas, quas obliterasset utinam iuge silentium! ne forte paria quandoque temptentur, plus exemplis generalibus nocitura quam delictis.</p>\n<h3>Lorem ipsum</h3>\n<p>Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.</p>\n<p>Et quia Mesopotamiae tractus omnes crebro inquietari sueti praetenturis et stationibus servabantur agrariis, laevorsum flexo itinere Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum adgressus. quod si impetrasset, fulminis modo cuncta vastarat. erat autem quod cogita</p>', '2014-03-24', 'c208ad5c6a1c4e66e755a3f2639f3375.jpg', 100),
+(5, 'Doe', 'John', 'PrÃ©sident', '<p>Postremo ad id indignitatis est ventum, ut cum peregrini ob formidatam haut ita dudum alimentorum inopiam pellerentur ab urbe praecipites, sectatoribus disciplinarum liberalium inpendio paucis sine respiratione ulla extrusis, tenerentur minimarum adseclae veri, quique id simularunt ad tempus, et tria milia saltatricum ne interpellata quidem cum choris totidemque remanerent magistris.</p>\n<p>Altera sententia est, quae definit amicitiam paribus officiis ac voluntatibus. Hoc quidem est nimis exigue et exiliter ad calculos vocare amicitiam, ut par sit ratio acceptorum et datorum. Divitior mihi et affluentior videtur esse vera amicitia nec observare restricte, ne plus reddat quam acceperit; neque enim verendum est, ne quid excidat, aut ne quid in terram defluat, aut ne plus aequo quid in amicitiam congeratur.</p>\n<h3>La musique</h3>\n<p>Quam ob rem vita quidem talis fuit vel fortuna vel gloria, ut nihil posset accedere, moriendi autem sensum celeritas abstulit; quo de ge</p>', '2009-05-05', '057a67a30291637a1c01ddbf919cef9a.jpg', 1000),
+(6, 'Dupont', 'Jean', 'TrÃ©sorier', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque est dui, accumsan quis justo vitae, malesuada bibendum tellus. Donec dui diam, pharetra vitae elit a, semper cursus sapien. Cras purus sem, egestas id ligula nec, iaculis ultrices dui. Phasellus adipiscing neque massa, eu placerat lorem dignissim a. Aliquam tincidunt volutpat lectus eget mollis. Praesent lobortis, felis quis tincidunt lobortis, arcu purus tristique augue, eget commodo massa enim vitae enim. Quisque adipiscing vestibulum purus non tincidunt. Etiam elementum rhoncus sem semper posuere. Duis ornare euismod metus vel dignissim. Nulla vel euismod orci, et aliquam risus. Sed at mauris nibh.</p>\n<h3>Dolor sit amet</h3>\n<p>Duis nec arcu ut dolor pulvinar bibendum quis a mi. Quisque sagittis elit odio, nec elementum est lobortis id. Suspendisse potenti. Ut suscipit ornare lobortis. In egestas mi et sapien venenatis vulputate. Morbi vel nibh et quam malesuada pulvinar ac nec urna. Ut et massa lacinia, gra', '2013-09-09', 'acb68c19ea932be9ff065dbfbe516237.jpg', 500);
 
 -- --------------------------------------------------------
 

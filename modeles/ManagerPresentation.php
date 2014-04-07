@@ -68,6 +68,19 @@
 			return $presentation;
 		}
 
+		public function getMembresBureau()
+		{
+			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM membresBureau ORDER BY indice DESC, nom, prenom');
+			$reqMembres->execute();
+			$membres = array();
+			while ($ligne = $reqMembres->fetch()) {
+				$membre = new MembreBureau($ligne['nom'], $ligne['prenom'], $ligne['role'], $ligne['dateEntree'], $ligne['indice'], $ligne['activite']);
+				$membre->setPhoto($ligne['photo']);
+				array_push($membres, $membre);
+			}
+			return $membres;
+		}
+
 	}
 
 ?>
