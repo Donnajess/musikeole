@@ -107,7 +107,11 @@
 
 	<div class="row">
 		<?php
+			$i = 1;
 			foreach ($publicites as $pub) {
+				if ($i == 1 || $i == 4) {
+					echo '<div class="row">';
+				}
 				$stylePanel = ($pub->getActive()) ? 'panel-info' : 'panel-danger' ;
 				echo '<div class="col-md-4">';
 					echo '<div class="panel '.$stylePanel.'">';
@@ -122,6 +126,10 @@
 						echo '</div>';
 					echo '</div>';
 				echo '</div>';
+				if ($i == 3 || $i == 5) {
+					echo '</div>';
+				}
+				$i++;
 			}
 		?>
 	</div>
