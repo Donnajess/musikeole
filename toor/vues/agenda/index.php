@@ -80,7 +80,7 @@
 												echo '<hr>';
 												echo '<div class="row">';
 													echo '<div class="col-md-6">';
-														echo '<p>Le '.$manif->getDate().' à '.$manif->getHeure().'</p>';
+														echo '<p>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</p>';
 													echo '</div>';
 													echo '<div class="col-md-6">';
 														echo '<p>Organisée par "'.$manif->getMembre()->getNom().'"</p>';
@@ -132,9 +132,9 @@
 					<?php
 						foreach ($manifestationsAVenir as $manif) {
 							echo '<tr>';
-								echo '<td class="cellule-image"><a href="cGestionAgenda.php?action=modifierManifestation&id='.$manif->getId().'"><img src="../data/images/manifestations/miniatures/'.$manif->getImage().'" class="img-responsive img-thumbnail"></a></td>';
+								echo '<td class="cellule-image"><a href="cGestionAgenda.php?action=modifierManifestation&id='.$manif->getId().'"><img src="../data/images/manifestations/miniatures/'.$manif->getImage().'?v='.filemtime('../data/images/manifestations/miniatures/'.$manif->getImage()).'" class="img-responsive img-thumbnail"></a></td>';
 								echo '<td><a href="cGestionAgenda.php?action=modifierManifestation&id='.$manif->getId().'">'.$manif->getNom().'</a></td>';
-								echo '<td>'.$manif->getDate().'</td>';
+								echo '<td>'.$manif->getDateSlash().' à '.$manif->getHeureH().'</td>';
 								echo '<td>'.$manif->getAssociation()->getNom().'</td>';
 								echo '<td><button class="btn btn-danger"><a href="cGestionAgenda.php?action=supprimerManifestation&id='.$manif->getId().'">Supprimer</a></button></td>';
 							echo '</tr>';
@@ -164,7 +164,7 @@
 												echo '<hr>';
 												echo '<div class="row">';
 													echo '<div class="col-md-6">';
-														echo '<p>Le '.$manif->getDate().' à '.$manif->getHeure().'</p>';
+														echo '<p>Le '.$manif->getDateSlash().' à '.$manif->getHeureH().'</p>';
 													echo '</div>';
 													echo '<div class="col-md-6">';
 														echo '<p>Organisée par "'.$manif->getAssociation()->getNom().'"</p>';

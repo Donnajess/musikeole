@@ -24,6 +24,28 @@
 
 	switch ($action) {
 
+		case 'modifierManifestation':
+			$manif = $manager->getManifestation($_GET['id']);
+			$associations = $manager->getAssociations();
+			include('vues/agenda/modification.php');
+			break;
+
+		case 'validerManifestation':
+			$manif = new Manifestation($_POST['id'], $_POST['nom'], $_POST['description'], $manager->formatDate($_POST['date']), $_POST['heure'], $_POST['places'], $_POST['nomImage'], $_POST['gratuit'], $_POST['prixAdh'], $_POST['prixExt'], $_POST['prixEnf'], $_POST['association']);
+			$manager->modifierManifestation($manif);
+			$message = 'La manifestation "'.$_POST['nom'].'" a été modifiée.';
+			if ($_FILES['image']['size'] > 0) {
+				$info = $manager->enregistrerImageManifestation($_FILES['image'], $_POST['nomImage']);
+				if (!$info[0]) {
+					$message = $info[1];
+				}
+			}
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			include('vues/agenda/index.php');
+			break;
+
 		case 'ajouterManifestation':
 			$associations = $manager->getAssociations();
 			include('vues/agenda/formulaire.php');

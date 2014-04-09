@@ -52,6 +52,8 @@
 				$extensions_valides = array('jpg','jpeg');
 				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
 				if(in_array($extension_upload,$extensions_valides)){
+					$this->supprimerFichier('../data/images/manifestations/'.$nomImage);
+					$this->supprimerFichier('../data/images/manifestations/miniatures/'.$nomImage);	
 					$taille = getimagesize($image['tmp_name']);
 					$this->creerImage($image, $nomImage, $taille[0], '../data/images/manifestations/');
 					$this->creerImage($image, $nomImage, 200, '../data/images/manifestations/miniatures/');
@@ -63,7 +65,7 @@
 			return $info;
 		}
 
-		function creerImage($image, $nomImage, $largeur, $dossier){
+		function creerImage($image, $nomImage, $largeur, $dossier){		
 			$imageRedimensionnee = imagecreatefromjpeg($image['tmp_name']);
 			$tailleImage = getimagesize($image['tmp_name']);
 			$reduction = ($largeur * 100)/$tailleImage[0];
@@ -142,6 +144,22 @@
 			}
 			return $manifs;
 		}
+
+		public function getManifestation($id)
+		{
+			$reqManif = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE id = ?');
+			$reqManif->execute(array($id));
+			$ligne = $reqManif->fetch();
+			$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+			return $manif;
+		}
+
+		public function modifierManifestation($manifestation)
+		{
+			$reqModif = $this->connexion->getConnexion()->prepare('UPDATE manifestations SET nom = ?, dateManif = ?, heure = ?, gratuit = ?, prixAdherent = ?, prixExterieur = ?, prixEnfant = ?, places = ?, idAssociation = ?, description = ? WHERE id = ?');
+			$reqModif->execute(array($manifestation->getNom(), $manifestation->getDate(), $manifestation->getHeure(), $manifestation->getGratuit(), $manifestation->getPrixAdherent(), $manifestation->getPrixExterieur(), $manifestation->getPrixEnfant(), $manifestation->getPlaces(), $manifestation->getAssociation(), $manifestation->getDescription(), $manifestation->getId()));
+		}
+
 	}
 
 ?>
