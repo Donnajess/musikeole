@@ -33,6 +33,9 @@
 							<li><a href="cGestionAgenda.php">Agenda</a></li>
 							<li><a href="cGestionSondages.php?action=liste">Sondages</a></li>
 						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="../index.php">Retour au site</a></li>
+						</ul>
 					</div>
 				</nav>
 			</div>

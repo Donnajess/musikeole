@@ -47,7 +47,9 @@
 									<li><a href="cAgenda.php">Agenda</a></li>
 									<li><a href="#">Galerie Photos</a></li>
 									<li><a href="#">Exprimez vous !</a></li>
-									<li><a href="#">Boutique</a></li>
+								</ul>
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="toor/index.php">Administration</a></li>
 								</ul>
 							</div>
 						</nav>

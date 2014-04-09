@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 09 Avril 2014 à 11:09
+-- Généré le: Mer 09 Avril 2014 à 12:49
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -414,20 +414,22 @@ CREATE TABLE IF NOT EXISTS `partenaires` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `fichier` varchar(100) NOT NULL,
+  `lien` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `partenaires`
 --
 
-INSERT INTO `partenaires` (`id`, `nom`, `fichier`) VALUES
-(1, 'IUT de Calais', 'iut-de-calais.jpg'),
-(2, 'Lorem ipsum', 'lorem-ipsum.jpg'),
-(4, 'Terminal des Flandres', 'terminal-des-flandres.jpg'),
-(5, 'Musik''Eole', 'musik-eole.jpg'),
-(6, '#YOLO', '-yolo.jpg'),
-(8, 'Foo Bar', 'foo-bar.jpg');
+INSERT INTO `partenaires` (`id`, `nom`, `fichier`, `lien`) VALUES
+(1, 'IUT de Calais', 'iut-de-calais.jpg', ''),
+(2, 'Lorem ipsum', 'lorem-ipsum.jpg', ''),
+(4, 'Terminal des Flandres', 'terminal-des-flandres.jpg', ''),
+(5, 'Musik''Eole', 'musik-eole.jpg', ''),
+(6, '#YOLO', '-yolo.jpg', ''),
+(8, 'Foo Bar', 'foo-bar.jpg', ''),
+(9, 'LoremPixel', 'lorempixel.jpg', 'http://lorempixel.com');
 
 -- --------------------------------------------------------
 
