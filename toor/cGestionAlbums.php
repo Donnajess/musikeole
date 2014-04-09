@@ -27,10 +27,12 @@
 	switch ($action) {
 
 		case 'index':
+			$manifestations = $manager->getManifestations();
 			include('vues/albums/index.php');
 			break;
 
 		default:
+			$manifestations = $manager->getManifestations();
 			include('vues/albums/index.php');
 			break;
 

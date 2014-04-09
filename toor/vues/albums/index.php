@@ -1,5 +1,48 @@
 <?php include('includes/header.php'); ?>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Nouvel album</h4>
+			</div>
+			<div class="modal-body">
+				<form action="cGestionAlbums.php?action=creerAlbum" method="POST" id="formAjoutAlbum" class="form-horizontal">
+					<div class="form-group">
+						<label for="nom" class="control-label col-sm-4">Nom de l'album</label>
+						<div class="col-sm-8">
+							<input type="text" name="nom" id="nom" class="form-control" placeholder="Nom de l'album" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="photos" class="control-label col-sm-4">Photos</label>
+						<div class="col-sm-8">
+							<input type="file" name="photos" id="photos" class="form-control" multiple>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="manifestation" class="control-label col-sm-4">Manifestation</label>
+						<div class="col-sm-8">
+							<select name="manifestation" id="manifestation" class="form-control">
+								<?php
+									foreach ($manifestations as $manif) {
+										echo '<option value="'.$manif->getId().'">'.$manif->getNom().'</option>';
+									}
+								?>
+							</select>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" form="formAjoutAlbum" class="btn btn-primary">Valider</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -45,6 +88,11 @@
 					</div>';
 				}
 			?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 ">
+			<h2>Liste des albums <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal" >Ajouter un album</button></h2>
 		</div>
 	</div>
 </div>
