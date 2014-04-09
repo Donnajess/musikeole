@@ -34,6 +34,15 @@
 			include('vues/albums/index.php');
 			break;
 
+		case 'detailAlbum':
+			if (isset($_POST['id'])) {
+				$erreurs = $manager->enregistrerPhotos($_POST['id'], $_FILES['photos']);
+				$message = ($erreurs > 0) ? $erreurs.' photo(s) non enregistrée(s) suite à des erreurs.' : 'Les photos ont été ajoutées.' ;
+			}
+			$album = $manager->getAlbum($_GET['id']);
+			include('vues/albums/detail.php');
+			break;
+
 		case 'index':
 			$manifestations = $manager->getManifestations();
 			$albums = $manager->getAlbums();

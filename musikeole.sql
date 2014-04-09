@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 09 Avril 2014 à 20:57
+-- Généré le: Jeu 10 Avril 2014 à 00:28
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `albums` (
   `nom` varchar(50) NOT NULL,
   `idManifestation` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `albums`
@@ -93,7 +93,10 @@ CREATE TABLE IF NOT EXISTS `albums` (
 INSERT INTO `albums` (`id`, `nom`, `idManifestation`) VALUES
 (0, '', 0),
 (4, 'Lorem ipsum', 15),
-(5, 'Dolor sit amet', 0);
+(5, 'Dolor sit amet', 0),
+(6, 'Consectetur', 20),
+(7, 'Redirection', 17),
+(8, 'yolo', 18);
 
 -- --------------------------------------------------------
 
@@ -305,13 +308,14 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
   KEY `idAssociation` (`idAssociation`,`idAlbum`),
   KEY `idAlbum` (`idAlbum`),
   KEY `idMembre` (`idMembre`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Contenu de la table `manifestations`
 --
 
 INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, `places`, `image`, `gratuit`, `prixAdherent`, `prixExterieur`, `prixEnfant`, `dateCreation`, `valide`, `idAssociation`, `idAlbum`, `idMembre`) VALUES
+(0, '', '', '0000-00-00', '', 0, '', 0, '0.00', '0.00', '0.00', '0000-00-00', 1, 0, 0, 0),
 (6, 'Tous en choeur !', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, non fuga aut mollitia odio sapiente porro? Nam, obcaecati, ea, iure, nobis similique id reiciendis earum veniam perspiciatis minima nihil iste!</p>\r\n<p>Ducimus, vitae assumenda dolore quibusdam repellat qui voluptate nostrum pariatur aliquid eius. Voluptas, animi, illum maiores laborum corporis totam itaque voluptate dolorum ratione ipsa impedit dolorem illo aliquam rerum dolore.</p>', '2014-06-17', '13:00', 50, '6a5678ef0622d7f689fb36dffcb04ff5.jpg', 1, '0.00', '0.00', '0.00', '2014-04-04', 1, 3, 0, 0),
 (11, 'Lorem ipsum', '<p>Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.</p>\r\n<h3>Consectetur</h3>\r\n<p>Principium autem unde latius se funditabat, emersit ex negotio tali. Chilo ex vicario et coniux eius Maxima nomine, questi apud Olybrium ea tempestate urbi praefectum, vitamque suam venenis petitam adseverantes inpetrarunt ut hi, quos suspectati sunt, ilico rapti conpingerentur in vincula, organarius Sericus et Asbolius palaestrita et aruspex Campensis.</p>', '2014-04-27', '19:00', 50, '3ff3116223e146b7604c5f1bc4f0a050.jpg', 0, '5.00', '10.00', '2.00', '2014-04-06', 1, 0, 0, 0),
 (12, 'Chorale de pÃ¢ques', '<p>Ergo ego senator inimicus, si ita vultis, homini, amicus esse, sicut semper fui, rei publicae debeo. Quid? si ipsas inimicitias, depono rei publicae causa, quis me tandem iure reprehendet, praesertim cum ego omnium meorum consiliorum atque factorum exempla semper ex summorum hominum consiliis atque factis mihi censuerim petenda.</p>', '2014-05-06', '13:00', 50, '84305343a9b56df4b70f7bdd8bbd0526.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 3, 0, 0),
@@ -445,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `idAlbum` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAlbum` (`idAlbum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
 
 --
 -- Contenu de la table `photos`
@@ -481,7 +485,53 @@ INSERT INTO `photos` (`id`, `nom`, `idAlbum`) VALUES
 (28, '6d11a61efac4b1c4cc36175a52795f4e.jpg', 5),
 (29, '5a6473e47f06b49ff1cecbe362360b5f.jpg', 5),
 (30, '1e53e202550f22694406d959c9d7b940.jpg', 5),
-(31, 'dad1fd9c13fa110f2edcb847d3e98497.jpg', 5);
+(31, 'dad1fd9c13fa110f2edcb847d3e98497.jpg', 5),
+(32, 'b4cbe6bd19354e01bdadfb233b80f3fc.jpg', 6),
+(33, '9bb08be1099039e109f8e1cf38bf1a05.jpg', 6),
+(34, '08242864bd70445df33f7a1a07bfac69.jpg', 6),
+(35, '07cd3588defbf24435d31d5b54b72808.jpg', 6),
+(36, 'a604a5a541428a88745a7901330bb2be.jpg', 6),
+(37, 'd301f8f82e93248460bf4f1e4c700cdd.jpg', 6),
+(38, 'c898d6f7a3e9ed0bb530ba5b82b639a5.jpg', 6),
+(39, 'a6bc5e7538899440fd246481cabdda90.jpg', 6),
+(40, '25043b0c9368ebbed5b4649ac9886e74.jpg', 6),
+(41, '75e1f842e1c96c1e60ca6009321f477d.jpg', 7),
+(42, '89ed4852185fb3a687e2266e8e19dbe1.jpg', 7),
+(43, 'd266898cfa2ad10dc381a5fc77de3516.jpg', 7),
+(44, 'd47ee5591f668fd33287d16809e534e1.jpg', 7),
+(45, 'c2631ae7b7229251d67972ca84fa7a56.jpg', 7),
+(46, '19700ecf2430c953ff6cde07a065bcac.jpg', 7),
+(47, '2b17a01d26bac1a1b2d58131b732023c.jpg', 7),
+(48, 'a7aab45744ecf2637dfab8fb0fa8223c.jpg', 7),
+(49, 'd3a6446ebe597d49936e42c8b8ced19b.jpg', 7),
+(50, '9976d266527a6fee07dd7ef2e222040e.jpg', 7),
+(51, '56bd2c67d20c8c9395c7ee14692866e3.jpg', 8),
+(52, '124f875a55bb951b76b572f0c921c955.jpg', 8),
+(53, 'fea46c15bdaabc2de7c9b095e2edf605.jpg', 8),
+(54, '55366ad9cfc2a0f0bf120c8218943ca6.jpg', 8),
+(55, '851abeb4523a617ebcfc5c5d80906c37.jpg', 8),
+(56, '4efbd50dcb899b764edb688f18538d0c.jpg', 8),
+(57, 'ea768968c399d3bab566365f1e25fca9.jpg', 8),
+(58, '287d48be2d2f327dae543446aae71c2a.jpg', 8),
+(59, 'ae1fcdd8c97192d48728b789d95a9cb1.jpg', 8),
+(60, 'f740ee04807bb280aee4f979cec36dfe.jpg', 8),
+(61, 'f14ab9e3fbe4b97bd8af9a7ec77969ab.jpg', 8),
+(62, '571d1a0f51c7e51618a05d07d77a4ca1.jpg', 8),
+(63, '0787dcb50ccd2efa2ef8936b3033c0db.jpg', 8),
+(64, '3a1e250d82d99c5123b3dd5b0bcb95f1.jpg', 8),
+(65, '8dbfe20fa80aa36a56a2034b74466498.jpg', 8),
+(66, '669cd17b3b8eaeff948ab8499c3363f9.jpg', 8),
+(67, 'c7c156bdb4801cefe456d4288a7c71d3.jpg', 8),
+(68, '884e6e8b9fd40b3107dbcaf7a5297e39.jpg', 8),
+(69, 'a8a7e0f5717d29e6150834a9837b2194.jpg', 8),
+(70, '749f48e11dc8f97f0f0d4518d45ec69d.jpg', 8),
+(71, 'aca090f8445269660a2b9da8b4c249a7.jpg', 8),
+(72, '8e1fae6ea354e115019f4be6df2067ec.jpg', 8),
+(73, '05fd0e3e645fd65bff136f42247379c5.jpg', 8),
+(74, '2a0b821a0fe123ea7b51592febd7a840.jpg', 8),
+(75, 'f713effacff625183ffa71ac014e84db.jpg', 8),
+(76, 'da4379bdc6c80df14ea427cec773104e.jpg', 8),
+(77, 'c471fbe981145008337d97d02f0da3a7.jpg', 8);
 
 -- --------------------------------------------------------
 

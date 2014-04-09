@@ -8,7 +8,7 @@
 				<h4 class="modal-title" id="myModalLabel">Nouvel album</h4>
 			</div>
 			<div class="modal-body">
-				<form action="cGestionAlbums.php?action=creerAlbum" method="POST" enctype="multipart/form-data"id="formAjoutAlbum" class="form-horizontal">
+				<form action="cGestionAlbums.php?action=creerAlbum" method="POST" enctype="multipart/form-data" id="formAjoutAlbum" class="form-horizontal">
 					<div class="form-group">
 						<label for="nom" class="control-label col-sm-4">Nom de l'album</label>
 						<div class="col-sm-8">
@@ -90,6 +90,7 @@
 					</div>';
 				}
 			?>
+			<hr>
 		</div>
 	</div>
 	<div class="row">
@@ -130,7 +131,7 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<button class="btn btn-primary" style="margin : auto; width : 100%;">Accéder à l'album</button>
+					<button class="btn btn-primary" style="margin : auto; width : 100%;"><a <?php echo 'href="cGestionAlbums.php?action=detailAlbum&id='.$album->getId().'"'; ?> >Accéder à l'album</a></button>
 				</div>
 			</div>
 		</div>

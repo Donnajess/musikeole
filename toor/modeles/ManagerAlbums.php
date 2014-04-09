@@ -49,7 +49,7 @@
 			$reqAlbum->execute(array($nom, $manifestation));
 			$idAlbum = $this->connexion->getConnexion()->lastInsertId();
 			$info = $this->enregistrerPhotos($idAlbum, $photos);
-			$info = ($info > 0) ? array(false, $info.' photo(s) non enregistrée(s) suite à des erreurs.') : array(true, $nom) ;
+			$info = ($info > 0) ? array(false, $info.' photo(s) non enregistrée(s) suite à des erreurs.') : array(true, $idAlbum) ;
 		}
 
 		public function enregistrerPhotos($album, $photos)
@@ -102,6 +102,40 @@
 		public function getPhotosAleatoire($album, $nbPhotos)
 		{
 			$reqPhotos = $this->connexion->getConnexion()->prepare('SELECT * FROM photos WHERE idAlbum = ? ORDER BY Rand() LIMIT '.$nbPhotos);
+			$reqPhotos->execute(array($album));
+			$photos = array();
+			while ($ligne = $reqPhotos->fetch()) {
+				array_push($photos, new Photo($ligne['id'], $ligne['nom']));
+			}
+			return $photos;
+		}
+
+		public function getAlbum($id)
+		{
+			$reqAlbum = $this->connexion->getConnexion()->prepare('SELECT * FROM albums WHERE id = ?');
+			$reqAlbum->execute(array($id));
+			$ligne = $reqAlbum->fetch();
+			$photos = $this->getPhotosAlbum($id);
+			$album = new Album($id, $ligne['nom'], $photos);
+			if ($ligne['idManifestation'] > 0) {
+				$manif = $this->getManifestation($ligne['idManifestation']);
+				$album->setManifestation($manif);
+			}
+			return $album;
+		}
+
+		public function getManifestation($id)
+		{
+			$reqManif = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE id = ?');
+			$reqManif->execute(array($id));
+			$ligne = $reqManif->fetch();
+			$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+			return $manif;
+		}
+
+		public function getPhotosAlbum($album)
+		{
+			$reqPhotos = $this->connexion->getConnexion()->prepare('SELECT * FROM photos WHERE idAlbum = ? ORDER BY id');
 			$reqPhotos->execute(array($album));
 			$photos = array();
 			while ($ligne = $reqPhotos->fetch()) {
