@@ -31,6 +31,7 @@
 							<li><a href="index.php">Accueil</a></li>
 							<li><a href="indexContenu.php">Contenu</a></li>
 							<li><a href="cGestionAgenda.php">Agenda</a></li>
+							<li><a href="cGestionAlbums.php">Albums photos</a></li>
 							<li><a href="cGestionSondages.php?action=liste">Sondages</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
