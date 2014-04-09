@@ -44,13 +44,19 @@
 			<hr>
 			<form action="cGestionPartenaires.php?action=ajouterPartenaire" method="POST" enctype="multipart/form-data" class="form-horizontal">
 				<div class="form-group">
-					<label for="nomPartenaire" class="control-label col-sm-2">Nouveau partenaire</label>
-					<div class="col-sm-4">
+					<label for="nomPartenaire" class="control-label col-sm-3">Nouveau partenaire</label>
+					<div class="col-sm-5">
 						<input type="text" name="nomPartenaire" id="nomPartenaire" class="form-control" placeholder="Nom du partenaire" required>
 					</div>
 					<div class="col-sm-4">
 						<input type="file" name="logoPartenaire" id="logoPartenaire" class="form-control" required>
 						<p class="help-block">Les logos doivent être au format .jpg</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="lienPartenaire" class="control-label col-sm-3">Lien internet</label>
+					<div class="col-sm-7">
+						<input type="text" name="lienPartenaire" id="lienPartenaire" placeholder="Adresse internet" class="form-control">
 					</div>
 					<div class="col-sm-2">
 						<button type="submit" class="btn btn-primary">Valider</button>
@@ -68,7 +74,7 @@
 					echo '<div class="panel panel-default">';
 						echo '<div class="panel-body panel-partenaire">';
 						echo '<div class="imgPartenaire">';
-							echo '<img src="'.$partenaire->getLogo().'" alt="'.$partenaire->getNom().'" class="img-responsive img-thumbnail imgLogoPartenaire" >';
+							echo '<a href="'.$partenaire->getLien().'" target="_blank" ><img src="'.$partenaire->getLogo().'" alt="'.$partenaire->getNom().'" class="img-responsive img-thumbnail imgLogoPartenaire" ></a>';
 							echo '</div>';
 							echo '<h4>'.$partenaire->getNom().'</h4>';
 							echo '<button class="btn btn-danger btn-partenaire"><a href="cGestionPartenaires.php?action=supprimerPartenaire&id='.$partenaire->getId().'">Supprimer</a></button>';

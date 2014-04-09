@@ -24,7 +24,7 @@
 	switch ($action) {
 
 		case 'ajouterPartenaire':
-			$info = $manager->enregistrerPartenaire($_POST['nomPartenaire'], $_FILES['logoPartenaire']);
+			$info = $manager->enregistrerPartenaire($_POST['nomPartenaire'], $_FILES['logoPartenaire'], $_POST['lienPartenaire']);
 			$message = 'Le partenaire "'.$_POST['nomPartenaire'].'" a été ajouté.';
 			if (!$info[0]) {
 				$message = $info[1];

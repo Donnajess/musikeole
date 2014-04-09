@@ -295,18 +295,18 @@
 			$reqPartenaires->execute();
 			$listePartenaires = array();
 			while ($ligne = $reqPartenaires->fetch()) {
-				array_push($listePartenaires, new Partenaire($ligne['id'], $ligne['nom'], $ligne['fichier'], '../data/images/partenaires/'));
+				array_push($listePartenaires, new Partenaire($ligne['id'], $ligne['nom'], $ligne['fichier'], '../data/images/partenaires/', $ligne['lien']));
 			}
 			return $listePartenaires;
 		}
 
-		public function enregistrerPartenaire($nom, $logo)
+		public function enregistrerPartenaire($nom, $logo, $lien)
 		{
 			$nomFichier = $this->formaterNomFichier($nom).'.jpg';
 			$info = $this->enregistrerLogoPartenaire($logo, $nomFichier);
 			if ($info[0]) {
-				$reqAjout = $this->connexion->getConnexion()->prepare('INSERT INTO partenaires VALUES (0, ?, ?)');
-				$reqAjout->execute(array($nom, $nomFichier));
+				$reqAjout = $this->connexion->getConnexion()->prepare('INSERT INTO partenaires VALUES (0, ?, ?, ?)');
+				$reqAjout->execute(array($nom, $nomFichier, $lien));
 			}
 			return $info;
 		}

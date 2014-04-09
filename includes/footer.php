@@ -33,7 +33,7 @@
 										<?php
 											foreach ($listeLogos as $logo) {
 												echo '';
-													echo '<img src="'.$logo->getLogo().'" class="img-responsive img-thumbnail">';
+													echo '<a href="'.$logo->getLien().'" target="_blank" ><img src="'.$logo->getLogo().'" class="img-responsive img-thumbnail"></a>';
 												echo '';
 											}
 										?>

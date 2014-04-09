@@ -9,12 +9,14 @@
 		protected $id;
 		protected $nom;
 		protected $logo;
+		protected $lien;
 
-		function __construct($pid, $pnom, $plogo, $pchemin)
+		function __construct($pid, $pnom, $plogo, $pchemin, $plien = '#')
 		{
 			$this->id = $pid;
 			$this->nom = $pnom;
 			$this->logo = $pchemin.$plogo;
+			$this->lien = $plien;
 		}
 
 		/**
@@ -70,6 +72,25 @@
 		{
 			$this->logo = $logo;
 		}
+	
+		/**
+		* Accesseur de lien.
+		* @return string
+		*/
+		public function getLien()
+		{
+			return $this->lien;
+		}
+
+		/**
+		* Mutateur de lien.
+		* @param string $lien  lien
+		*/
+		public function setLien($lien)
+		{
+			$this->lien = $lien;
+		}
+
 	}
 
 ?>
