@@ -26,6 +26,13 @@
 
 	switch ($action) {
 
+		case 'creerAlbum':
+			$info = $manager->enregistrerAlbum($_POST['nom'], $_POST['manifestation'], $_FILES['photos']);
+			$message = ($info[0]) ? 'L\'album photo "'.$_POST['nom'].'" a été créé.' : $info[1] ;
+			$manifestations = $manager->getManifestations();
+			include('vues/albums/index.php');
+			break;
+
 		case 'index':
 			$manifestations = $manager->getManifestations();
 			include('vues/albums/index.php');

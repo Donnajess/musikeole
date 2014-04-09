@@ -8,7 +8,7 @@
 				<h4 class="modal-title" id="myModalLabel">Nouvel album</h4>
 			</div>
 			<div class="modal-body">
-				<form action="cGestionAlbums.php?action=creerAlbum" method="POST" id="formAjoutAlbum" class="form-horizontal">
+				<form action="cGestionAlbums.php?action=creerAlbum" method="POST" enctype="multipart/form-data"id="formAjoutAlbum" class="form-horizontal">
 					<div class="form-group">
 						<label for="nom" class="control-label col-sm-4">Nom de l'album</label>
 						<div class="col-sm-8">
@@ -18,13 +18,14 @@
 					<div class="form-group">
 						<label for="photos" class="control-label col-sm-4">Photos</label>
 						<div class="col-sm-8">
-							<input type="file" name="photos" id="photos" class="form-control" multiple>
+							<input type="file" name="photos[]" id="photos[]" class="form-control" multiple>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="manifestation" class="control-label col-sm-4">Manifestation</label>
 						<div class="col-sm-8">
 							<select name="manifestation" id="manifestation" class="form-control">
+								<option value="0" selected>Aucune manifestation</option>
 								<?php
 									foreach ($manifestations as $manif) {
 										echo '<option value="'.$manif->getId().'">'.$manif->getNom().'</option>';
@@ -36,8 +37,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="submit" form="formAjoutAlbum" class="btn btn-primary">Valider</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+				<button type="submit" form="formAjoutAlbum" class="btn btn-primary">Enregistrer l'album</button>
 			</div>
 		</div>
 	</div>

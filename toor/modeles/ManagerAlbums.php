@@ -44,6 +44,49 @@
 			return $asso;
 		}
 
+		public function enregistrerAlbum($nom, $manifestation, $photos){
+			$reqAlbum = $this->connexion->getConnexion()->prepare('INSERT INTO albums VALUES (0, ?, ?)');
+			$reqAlbum->execute(array($nom, $manifestation));
+			$idAlbum = $this->connexion->getConnexion()->lastInsertId();
+			$info = $this->enregistrerPhotos($idAlbum, $photos);
+			$info = ($info > 0) ? array(false, $info.' photo(s) non enregistrée(s) suite à des erreurs.') : array(true, $nom) ;
+		}
+
+		public function enregistrerPhotos($album, $photos)
+		{
+			$nbPhotos = count($photos['name']);
+			$nbErreurs = 0;
+			for ($i=0; $i < $nbPhotos; $i++) { 
+				if($photos['error'][$i] = 0){
+					$nbErreurs++;
+				}else{
+					$extensions_valides = array('jpg','jpeg');
+					$extension_upload = strtolower(substr(strrchr($photos['name'][$i],'.'),1));
+					if(in_array($extension_upload,$extensions_valides)){
+						$nomImage = md5(uniqid(rand(), true));
+						$nomImage = $nomImage.'.jpg';
+						$this->creerImage($photos, $i, $nomImage, 1000, '../data/images/photos/');
+						$this->creerImage($photos, $i, $nomImage, 300, '../data/images/photos/miniatures/');
+						$reqPhoto = $this->connexion->getConnexion()->prepare('INSERT INTO photos VALUES (0, ?, ?)');
+						$reqPhoto->execute(array($nomImage, $album));
+					}else{
+						$nbErreurs++;
+					}
+				}
+			}
+			return $nbErreurs;
+		}
+
+		function creerImage($photos, $idPhoto, $nomImage, $largeur, $dossier){
+			$imageRedimensionnee = imagecreatefromjpeg($photos['tmp_name'][$idPhoto]);
+			$tailleImage = getimagesize($photos['tmp_name'][$idPhoto]);
+			$reduction = ($largeur * 100)/$tailleImage[0];
+			$hauteur = (($tailleImage[1] * $reduction)/100);
+			$imageFinale = imagecreatetruecolor($largeur , $hauteur);
+			imagecopyresampled($imageFinale , $imageRedimensionnee, 0, 0, 0, 0, $largeur, $hauteur, $tailleImage[0],$tailleImage[1]);
+			imagejpeg($imageFinale, $dossier.$nomImage, 100);
+		}
+
 	}
 
 ?>
