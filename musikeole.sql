@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 09 Avril 2014 à 12:49
+-- Généré le: Mer 09 Avril 2014 à 20:57
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -82,16 +82,18 @@ INSERT INTO `adresse` (`rue`, `codePostal`, `ville`, `telephone`, `mail`) VALUES
 CREATE TABLE IF NOT EXISTS `albums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
-  `description` varchar(1000) NOT NULL,
+  `idManifestation` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `albums`
 --
 
-INSERT INTO `albums` (`id`, `nom`, `description`) VALUES
-(0, '', '');
+INSERT INTO `albums` (`id`, `nom`, `idManifestation`) VALUES
+(0, '', 0),
+(4, 'Lorem ipsum', 15),
+(5, 'Dolor sit amet', 0);
 
 -- --------------------------------------------------------
 
@@ -443,7 +445,43 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `idAlbum` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAlbum` (`idAlbum`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Contenu de la table `photos`
+--
+
+INSERT INTO `photos` (`id`, `nom`, `idAlbum`) VALUES
+(2, '103afb58edfefd316f4f25370d3a3b60.jpg', 4),
+(3, 'ddff3ea800fc25e2722fee4926cdcfbe.jpg', 4),
+(4, '9b99a9e44b85c9366a7d3beee4abfe95.jpg', 4),
+(5, '11f57852ad67a864347a68b78e81f579.jpg', 4),
+(6, '1eb903ffb5e1bb3fc8f56f02584da652.jpg', 4),
+(7, '6960b463aa81da7e21a1591af6ced701.jpg', 4),
+(8, 'ef4d1b722d5187db37fd78fd076fac31.jpg', 4),
+(9, '3847db09d4a80dd66d5b4729ebe701f0.jpg', 4),
+(10, '5a7ad3eecf6c5555c3ac8c74ccd20b1f.jpg', 4),
+(11, '6b493c2f8065262dd1bbc8f47fc934a0.jpg', 4),
+(12, 'c6ef4323f30e4b6f2a9100407224ef15.jpg', 4),
+(13, '1df41da2aa06ab2367a3e240cdb192c2.jpg', 5),
+(14, '8c86282a0abae24fb42485d64650dd27.jpg', 5),
+(15, '96f378064930261d9d30d2c8547b1cbf.jpg', 5),
+(16, 'c7d90d10806072962d02b51aa392bf53.jpg', 5),
+(17, '3c58b689f44692d499fc69a6574a065b.jpg', 5),
+(18, '069ce44217b04000fa91ff5ad9802bf5.jpg', 5),
+(19, '71bf8f788fa734cbba5e2a950f2de54a.jpg', 5),
+(20, '98d3baa8982bfdbb53ce14f2a36430a9.jpg', 5),
+(21, '7a0d3877b9d5434b335ef04b1c672863.jpg', 5),
+(22, '64d2aef09bfb1159aad3681976df2d13.jpg', 5),
+(23, '55fd2d212e69df060f272ee6672bd243.jpg', 5),
+(24, '45134f00522eace3b0cef4234b2dfc8f.jpg', 5),
+(25, '8bd8ab609b71149705a28fd466f120d2.jpg', 5),
+(26, '409b1924d865913e0a3a5d7ae3b46d10.jpg', 5),
+(27, '274bf53d2b37cbd7094a8a1c62525939.jpg', 5),
+(28, '6d11a61efac4b1c4cc36175a52795f4e.jpg', 5),
+(29, '5a6473e47f06b49ff1cecbe362360b5f.jpg', 5),
+(30, '1e53e202550f22694406d959c9d7b940.jpg', 5),
+(31, 'dad1fd9c13fa110f2edcb847d3e98497.jpg', 5);
 
 -- --------------------------------------------------------
 

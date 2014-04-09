@@ -18,7 +18,8 @@
 					<div class="form-group">
 						<label for="photos" class="control-label col-sm-4">Photos</label>
 						<div class="col-sm-8">
-							<input type="file" name="photos[]" id="photos[]" class="form-control" multiple>
+							<input type="file" name="photos[]" id="photos[]" class="form-control" accept="image/*" multiple>
+							<p class="help-block">Vous pouvez sélectionner plusieurs photos à la fois, seulement au format .jpg/.jpeg. OVH limite les upload à 14 fichiers maximum à la fois.</p>
 						</div>
 					</div>
 					<div class="form-group">
@@ -96,6 +97,49 @@
 			<h2>Liste des albums <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal" >Ajouter un album</button></h2>
 		</div>
 	</div>
+	<?php
+		$nbAlbums = count($albums);
+		for ($i=0; $i < $nbAlbums; $i++) { 
+			$album = $albums[$i];
+			$photos = $album->getPhotos();
+			if (($i%4) == 0) {
+				echo '<div class="row">';
+			}
+	?>
+		<div class="col-md-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><?php echo $album->getNom(); ?></h3>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<img <?php echo 'src="../data/images/photos/miniatures/'.$photos[0]->getFichier().'"'; ?> class="img-responsive" >
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<img <?php echo 'src="../data/images/photos/miniatures/'.$photos[1]->getFichier().'"'; ?> class="img-responsive" >
+						</div>
+						<div class="col-md-4">
+							<img <?php echo 'src="../data/images/photos/miniatures/'.$photos[2]->getFichier().'"'; ?> class="img-responsive" >
+						</div>
+						<div class="col-md-4">
+							<img <?php echo 'src="../data/images/photos/miniatures/'.$photos[3]->getFichier().'"'; ?> class="img-responsive" >
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<button class="btn btn-primary" style="margin : auto; width : 100%;">Accéder à l'album</button>
+				</div>
+			</div>
+		</div>
+	<?php
+			if (((($i + 1) % 4) == 0) || ($i == ($nbAlbums - 1))) {
+				echo '</div>';
+			}
+		}
+	?>
 </div>
 
 <?php include('includes/footer.php'); ?>
