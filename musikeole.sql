@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 10 Avril 2014 à 11:33
+-- Généré le: Jeu 10 Avril 2014 à 21:01
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -660,7 +660,7 @@ INSERT INTO `publicites` (`id`, `nom`, `image`, `lien`, `mailAnnonceur`, `indice
 (2, 'yolo ohÃ©', 'pub2.jpg', 'http://yolo.com', 'yolo@yolo.com', 40, 1),
 (3, 'Lorem ipsum', 'pub3.jpg', 'http://lorempixel.com', 'lorem@ipsum.com', 50, 1),
 (4, 'Zoo de Fort Mardyck', 'pub4.jpg', 'http://okay.com', 'zoo@fm.com', 15, 1),
-(5, 'Dolor sit amet', 'pub5.jpg', 'http://lipsum.com', 'wavelet.alexandre@gmail.com', 20, 1);
+(5, 'Dolor sit amet', 'pub5.jpg', 'http://lipsum.com', 'wavelet.alexandre@gmail.com', 20, 0);
 
 -- --------------------------------------------------------
 
