@@ -144,6 +144,32 @@
 			return $photos;
 		}
 
+		public function supprimerPhoto($id)
+		{
+			$reqFichier = $this->connexion->getConnexion()->prepare('SELECT nom FROM photos WHERE id = ?');
+			$reqFichier->execute(array($id));
+			$fichier = $reqFichier->fetch();
+			$this->supprimerFichier('../data/images/photos/'.$fichier['nom']);
+			$this->supprimerFichier('../data/images/photos/miniatures/'.$fichier['nom']);
+			$reqPhoto = $this->connexion->getConnexion()->prepare('DELETE FROM photos WHERE id = ?');
+			$reqPhoto->execute(array($id));
+		}
+
+		public function supprimerFichier($chemin)
+		{
+			if (file_exists($chemin)) {
+				unlink($chemin);
+			}
+		}
+
+		public function getAlbumDeLaPhoto($idPhoto)
+		{
+			$reqIdAlbum = $this->connexion->getConnexion()->prepare('SELECT idAlbum FROM photos WHERE id = ?');
+			$reqIdAlbum->execute(array($idPhoto));
+			$idAlbum = $reqIdAlbum->fetch();
+			return $idAlbum['idAlbum'];
+		}
+
 	}
 
 ?>

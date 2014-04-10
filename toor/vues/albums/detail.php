@@ -52,14 +52,31 @@
 					echo '<div class="row">';
 				}
 				echo '<div class="col-md-2">';
-					echo '<img src="../data/images/photos/miniatures/'.$photo->getFichier().'" class="img-responsive" >';
+					echo '<a href="" data-toggle="modal" data-target="#modal'.$photo->getId().'"><img src="../data/images/photos/miniatures/'.$photo->getFichier().'" class="img-responsive" ></a>';
+				echo '</div>';
+				echo '<div class="modal fade" id="modal'.$photo->getId().'" tabindex="-1" role="dialog" aria-labelledby="'.$album->getId().'" aria-hidden="true">';
+					echo '<div class="modal-dialog modal-lg">';
+						echo '<div class="modal-content">';
+							echo '<div class="modal-header">';
+								echo '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+								echo '<h4 class="modal-title" id="'.$album->getId().'">'.$album->getNom().'</h4>';
+							echo '</div>';
+							echo '<div class="modal-body">';
+								echo '<img src="../data/images/photos/'.$photo->getFichier().'" class="img-responsive" >';
+							echo '</div>';
+							echo '<div class="modal-footer">';
+								echo '<button type="button" class="btn btn-default" data-dismiss="modal">Revenir à l\'album</button>';
+								echo '<button type="button" class="btn btn-danger"><a href="cGestionAlbums.php?action=supprimerPhoto&id='.$photo->getId().'">Supprimer la photo</a></button>';
+							echo '</div>';
+						echo '</div>';
+					echo '</div>';
 				echo '</div>';
 				if (((($i + 1) % 6) == 0) || ($i == ($nbPhotos - 1))) {
 					echo '</div>';
 				}
 			}
 		?>
-
+		
 </div>
 
 <?php include('includes/footer.php'); ?>

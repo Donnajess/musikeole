@@ -26,6 +26,14 @@
 
 	switch ($action) {
 
+		case 'supprimerPhoto':
+			$idAlbum = $manager->getAlbumDeLaPhoto($_GET['id']);
+			$manager->supprimerPhoto($_GET['id']);
+			$message = 'La photo a été supprimée.';
+			$album = $manager->getAlbum($idAlbum);
+			include('vues/albums/detail.php');
+			break;
+
 		case 'creerAlbum':
 			$info = $manager->enregistrerAlbum($_POST['nom'], $_POST['manifestation'], $_FILES['photos']);
 			$message = ($info[0]) ? 'L\'album photo "'.$_POST['nom'].'" a été créé.' : $info[1] ;
