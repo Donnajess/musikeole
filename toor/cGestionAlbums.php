@@ -26,6 +26,14 @@
 
 	switch ($action) {
 
+		case 'supprimerAlbum':
+			$manager->supprimerAlbum($_GET['id']);
+			$message = 'L\'album aété supprimé.';
+			$manifestations = $manager->getManifestations();
+			$albums = $manager->getAlbums();
+			include('vues/albums/index.php');			
+			break;
+
 		case 'supprimerPhoto':
 			$idAlbum = $manager->getAlbumDeLaPhoto($_GET['id']);
 			$manager->supprimerPhoto($_GET['id']);

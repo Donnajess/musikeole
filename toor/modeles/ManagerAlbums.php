@@ -18,7 +18,7 @@
 
 		public function getManifestations()
 		{
-			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() ORDER BY dateManif DESC, idAssociation');
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() AND id > 0 ORDER BY dateManif DESC, idAssociation');
 			$reqManifs->execute();
 			$manifs = array();
 			while ($ligne = $reqManifs->fetch()) {
@@ -168,6 +168,18 @@
 			$reqIdAlbum->execute(array($idPhoto));
 			$idAlbum = $reqIdAlbum->fetch();
 			return $idAlbum['idAlbum'];
+		}
+
+		public function supprimerAlbum($idAlbum)
+		{
+			$reqPhotos = $this->connexion->getConnexion()->prepare('SELECT nom FROM photos WHERE idAlbum = ?');
+			$reqPhotos->execute(array($idAlbum));
+			while ($ligne = $reqPhotos->fetch()) {
+				$this->supprimerFichier('../data/images/photos/'.$ligne['nom']);
+				$this->supprimerFichier('../data/images/photos/miniatures/'.$ligne['nom']);
+			}
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM albums WHERE id = ?');
+			$reqSuppression->execute(array($idAlbum));
 		}
 
 	}

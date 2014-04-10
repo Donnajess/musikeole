@@ -28,7 +28,7 @@
 	
 	<div class="row">
 		<div class="col-md-12">
-			<form <?php echo 'action="'.$_SERVER['REQUEST_URI'].'"'; ?> method="POST" enctype="multipart/form-data" class="form-horizontal">
+			<form <?php echo 'action="cGestionAlbums.php?action=detailAlbum&id='.$album->getId().'"'; ?> method="POST" enctype="multipart/form-data" class="form-horizontal">
 				<?php echo '<input type="hidden" name="id" id="id" value="'.$album->getId().'" >'; ?>
 				<div class="form-group">
 					<label for="photos" class="col-sm-2 col-sm-offset-1 control-label">Photos à ajouter</label>
@@ -76,6 +76,14 @@
 				}
 			}
 		?>
+
+	<div class="row">
+		<div class="col-md-12">
+			<hr>
+			<p>Suppression de l'album (Attention, cette suppression est définitive et toutes les photos seront perdues !)
+			<button class="btn btn-danger pull-right"><a <?php echo 'href="cGestionAlbums.php?action=supprimerAlbum&id='.$album->getId().'"'; ?> >Supprimer l'album.</a></button>
+		</div>
+	</div>
 		
 </div>
 
