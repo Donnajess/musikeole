@@ -369,6 +369,18 @@
 			return $chaine;
 		}
 
+		public function manifestationPassee()
+		{
+			$bool = false;
+			$aujourdhui = time();
+			$date = explode('-', $this->date);
+			$manif = mktime(0, 0, 0, $date[1], $date[0], $date[2]);
+			if ($aujourdhui > $manif) {
+				$bool = true;
+			}
+			return $bool;
+		}
+
 	}
 
 ?>

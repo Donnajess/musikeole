@@ -87,6 +87,10 @@
 			$reqManif->execute(array($id));
 			$ligne = $reqManif->fetch();
 			$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+			if ($ligne['idAlbum'] > 0) {
+				$album = $this->getAlbum($ligne['idAlbum']);
+				$manif->setAlbum($album);
+			}
 			return $manif;
 		}
 
