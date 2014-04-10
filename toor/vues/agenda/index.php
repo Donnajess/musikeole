@@ -187,42 +187,59 @@
 													echo '</div>';
 												}
 												echo '<hr>';
-												echo '<div class="row">';
-													echo '<div class="col-md-6">';
-														echo '<p><strong>Album photo</strong></p>';
-													echo '</div>';
-													echo '<div class="col-md-6">';
-														if (null !== $manif->getAlbum()) {
-															echo $manif->getAlbum()->getNom();
-															// + 4 photos aléatoires
-														} else {
-															echo '<p>Aucun</p>';
-														}
-													echo '</div>';
-												echo '</div>';
 											echo '</div>';
 											echo '<div class="col-md-6">';
 												echo '<img src="../data/images/manifestations/'.$manif->getImage().'" class="img-responsive">';
 											echo '</div>';
 										echo '</div>';
 										echo '<div class="row">';
-											echo '<div class="col-md-8">';
-												echo '<form action="cGestionAgenda.php?action=ajouterAlbum" method="POST" class="form-horizontal">';
-													echo '<div class="form-group">';
-														echo '<label for="album" class="control-label col-md-2">Album photo</label>';
-														echo '<div class="col-md-6">';
-															echo '<select class="form-control" required>';
-																echo '<option></option>';
-																echo '<option>Lorem ipsum</option>';
-																echo '<option>dolor sit amet.</option>';
-																echo '<option>consectetur</option>';
-															echo '</select>';
-														echo '</div>';
-														echo '<div class="col-md-3">';
-															echo '<button type="submit" class="btn btn-primary btn-agenda">Ajouter l\'album photo</button>';
-														echo '</div>';
+											echo '<div class="col-md-2">';
+												echo '<p><strong>Album photo</strong></p>';
+											echo '</div>';
+											echo '<div class="col-md-2">';
+												if ($manif->getAlbum()) {
+													echo $manif->getAlbum()->getNom();
+												} else {
+													echo '<p>Aucun</p>';
+												}
+											echo '</div>';
+											if ($manif->getAlbum()) {
+												$photos = $manif->getAlbum()->getPhotos();
+												shuffle($photos);
+												for ($i=0; $i < 8; $i++) { 
+													echo '<div class="col-md-1">';
+														echo '<img src="../data/images/photos/miniatures/'.$photos[$i]->getFichier().'" class="img-responsive">';
 													echo '</div>';
-												echo '</form>';
+												}
+											}else{
+												echo '<div class="col-md-9"></div>';
+											}
+										echo '</div>';
+										echo '<div class="row">';
+											echo '<div class="col-md-12">';
+												echo '<hr>';
+											echo '</div>';
+											echo '<div class="col-md-8">';
+												if ($manif->getAlbum()) {
+													echo '<button type="button" class="btn btn-danger btn-agenda-supprimer"><a href="cGestionAgenda.php?action=detacherAlbum&id='.$manif->getId().'">Détacher l\'album photo de cette manifestation</a></button>';
+												}else{
+													echo '<form action="cGestionAgenda.php?action=ajouterAlbum" method="POST" class="form-horizontal">';
+														echo '<input type="hidden" name="idManif" id="idManif" value="'.$manif->getId().'">';
+														echo '<div class="form-group">';
+															echo '<label for="album" class="control-label col-md-2">Album photo</label>';
+															echo '<div class="col-md-6">';
+																echo '<select class="form-control" id="album" name="album" required>';
+																	foreach ($albumsNonAttribues as $album) {
+																		echo '<option value="'.$album->getId().'">'.$album->getNom().'</option>';
+																	}
+																echo '</select>';
+															echo '</div>';
+															echo '<div class="col-md-3">';
+																echo '<button type="submit" class="btn btn-primary btn-agenda">Ajouter l\'album photo</button>';
+															echo '</div>';
+														echo '</div>';
+													echo '</form>';
+												}
 											echo '</div>';
 											echo '<div class="col-md-3 col-md-offset-1">';
 												echo '<button type="button" class="btn btn-danger btn-agenda-supprimer"><a href="cGestionAgenda.php?action=supprimerManifestation&id='.$manif->getId().'">Supprimer la manifestation</a></button>';

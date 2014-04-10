@@ -18,7 +18,7 @@
 
 		public function getManifestations()
 		{
-			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() AND id > 0 ORDER BY dateManif DESC, idAssociation');
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() AND id > 0 AND idAlbum = 0 ORDER BY dateManif DESC, idAssociation');
 			$reqManifs->execute();
 			$manifs = array();
 			while ($ligne = $reqManifs->fetch()) {
@@ -48,6 +48,8 @@
 			$reqAlbum = $this->connexion->getConnexion()->prepare('INSERT INTO albums VALUES (0, ?, ?)');
 			$reqAlbum->execute(array($nom, $manifestation));
 			$idAlbum = $this->connexion->getConnexion()->lastInsertId();
+			$reqManif = $this->connexion->getConnexion()->prepare('UPDATE manifestations SET idAlbum = ? WHERE id = ?');
+			$reqManif->execute(array($idAlbum, $manifestation));
 			$info = $this->enregistrerPhotos($idAlbum, $photos);
 			$info = ($info > 0) ? array(false, $info.' photo(s) non enregistrée(s) suite à des erreurs.') : array(true, $idAlbum) ;
 		}

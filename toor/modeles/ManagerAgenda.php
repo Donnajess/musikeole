@@ -123,14 +123,39 @@
 
 		public function getManifestationsPassees()
 		{
-			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() ORDER BY dateManif DESC, idAssociation');
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW()AND id > 0 ORDER BY dateManif DESC, idAssociation');
 			$reqManifs->execute();
 			$manifs = array();
 			while ($ligne = $reqManifs->fetch()) {
 				$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+				if ($ligne['idAlbum'] > 0) {
+					$album = $this->getAlbum($ligne['idAlbum']);
+					$manif->setAlbum($album);
+				}
 				array_push($manifs, $manif);
 			}
 			return $manifs;
+		}
+
+		public function getAlbum($id)
+		{
+			$reqAlbum = $this->connexion->getConnexion()->prepare('SELECT * FROM albums WHERE id = ?');
+			$reqAlbum->execute(array($id));
+			$ligne = $reqAlbum->fetch();
+			$photos = $this->getPhotosAlbum($id);
+			$album = new Album($id, $ligne['nom'], $photos);
+			return $album;
+		}
+
+		public function getPhotosAlbum($album)
+		{
+			$reqPhotos = $this->connexion->getConnexion()->prepare('SELECT * FROM photos WHERE idAlbum = ? ORDER BY id');
+			$reqPhotos->execute(array($album));
+			$photos = array();
+			while ($ligne = $reqPhotos->fetch()) {
+				array_push($photos, new Photo($ligne['id'], $ligne['nom']));
+			}
+			return $photos;
 		}
 
 		public function getManifestationsEnAttente()
@@ -158,6 +183,33 @@
 		{
 			$reqModif = $this->connexion->getConnexion()->prepare('UPDATE manifestations SET nom = ?, dateManif = ?, heure = ?, gratuit = ?, prixAdherent = ?, prixExterieur = ?, prixEnfant = ?, places = ?, idAssociation = ?, description = ? WHERE id = ?');
 			$reqModif->execute(array($manifestation->getNom(), $manifestation->getDate(), $manifestation->getHeure(), $manifestation->getGratuit(), $manifestation->getPrixAdherent(), $manifestation->getPrixExterieur(), $manifestation->getPrixEnfant(), $manifestation->getPlaces(), $manifestation->getAssociation(), $manifestation->getDescription(), $manifestation->getId()));
+		}
+
+		public function getAlbumsNonAttribues()
+		{
+			$reqAlbums = $this->connexion->getConnexion()->prepare('SELECT * FROM albums WHERE idManifestation = 0 and id > 0 ORDER BY id DESC');
+			$reqAlbums->execute();
+			$albums = array();
+			while ($ligne = $reqAlbums->fetch()) {
+				array_push($albums, new Album($ligne['id'], $ligne['nom'], array()));
+			}
+			return $albums;
+		}
+
+		public function ajouterAlbum($manif, $album)
+		{
+			$reqManif = $this->connexion->getConnexion()->prepare('UPDATE manifestations SET idAlbum = ? WHERE id = ?');
+			$reqManif->execute(array($album, $manif));
+			$reqAlbum = $this->connexion->getConnexion()->prepare('UPDATE albums SET idManifestation = ? WHERE id = ?');
+			$reqAlbum->execute(array($manif, $album));
+		}
+
+		public function detacherAlbum($manif)
+		{
+			$reqManif = $this->connexion->getConnexion()->prepare('UPDATE manifestations SET idAlbum = 0 WHERE id = ?');
+			$reqManif->execute(array($manif));
+			$reqAlbum = $this->connexion->getConnexion()->prepare('UPDATE albums SET idManifestation = 0 WHERE idManifestation = ?');
+			$reqAlbum->execute(array($manif));
 		}
 
 	}

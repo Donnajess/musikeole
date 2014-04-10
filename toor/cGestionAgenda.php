@@ -12,6 +12,8 @@
 	include('../modeles/ConnexionBDD.php');
 	include('../modeles/contenus/Association.php');
 	include('../modeles/agenda/Manifestation.php');
+	include('../modeles/albums/Album.php');
+	include('../modeles/albums/Photo.php');
 	include('modeles/ManagerAgenda.php');
 
 	$manager = new ManagerAgenda();
@@ -23,6 +25,26 @@
 	}
 
 	switch ($action) {
+
+		case 'detacherAlbum':
+			$manager->detacherAlbum($_GET['id']);
+			$message = 'L\'album n\'est plus lié à la manifestation.';
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
+			include('vues/agenda/index.php');
+			break;
+
+		case 'ajouterAlbum':
+			$manager->ajouterAlbum($_POST['idManif'], $_POST['album']);
+			$message = 'L\'album a été ajouté à la manifestation.';
+			$manifestationsAVenir = $manager->getManifestationsAVenir();
+			$manifestationsPassees = $manager->getManifestationsPassees();
+			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
+			include('vues/agenda/index.php');
+			break;
 
 		case 'modifierManifestation':
 			$manif = $manager->getManifestation($_GET['id']);
@@ -43,6 +65,7 @@
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			$manifestationsPassees = $manager->getManifestationsPassees();
 			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
 			include('vues/agenda/index.php');
 			break;
 
@@ -62,6 +85,7 @@
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			$manifestationsPassees = $manager->getManifestationsPassees();
 			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
 			include('vues/agenda/index.php');
 			break;
 
@@ -71,6 +95,7 @@
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			$manifestationsPassees = $manager->getManifestationsPassees();
 			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
 			include('vues/agenda/index.php');
 			break;
 
@@ -78,6 +103,7 @@
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			$manifestationsPassees = $manager->getManifestationsPassees();
 			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
 			include('vues/agenda/index.php');
 			break;
 
@@ -85,6 +111,7 @@
 			$manifestationsAVenir = $manager->getManifestationsAVenir();
 			$manifestationsPassees = $manager->getManifestationsPassees();
 			$manifestationsEnAttente = $manager->getManifestationsEnAttente();
+			$albumsNonAttribues = $manager->getAlbumsNonAttribues();
 			include('vues/agenda/index.php');
 			break;
 

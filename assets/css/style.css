@@ -82,12 +82,8 @@ body{
 	width: 20%;
 }
 
-.panel-collapse .form-horizontal .btn-agenda{
-	margin-top: 5px;
-}
-
 .panel-collapse .btn-agenda-supprimer{
-	margin-top: 5px;
+	margin-top: 0px;
 }
 
 .pub{
