@@ -44,14 +44,14 @@
 							</div>
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li><a href="index.php">Accueil</a></li>
-									<li><a href="cPresentation.php">Présentation</a></li>
-									<li><a href="cAgenda.php">Agenda</a></li>
-									<li><a href="#">Galerie Photos</a></li>
-									<li><a href="#">Exprimez vous !</a></li>
+									<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Accueil</a></li>
+									<li><a href="cPresentation.php"><span class="glyphicon glyphicon-music"></span>Présentation</a></li>
+									<li><a href="cAgenda.php"><span class="glyphicon glyphicon-calendar"></span>Agenda</a></li>
+									<li><a href="cAlbums.php"><span class="glyphicon glyphicon-picture"></span>Galerie Photos</a></li>
+									<li><a href="#"><span class="glyphicon glyphicon-comment"></span>Exprimez vous !</a></li>
 								</ul>
 								<ul class="nav navbar-nav navbar-right">
-									<li><a href="toor/index.php">Administration</a></li>
+									<li><a href="toor/index.php"><span class="glyphicon glyphicon-cog"></span>Administration</a></li>
 								</ul>
 							</div>
 						</nav>
