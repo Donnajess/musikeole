@@ -24,6 +24,7 @@
 	switch ($action) {
 
 		case 'ajouterAssociation':
+			$associations = $manager->getAssociations();
 			include('vues/contenu/associations/formulaire.php');
 			break;
 

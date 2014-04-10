@@ -57,7 +57,7 @@
 					foreach ($associations as $association) {
 						echo '<div class="panel panel-default">';
 							echo '<div class="panel-heading">
-								<h4 class="panel-title"><a href="#collapse-'.$association->alias().'" data-parent="#accordion2" data-toggle="collapse">'.$association->getNom().'</a></h4>
+								<h4 class="panel-title"><a href="#collapse-'.$association->alias().'" data-parent="#accordion2" data-toggle="collapse">'.$association->getNom().' <span class="pull-right"><strong>Indice : </strong>'.$association->getIndice().'</span></a></h4>
 							</div>';
 							echo '<div id="collapse-'.$association->alias().'" class="panel-collapse collapse">';
 								echo '<div class="panel-body">';

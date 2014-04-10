@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-9">
 			<form action="cGestionAssociations.php?action=valider" method="POST" class="form-horizontal" role="form">
 				<div class="form-group">
 					<label for="nom" class="col-md-1 control-label">Nom</label>
@@ -29,6 +29,16 @@
 				</textarea>
 				<button type="submit" name="valider" class="btn btn-primary btn-lg btn-margin-top">Valider</button>
 			</form>
+		</div>
+		<div class="col-md-3">
+			<h2>Indices</h2>
+			<ul class="list-group">
+				<?php
+					foreach ($associations as $association) {
+						echo '<li class="list-group-item">'.$association->getNom().' <span class="pull-right"><strong>Indice : </strong>'.$association->getIndice().'</span></li>';
+					}
+				?>
+			</ul>
 		</div>
 	</div>
 			
