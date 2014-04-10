@@ -46,14 +46,39 @@
 
 		public function getHistorique()
 		{
-			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() ORDER BY dateManif DESC, idAssociation');
+			$reqManifs = $this->connexion->getConnexion()->prepare('SELECT * FROM manifestations WHERE valide = 1 AND dateManif < NOW() AND id > 0 ORDER BY dateManif DESC, idAssociation');
 			$reqManifs->execute();
 			$manifs = array();
 			while ($ligne = $reqManifs->fetch()) {
 				$manif = new Manifestation($ligne['id'], $ligne['nom'], $ligne['description'], $this->formatDate($ligne['dateManif']), $ligne['heure'], $ligne['places'], $ligne['image'], $ligne['gratuit'], $ligne['prixAdherent'], $ligne['prixExterieur'], $ligne['prixEnfant'], $this->getAssociation($ligne['idAssociation']));
+				if ($ligne['idAlbum'] > 0) {
+					$album = $this->getAlbum($ligne['idAlbum']);
+					$manif->setAlbum($album);
+				}
 				array_push($manifs, $manif);
 			}
 			return $manifs;
+		}
+
+		public function getAlbum($id)
+		{
+			$reqAlbum = $this->connexion->getConnexion()->prepare('SELECT * FROM albums WHERE id = ?');
+			$reqAlbum->execute(array($id));
+			$ligne = $reqAlbum->fetch();
+			$photos = $this->getPhotosAlbum($id);
+			$album = new Album($id, $ligne['nom'], $photos);
+			return $album;
+		}
+
+		public function getPhotosAlbum($album)
+		{
+			$reqPhotos = $this->connexion->getConnexion()->prepare('SELECT * FROM photos WHERE idAlbum = ? ORDER BY id');
+			$reqPhotos->execute(array($album));
+			$photos = array();
+			while ($ligne = $reqPhotos->fetch()) {
+				array_push($photos, new Photo($ligne['id'], $ligne['nom']));
+			}
+			return $photos;
 		}
 
 		public function getManifestation($id)

@@ -12,6 +12,8 @@
 	include('modeles/ConnexionBDD.php');
 	include('modeles/contenus/Association.php');
 	include('modeles/agenda/Manifestation.php');
+	include('modeles/albums/Album.php');
+	include('modeles/albums/Photo.php');
 	include('modeles/ManagerAgenda.php');
 
 	$manager = new ManagerAgenda();
