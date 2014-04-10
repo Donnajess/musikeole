@@ -3,6 +3,7 @@
 	include('includes/recupererDonnees.php');
 	include('includes/contenuAccueil.php');
 	$page='accueil';
+	session_start();
 ?>
 <!doctype html>
 <html lang="fr">

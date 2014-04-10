@@ -128,15 +128,32 @@ body{
 	width: 400px;
 }
 
-/* Connexion */
+/* Espace Membre */
+
 .formConnexion {
 	width: 300px;
+}
+.formMdpOublie {
+	width: 350px;
+}
+.formChangerMdp {
+	width: 350px;
 }
 .btnConnexion {
 	margin: auto;
 	margin-bottom: 5px;
 	width: 100%;
 }
+.liensMembresDeco {
+	font-size: 11px;
+}
+.liensMembresCo {
+	font-size: 12px;
+}
+.btnDeconnexion {
+	margin-top: 10px;
+}
+
 
 /* footer */
 
