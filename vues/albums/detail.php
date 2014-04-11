@@ -1,5 +1,36 @@
 <?php include('includes/header.php'); ?>
 
+<div id="blueimp-gallery" class="blueimp-gallery">
+	<div class="slides"></div>
+	<h3 class="title"></h3>
+	<a class="prev">‹</a>
+	<a class="next">›</a>
+	<a class="close">×</a>
+	<a class="play-pause"></a>
+	<ol class="indicator"></ol>
+	<div class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" aria-hidden="true">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body next"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default pull-left prev">
+						<i class="glyphicon glyphicon-chevron-left"></i>
+						Précédent
+					</button>
+					<button type="button" class="btn btn-primary next">
+						Suivant
+						<i class="glyphicon glyphicon-chevron-right"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="row">
 	<div class="col-md-12">
 		<h1><?php echo $album->getNom(); ?></h1>
@@ -12,6 +43,7 @@
 	</div>
 </div>
 
+<div id="links">
 <?php
 	$photos = $album->getPhotos();
 	$nbPhotos = count($photos);
@@ -21,24 +53,14 @@
 			echo '<div class="row">';
 		}
 		echo '<div class="col-md-2">';
-			echo '<a href="" data-toggle="modal" data-target="#modal'.$photo->getId().'"><img src="data/images/photos/miniatures/'.$photo->getFichier().'" class="img-responsive" ></a>';
-		echo '</div>';
-		echo '<div class="modal fade" id="modal'.$photo->getId().'" tabindex="-1" role="dialog" aria-labelledby="'.$album->getId().'" aria-hidden="true">';
-			echo '<div class="modal-dialog modal-lg">';
-				echo '<div class="modal-content">';
-					echo '<div class="modal-header">';
-						echo '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-					echo '</div>';
-					echo '<div class="modal-body">';
-						echo '<img src="data/images/photos/'.$photo->getFichier().'" class="img-responsive" >';
-					echo '</div>';
-				echo '</div>';
-			echo '</div>';
+			echo '<a href="data/images/photos/'.$photo->getFichier().'" title="'.$album->getNom().'" data-gallery><img src="data/images/photos/miniatures/'.$photo->getFichier().'" class="img-responsive" ></a>';
 		echo '</div>';
 		if (((($i + 1) % 6) == 0) || ($i == ($nbPhotos - 1))) {
 			echo '</div>';
 		}
 	}
 ?>
-
+</div>
+<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="assets/js/imagegallery/js/bootstrap-image-gallery.min.js"></script>
 <?php include('includes/footer.php'); ?>
