@@ -1,34 +1,13 @@
 <?php include('includes/header.php'); ?>
 
-<div id="blueimp-gallery" class="blueimp-gallery">
-	<div class="slides"></div>
-	<h3 class="title"></h3>
-	<a class="prev">‹</a>
-	<a class="next">›</a>
-	<a class="close">×</a>
-	<a class="play-pause"></a>
-	<ol class="indicator"></ol>
-	<div class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" aria-hidden="true">&times;</button>
-					<h4 class="modal-title"></h4>
-				</div>
-				<div class="modal-body next"></div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default pull-left prev">
-						<i class="glyphicon glyphicon-chevron-left"></i>
-						Précédent
-					</button>
-					<button type="button" class="btn btn-primary next">
-						Suivant
-						<i class="glyphicon glyphicon-chevron-right"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
 </div>
 
 <div class="row">
@@ -53,7 +32,7 @@
 			echo '<div class="row">';
 		}
 		echo '<div class="col-md-2">';
-			echo '<a href="data/images/photos/'.$photo->getFichier().'" title="'.$album->getNom().'" data-gallery><img src="data/images/photos/miniatures/'.$photo->getFichier().'" class="img-responsive" ></a>';
+			echo '<a href="data/images/photos/'.$photo->getFichier().'" title="'.$album->getNom().'" ><img src="data/images/photos/miniatures/'.$photo->getFichier().'" class="img-responsive" ></a>';
 		echo '</div>';
 		if (((($i + 1) % 6) == 0) || ($i == ($nbPhotos - 1))) {
 			echo '</div>';
@@ -61,6 +40,15 @@
 	}
 ?>
 </div>
-<script src="assets/js/blueimp.js"></script>
-<script src="assets/js/imagegallery/js/bootstrap-image-gallery.min.js"></script>
+<script src="assets/js/blueimp-gallery.min.js"></script>
+<script>
+document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+};
+</script>
 <?php include('includes/footer.php'); ?>

@@ -14,8 +14,7 @@
 		<link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/js/datepicker/css/datepicker.css">
 		<link rel="stylesheet" href="assets/css/bootstrap-timepicker.min.css">
-		<link rel="stylesheet" href="assets/css/blueimp.css">
-		<link rel="stylesheet" href="assets/js/imagegallery/css/bootstrap-image-gallery.min.css">
+		<link rel="stylesheet" href="assets/css/blueimp-gallery.min.css">
 		<script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 	</head>
