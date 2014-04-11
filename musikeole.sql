@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Ven 11 Avril 2014 à 17:43
--- Version du serveur :  5.6.16
--- Version de PHP :  5.5.9
+-- Client: localhost
+-- Généré le: Ven 11 Avril 2014 à 19:19
+-- Version du serveur: 5.6.14
+-- Version de PHP: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `musikeole`
+-- Base de données: `musikeole`
 --
 
 -- --------------------------------------------------------
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `albums` (
   `nom` varchar(50) NOT NULL,
   `idManifestation` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `albums`
@@ -93,10 +93,12 @@ CREATE TABLE IF NOT EXISTS `albums` (
 INSERT INTO `albums` (`id`, `nom`, `idManifestation`) VALUES
 (0, '', 0),
 (4, 'Lorem ipsum', 20),
-(5, 'Dolor sit amet', 15),
+(5, 'Dolor sit amet', 19),
 (7, 'Redirection', 14),
 (8, 'yolo', 18),
-(9, 'Consectetur', 13);
+(9, 'Consectetur', 13),
+(10, 'grandes photos', 15),
+(11, 'Longues photos', 17);
 
 -- --------------------------------------------------------
 
@@ -321,11 +323,11 @@ INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, 
 (12, 'Chorale de pÃ¢ques', '<p>Ergo ego senator inimicus, si ita vultis, homini, amicus esse, sicut semper fui, rei publicae debeo. Quid? si ipsas inimicitias, depono rei publicae causa, quis me tandem iure reprehendet, praesertim cum ego omnium meorum consiliorum atque factorum exempla semper ex summorum hominum consiliis atque factis mihi censuerim petenda.</p>', '2014-05-06', '13:00', 50, '84305343a9b56df4b70f7bdd8bbd0526.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 3, 0, 0),
 (13, 'Chorale de NoÃ«l', '<p>Quapropter a natura mihi videtur potius quam ab indigentia orta amicitia, applicatione magis animi cum quodam sensu amandi quam cogitatione quantum illa res utilitatis esset habitura. Quod quidem quale sit, etiam in bestiis quibusdam animadverti potest, quae ex se natos ita amant ad quoddam tempus et ab eis ita amantur ut facile earum sensus appareat. Quod in homine multo est evidentius, primum ex ea caritate quae est inter natos et parentes, quae dirimi nisi detestabili scelere non potest; deinde cum similis sensus exstitit amoris, si aliquem nacti sumus cuius cum moribus et natura congruamus, quod in eo quasi lumen aliquod probitatis et virtutis perspicere videamur.</p>\r\n<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfus', '2013-12-27', '17:00', 50, '5bab6f40470b713f5274a5359522405c.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 2, 9, 0),
 (14, 'Trompettes en folie', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-02-11', '19:00', 20, '9444bb727d0cdfaac0ddf66597fbf8dd.jpg', 0, '5.00', '7.00', '2.50', '2014-04-06', 1, 2, 7, 0),
-(15, 'Clarinettes nettes nettes', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-03-23', '17:00', 30, '44bb7753f9bede107cf8dd4d46f9050e.jpg', 0, '4.00', '8.00', '2.00', '2014-04-06', 1, 1, 5, 0),
+(15, 'Clarinettes nettes nettes', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-03-23', '17:00', 30, '44bb7753f9bede107cf8dd4d46f9050e.jpg', 0, '4.00', '8.00', '2.00', '2014-04-06', 1, 1, 10, 0),
 (16, 'Orchestre enfantin', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-01-15', '15:00', 70, '20a377219da7fed6db1b0ecde0e40124.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 3, 0, 0),
-(17, 'FÃªte de la musique', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-02-09', '20:00', 75, '83435493c266ded328f7c068aece81ef.jpg', 0, '5.00', '10.00', '4.00', '2014-04-06', 1, 0, 0, 0),
+(17, 'FÃªte de la musique', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-02-09', '20:00', 75, '83435493c266ded328f7c068aece81ef.jpg', 0, '5.00', '10.00', '4.00', '2014-04-06', 1, 0, 11, 0),
 (18, 'D''klassiques', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-02-03', '11:00', 100, '721dac8e1508851449c276a7cac12210.jpg', 0, '7.00', '15.00', '5.00', '2014-04-06', 1, 2, 8, 0),
-(19, 'Leffrinchorale', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-02-26', '14:00', 40, 'bb2d1d418f264e8022a372fdd856a624.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 0, 0, 0),
+(19, 'Leffrinchorale', '<p>Quam quidem partem accusationis admiratus sum et moleste tuli potissimum esse Atratino datam. Neque enim decebat neque aetas illa postulabat neque, id quod animadvertere poteratis, pudor patiebatur optimi adulescentis in tali illum oratione versari. Vellem aliquis ex vobis robustioribus hunc male dicendi locum suscepisset; aliquanto liberius et fortius et magis more nostro refutaremus istam male dicendi licentiam. Tecum, Atratine, agam lenius, quod et pudor tuus moderatur orationi meae et meum erga te parentemque tuum beneficium tueri debeo.</p>\r\n<p>Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate conmerciorum castrisque oppleta validis et castellis, quae ad repellendos gentium vicinarum excursus sollicitudo pervigil veterum per oportunos saltus erexit et cautos. haec quoque civitates habet inter oppida quaedam ingentes Bostram et Gerasam atque Philadelphiam murorum firmitate cautissimas. hanc provinciae inposito nomine rectoreque adtributo obtemperare le', '2014-02-26', '14:00', 40, 'bb2d1d418f264e8022a372fdd856a624.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 0, 5, 0),
 (20, 'Carnaval enfantin', '<p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent, vigore corporum ac levitate confisi per flexuosas semitas ad summitates collium tardius evadebant. et cum superatis difficultatibus arduis ad supercilia venissent fluvii Melanis alti et verticosi, qui pro muro tuetur accolas circumfusus, augente nocte adulta terrorem quievere paulisper lucem opperientes. arbitrabantur enim nullo inpediente transgressi inopino adcursu adposita quaeque vastare, sed in cassum labores pertulere gravissimos.</p>\r\n<p>Inter quos Paulus eminebat notarius ortus in Hispania, glabro quidam sub vultu latens, odorandi vias periculorum occultas perquam sagax. is in Brittanniam missus ut militares quosdam perduceret ausos conspirasse Magnentio, cum reniti non possent, iussa licentius supergressus fluminis modo fortunis conplurium sese repentinus infudit et ferebatur per strages multiplices ac ruinas, vinculis membra ingenuorum adfligens et quosdam obterens manicis, crimina scilicet multa', '2014-03-08', '15:00', 200, 'bbf6250de6602d513faf58c58e518259.jpg', 1, '0.00', '0.00', '0.00', '2014-04-07', 1, 3, 4, 0);
 
 -- --------------------------------------------------------
@@ -449,7 +451,7 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `idAlbum` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAlbum` (`idAlbum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
 
 --
 -- Contenu de la table `photos`
@@ -539,7 +541,28 @@ INSERT INTO `photos` (`id`, `nom`, `idAlbum`) VALUES
 (103, '1dc783dc252ec5e99ea90645f792871a.jpg', 9),
 (104, '11b13a079acd59ca1903bdea58986a59.jpg', 9),
 (105, '34494ebf91b8d8a1b44e6c17d1085834.jpg', 9),
-(106, '61ebe6c204a69a0c3d41f8bbf3df4bb8.jpg', 9);
+(106, '61ebe6c204a69a0c3d41f8bbf3df4bb8.jpg', 9),
+(107, '6d314e5d70c57801e35eaa7cc5ccc1f2.jpg', 10),
+(108, 'e474a8de852a95f8a38ffc050af369b4.jpg', 10),
+(109, '19ea32688cc27cc94cc5845c3423ae06.jpg', 10),
+(110, '9ef2bc7ce3712b0e2bf0fea268adf184.jpg', 10),
+(111, '0340d8842357b0d213d7a65728584c75.jpg', 10),
+(112, 'db2dcbcc84b3ba2f8238659b31a59066.jpg', 10),
+(113, '389777e37be8e1ec1f3b48a932a41d9f.jpg', 10),
+(114, 'cd1b1c7705969a7d426e7989953c9bd4.jpg', 10),
+(115, '8b3cea0271ffa4bfc2d6baffeebcdf23.jpg', 10),
+(116, '0021f3101904c3fb59c74b1830bc4eb3.jpg', 10),
+(117, '3103863a473370c73fcd29b0adb9608a.jpg', 10),
+(118, 'ba6b30d2962e970dc3a16c49adb85573.jpg', 11),
+(119, '3c4679ac9d25e15f355150dd08f0954f.jpg', 11),
+(120, '75756ea659784e4fb11306fc296ee295.jpg', 11),
+(121, '72441c9f65329542dfb40659a08f0be2.jpg', 11),
+(122, '649b220f50955bc3217517c212bc7ce7.jpg', 11),
+(123, 'd66bbbe782a6ed8569789db76cb328ac.jpg', 11),
+(124, 'd3dc98fba311128f67f840df9513d4a6.jpg', 11),
+(125, 'ce3383511c510e0170d6f9eb105f6c8d.jpg', 11),
+(126, '97a952f070661a82165ee068e837001d.jpg', 11),
+(127, '8febc19a030626d7a6c29ba2349752f2.jpg', 11);
 
 -- --------------------------------------------------------
 
@@ -629,7 +652,7 @@ CREATE TABLE IF NOT EXISTS `propositionssondages` (
 --
 
 INSERT INTO `propositionssondages` (`id`, `proposition`, `votes`, `idQuestion`) VALUES
-(1, 'Super', 10, 2),
+(1, 'Super', 11, 2),
 (2, 'Moyen', 8, 2),
 (3, 'Bof', 4, 2),
 (4, '42', 5, 3),
@@ -711,7 +734,7 @@ CREATE TABLE IF NOT EXISTS `reponsessondages` (
   PRIMARY KEY (`id`),
   KEY `idProposition` (`idProposition`),
   KEY `idQuestion` (`idQuestion`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
 
 --
 -- Contenu de la table `reponsessondages`
@@ -799,7 +822,8 @@ INSERT INTO `reponsessondages` (`id`, `ip`, `idProposition`, `idQuestion`) VALUE
 (79, '127.0.0.1', 12, 5),
 (80, '127.0.0.1', 2, 2),
 (81, '127.0.0.1', 1, 2),
-(82, '127.0.0.1', 1, 2);
+(82, '127.0.0.1', 1, 2),
+(83, '127.0.0.1', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -821,7 +845,7 @@ CREATE TABLE IF NOT EXISTS `sondages` (
 --
 
 INSERT INTO `sondages` (`id`, `titre`, `votants`, `dateCreation`, `actif`) VALUES
-(8, 'Premier sondage', 22, '2014-03-28', 1),
+(8, 'Premier sondage', 23, '2014-03-28', 1),
 (9, 'Sondage de fifou', 20, '2014-03-28', 0);
 
 -- --------------------------------------------------------
