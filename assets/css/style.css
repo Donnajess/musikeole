@@ -103,6 +103,11 @@ body{
 	width: 100% !important;
 }
 
+a.list-group-item:hover{
+	background-color: #428BCA;
+	color: white;
+}
+
 /* Menu */
 
 
