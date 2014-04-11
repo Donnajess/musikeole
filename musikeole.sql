@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Jeu 10 Avril 2014 à 21:01
--- Version du serveur: 5.6.14
--- Version de PHP: 5.5.6
+-- Client :  localhost
+-- Généré le :  Ven 11 Avril 2014 à 17:43
+-- Version du serveur :  5.6.16
+-- Version de PHP :  5.5.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `musikeole`
+-- Base de données :  `musikeole`
 --
 
 -- --------------------------------------------------------
@@ -449,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `idAlbum` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAlbum` (`idAlbum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
 
 --
 -- Contenu de la table `photos`
@@ -530,7 +530,16 @@ INSERT INTO `photos` (`id`, `nom`, `idAlbum`) VALUES
 (84, '817b3be1030954320bac958a868de386.jpg', 9),
 (85, '08040f4c2238092047484f1b91f9c059.jpg', 9),
 (87, 'f4a882fd0f2a4714f853ae0360a31902.jpg', 9),
-(88, '42e965362144dd872c5b5cc644013855.jpg', 9);
+(88, '42e965362144dd872c5b5cc644013855.jpg', 9),
+(98, '962f18fff049441b966353adf0822eeb.jpg', 9),
+(99, '1cc98d60c8776db6de82f467bb84af41.jpg', 9),
+(100, '42ff138e0933df1c5663bacce75d4cca.jpg', 9),
+(101, 'd9e446868aea2dbf080aa5a18396fd63.jpg', 9),
+(102, '9a0ed3940837845308d1ff9b43134e8f.jpg', 9),
+(103, '1dc783dc252ec5e99ea90645f792871a.jpg', 9),
+(104, '11b13a079acd59ca1903bdea58986a59.jpg', 9),
+(105, '34494ebf91b8d8a1b44e6c17d1085834.jpg', 9),
+(106, '61ebe6c204a69a0c3d41f8bbf3df4bb8.jpg', 9);
 
 -- --------------------------------------------------------
 
