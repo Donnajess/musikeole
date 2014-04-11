@@ -2,12 +2,37 @@
 
 <h1>Galerie photos</h1>
 
+<?php $album = $albums[0]; ?>
+<div class="row">
+	<div class="col-md-12">
+		<h2><?php echo $album->getNom(); ?></h2>
+		<?php
+			if ($album->getManifestation()) {
+				echo '<p>Album de la manifestation '.$album->getManifestation()->getNom().', organisée par l\'asociation '.$album->getManifestation()->getAssociation()->getNom().', le '.$album->getManifestation()->getDateSlash().' à '.$album->getManifestation()->getHeureH().'.</p>';
+			}
+		?>
+	</div>
+	<div class="col-md-6">
+		
+	</div>
+	<div class="col-md-3">
+		
+	</div>
+	<div class="col-md-3">
+		
+	</div>
+	<div class="col-md-12">
+		<hr>
+	</div>
+</div>
+
 <?php
 	$nbAlbums = count($albums);
-	for ($i=0; $i < $nbAlbums; $i++) { 
+	for ($i = 1; $i < $nbAlbums; $i++) { 
 		$album = $albums[$i];
 		$photos = $album->getPhotos();
-		if (($i%3) == 0) {
+		shuffle($photos);
+		if (((($i - 1) % 3)) == 0) {
 			echo '<div class="row">';
 		}
 ?>
@@ -40,7 +65,7 @@
 		</div>
 	</div>
 <?php
-		if (((($i + 1) % 3) == 0) || ($i == ($nbAlbums - 1))) {
+		if ((($i % 3) == 0) || ($i == ($nbAlbums - 1))) {
 			echo '</div>';
 		}
 	}
