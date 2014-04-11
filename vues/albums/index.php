@@ -5,7 +5,7 @@
 <?php $album = $albums[0]; $photos = $album->getPhotos(); shuffle($photos); ?>
 <div class="row">
 	<div class="col-md-12">
-		<h2><?php echo $album->getNom(); ?> <button class="btn btn-primary pull-right"><a <?php echo 'href="cGestionAlbums.php?action=detailAlbum&id='.$album->getId().'"'; ?> >Accéder à l'album</a></button></h2>
+		<h2><?php echo $album->getNom(); ?> <button class="btn btn-primary pull-right"><a <?php echo 'href="cAlbums.php?action=album&id='.$album->getId().'"'; ?> >Accéder à l'album</a></button></h2>
 		<?php
 			if ($album->getManifestation()) {
 				echo '<p>Album de la manifestation '.$album->getManifestation()->getNom().', organisée par l\'asociation '.$album->getManifestation()->getAssociation()->getNom().', le '.$album->getManifestation()->getDateSlash().' à '.$album->getManifestation()->getHeureH().'.</p>';
@@ -14,7 +14,11 @@
 	<hr>
 	</div>
 	<div class="col-md-6">
-		<?php echo '<img src="data/images/photos/'.$photos[0]->getFichier().'" class="img-responsive">'; ?>
+		<div class="row">
+			<div class="col-md-12">
+				<?php echo '<img src="data/images/photos/'.$photos[0]->getFichier().'" class="img-responsive">'; ?>
+			</div>
+		</div>	
 	</div>
 	<div class="col-md-3">
 		<div class="row">
@@ -89,7 +93,7 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<button class="btn btn-primary" style="margin : auto; width : 100%;"><a <?php echo 'href="cGestionAlbums.php?action=detailAlbum&id='.$album->getId().'"'; ?> >Accéder à l'album</a></button>
+				<button class="btn btn-primary" style="margin : auto; width : 100%;"><a <?php echo 'href="cAlbums.php?action=album&id='.$album->getId().'"'; ?> >Accéder à l'album</a></button>
 			</div>
 		</div>
 	</div>
