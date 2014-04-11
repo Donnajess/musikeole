@@ -61,6 +61,6 @@
 	}
 ?>
 </div>
-<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="assets/js/blueimp.js"></script>
 <script src="assets/js/imagegallery/js/bootstrap-image-gallery.min.js"></script>
 <?php include('includes/footer.php'); ?>
