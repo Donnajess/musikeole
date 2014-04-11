@@ -21,7 +21,7 @@
 			$listeQuestions = $sondage->getQuestions();
 			foreach ($listeQuestions as $question) {
 				echo '<div class="col-md-6">';
-				echo '<div class="panel panel-default">';
+				echo '<div class="panel panel-primary">';
 				echo '<div class="panel-heading"><h3 class="panel-title">'.$question->getValeur().' - '.$question->getType()->getNom().'</h3></div>';
 				$reponses = $question->getPropositions();
 				$typeBarre = array('', ' progress-bar-success', ' progress-bar-info', ' progress-bar-warning', ' progress-bar-danger');
