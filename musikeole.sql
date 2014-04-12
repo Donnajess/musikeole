@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 11 Avril 2014 à 19:19
+-- Généré le: Sam 12 Avril 2014 à 21:39
 -- Version du serveur: 5.6.14
 -- Version de PHP: 5.5.6
 
@@ -99,27 +99,6 @@ INSERT INTO `albums` (`id`, `nom`, `idManifestation`) VALUES
 (9, 'Consectetur', 13),
 (10, 'grandes photos', 15),
 (11, 'Longues photos', 17);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `annoncesbourse`
---
-
-CREATE TABLE IF NOT EXISTS `annoncesbourse` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) NOT NULL,
-  `description` varchar(1000) NOT NULL,
-  `prix` double(4,2) NOT NULL,
-  `photo` varchar(50) NOT NULL,
-  `date` date NOT NULL,
-  `valide` tinyint(1) NOT NULL,
-  `idCategorie` int(11) NOT NULL,
-  `idAdherent` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idCategorie` (`idCategorie`),
-  KEY `idAdherent` (`idAdherent`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -266,21 +245,6 @@ CREATE TABLE IF NOT EXISTS `inscritsnewsletter` (
   `idMembre` int(11) NOT NULL,
   PRIMARY KEY (`mail`),
   KEY `idMembre` (`idMembre`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `lignescommande`
---
-
-CREATE TABLE IF NOT EXISTS `lignescommande` (
-  `idCommande` int(11) NOT NULL DEFAULT '0',
-  `idProduit` int(11) NOT NULL DEFAULT '0',
-  `quantite` int(11) NOT NULL,
-  PRIMARY KEY (`idCommande`,`idProduit`),
-  KEY `idCommande` (`idCommande`,`idProduit`),
-  KEY `lignesCommandes_produits` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -563,40 +527,6 @@ INSERT INTO `photos` (`id`, `nom`, `idAlbum`) VALUES
 (125, 'ce3383511c510e0170d6f9eb105f6c8d.jpg', 11),
 (126, '97a952f070661a82165ee068e837001d.jpg', 11),
 (127, '8febc19a030626d7a6c29ba2349752f2.jpg', 11);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `photosdemandees`
---
-
-CREATE TABLE IF NOT EXISTS `photosdemandees` (
-  `idPhoto` int(11) NOT NULL,
-  `idDemande` int(11) NOT NULL,
-  PRIMARY KEY (`idPhoto`,`idDemande`),
-  KEY `photosdemandees_demandesphotos` (`idDemande`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `produits`
---
-
-CREATE TABLE IF NOT EXISTS `produits` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) NOT NULL,
-  `description` varchar(1000) NOT NULL,
-  `quantiteInitiale` int(11) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `prix` double(4,2) NOT NULL,
-  `photo` varchar(50) NOT NULL,
-  `date` date NOT NULL,
-  `prioriteAdherent` tinyint(1) NOT NULL,
-  `idCategorie` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idCategorie` (`idCategorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -905,13 +835,6 @@ ALTER TABLE `adherentsassociations`
   ADD CONSTRAINT `adherentsAssociations_associations` FOREIGN KEY (`idAssociation`) REFERENCES `associations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `annoncesbourse`
---
-ALTER TABLE `annoncesbourse`
-  ADD CONSTRAINT `annoncesBourse_adherents` FOREIGN KEY (`idAdherent`) REFERENCES `adherents` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `annoncesBourse_categories` FOREIGN KEY (`idCategorie`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Contraintes pour la table `commandes`
 --
 ALTER TABLE `commandes`
@@ -935,13 +858,6 @@ ALTER TABLE `inscriptionsmanifestations`
 --
 ALTER TABLE `inscritsnewsletter`
   ADD CONSTRAINT `inscritsNewsletter_membres` FOREIGN KEY (`idMembre`) REFERENCES `membres` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `lignescommande`
---
-ALTER TABLE `lignescommande`
-  ADD CONSTRAINT `lignesCommandes_produits` FOREIGN KEY (`idProduit`) REFERENCES `produits` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `lignescommande_commandes` FOREIGN KEY (`idCommande`) REFERENCES `commandes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `manifestations`
@@ -969,19 +885,6 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `photos`
   ADD CONSTRAINT `photos_albums` FOREIGN KEY (`idAlbum`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `photosdemandees`
---
-ALTER TABLE `photosdemandees`
-  ADD CONSTRAINT `photosdemandees_demandesphotos` FOREIGN KEY (`idDemande`) REFERENCES `demandesphotos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `photosdemandees_photos` FOREIGN KEY (`idPhoto`) REFERENCES `photos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `produits`
---
-ALTER TABLE `produits`
-  ADD CONSTRAINT `produits_categories` FOREIGN KEY (`idCategorie`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `propositionsidees`
