@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 12 Avril 2014 à 21:39
--- Version du serveur: 5.6.14
--- Version de PHP: 5.5.6
+-- Généré le: Dim 13 Avril 2014 à 00:10
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `musikeole`
 --
+CREATE DATABASE IF NOT EXISTS `musikeole` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `musikeole`;
 
 -- --------------------------------------------------------
 
@@ -302,11 +304,12 @@ INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, 
 
 CREATE TABLE IF NOT EXISTS `membres` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mail` varchar(50) NOT NULL,
   `nom` varchar(30) NOT NULL,
-  `pseudo` varchar(30) NOT NULL,
-  `motDePasse` varchar(100) NOT NULL,
   `prenom` varchar(30) NOT NULL,
+  `dateNaissance` varchar(30) NOT NULL,
+  `telephone` varchar(30) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `motDePasse` varchar(100) NOT NULL,
   `idAutorisation` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAutorisation` (`idAutorisation`)
@@ -316,16 +319,16 @@ CREATE TABLE IF NOT EXISTS `membres` (
 -- Contenu de la table `membres`
 --
 
-INSERT INTO `membres` (`id`, `mail`, `nom`, `pseudo`, `motDePasse`, `prenom`, `idAutorisation`) VALUES
-(0, '', '', '', '', '', 3);
+INSERT INTO `membres` (`id`, `nom`, `prenom`, `dateNaissance`, `telephone`, `mail`, `motDePasse`, `idAutorisation`) VALUES
+(0, '', '', '', '', '', '', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membresBureau`
+-- Structure de la table `membresbureau`
 --
 
-CREATE TABLE IF NOT EXISTS `membresBureau` (
+CREATE TABLE IF NOT EXISTS `membresbureau` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
   `prenom` varchar(30) NOT NULL,
@@ -338,10 +341,10 @@ CREATE TABLE IF NOT EXISTS `membresBureau` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `membresBureau`
+-- Contenu de la table `membresbureau`
 --
 
-INSERT INTO `membresBureau` (`id`, `nom`, `prenom`, `role`, `activite`, `dateEntree`, `photo`, `indice`) VALUES
+INSERT INTO `membresbureau` (`id`, `nom`, `prenom`, `role`, `activite`, `dateEntree`, `photo`, `indice`) VALUES
 (2, 'Wavelet', 'Alexandre', 'DÃ©veloppeur', '<h1>D&eacute;veloppeur1</h1>\r\n<p>D&eacute;veloppeur du site internet, des modules sondages et gestion de contenu.</p>', '2014-03-25', 'c208ad5c6a1c4e66e755a3f2639f3375.jpg', 100),
 (5, 'Doe', 'Alexandre1tg,jjk', '122', '<p>Activit&eacute; du membre &agrave; l''&eacute;cole de musique.</p>', '2014-05-02', '057a67a30291637a1c01ddbf919cef9a.jpg', 1);
 

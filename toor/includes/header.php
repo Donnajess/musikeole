@@ -33,6 +33,9 @@
 							<li><a href="cGestionAgenda.php">Agenda</a></li>
 							<li><a href="cGestionAlbums.php">Albums photos</a></li>
 							<li><a href="cGestionSondages.php?action=liste">Sondages</a></li>
+							<li><a href="cGestionMembres.php?action=demandes">Demandes d'adhésion</a></li>
+							<li><a href="cGestionMembres.php?action=adherents">Gérer adhérents</a></li>
+							<li><a href="contact.php">Contact</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="../index.php">Retour au site</a></li>

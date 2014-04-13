@@ -11,7 +11,7 @@
 
 		public function connexion($mail, $password)
 		{
-			$reqConnexion = $this->connexion->getConnexion()->prepare('SELECT id FROM membres WHERE mail = :mail AND motDePasse = :password');
+			$reqConnexion = $this->connexion->getConnexion()->prepare('SELECT id FROM membres WHERE mail = :mail AND motDePasse = :password AND idAutorisation = 2');
 			$reqConnexion->execute(array(
 			    'mail' => $mail,
 			    'password' => $password));

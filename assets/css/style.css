@@ -116,6 +116,15 @@ a.list-group-item:hover{
 
 
 
+/* Page inscrition */
+
+.introInscription {
+	margin-top: 15px;
+}
+.formInscription {
+	width: 150px;
+}
+
 /* Formulaires inscription */
 .inscription_title {
 	font-size: 18px;
@@ -137,9 +146,6 @@ a.list-group-item:hover{
 }
 .inscription {
 	margin-left: 5px;
-}
-.formInscription {
-	width: 400px;
 }
 
 /* Espace Membre */
@@ -167,7 +173,6 @@ a.list-group-item:hover{
 .btnDeconnexion {
 	margin-top: 10px;
 }
-
 
 /* footer */
 
