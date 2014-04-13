@@ -1,4 +1,5 @@
 <?php
+	include_once('modeles/ConnexionBDD.php');
 	include('includes/recupererDonnees.php');
 	include('includes/contenuAccueil.php');
 	session_start();

@@ -105,7 +105,7 @@
 								<p>Veuillez sélectionner votre formulaire. Si vous souhaitez inscrire une famille, sélectionnez combien de membre souhaitez vous inscrire afin de générer autant de formulaire que de futur adhérents (3 minimum).</p><br> 
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12">
-  									<form action="cInscription.php?action=individuel" method="POST" class="form-inline">
+  									<form action="cInscription.php?action=individuel" style="margin-bottom:12px;" method="POST" class="form-inline">
 										<button class="btn btn-primary btnFormSondage">Formulaire Individuel</button>
 									</form>
 								  	<form action="cInscription.php?action=famille" method="POST" class="form-inline">

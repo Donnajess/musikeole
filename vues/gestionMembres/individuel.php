@@ -68,7 +68,7 @@
 						</div>
 					</div>
 					<div class="col-lg-8 col-md-6 col-sm-6">
-						<h1>Formulaires d'adhésion individuel</h1>
+						<h1>Formulaire d'adhésion individuel</h1>
 						<br>
 						<div class="row">
 							<div class="col-md-12">

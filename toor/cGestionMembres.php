@@ -47,7 +47,7 @@
 			$manager->supprimerAdherent($idAdherent);
 			$message = "L'adhérent a bien été supprimé.";
 			$listeAdherents = $manager->getAdherents();
-			include("vues/gestionMembres/liste.php");
+			include("vues/gestionMembres/listeAd.php");
 			break;
 
 		case 'supprimerDemande':
