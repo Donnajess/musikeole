@@ -15,6 +15,7 @@
 		{
 			session_start();
     		$_SESSION['mail'] = $mail; 
+    		$_SESSION['idAutorisation'] = 2; 
     		header('Location:index.php');
 		}
 		else

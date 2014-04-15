@@ -13,7 +13,7 @@
 		foreach ($listeMails as $mail) {
 			mail($mail, $titre, $message);
 		}
-		$message = "Les messages sont en cours d'envoie...";
+		$message = "Les messages sont en cours d'envoi...";
 		include("contact.php");
 	}
 	else

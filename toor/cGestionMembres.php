@@ -45,7 +45,7 @@
 		case 'supprimerAdherent':
 			$idAdherent = $_GET['id'];
 			$manager->supprimerAdherent($idAdherent);
-			$message = "L'adhérent a bien été supprimé.";
+			$message_supp = "L'adhérent a bien été supprimé.";
 			$listeAdherents = $manager->getAdherents();
 			include("vues/gestionMembres/listeAd.php");
 			break;
@@ -53,7 +53,7 @@
 		case 'supprimerDemande':
 			$idDemande = $_GET['id'];
 			$manager->supprimerAdherent($idDemande);
-			$message = "La demande d'adhésion a été rejetée";
+			$message_supp = "La demande d'adhésion a été rejetée";
 			$listeDemandes = $manager->getDemandesAdhesion();
 			include("vues/gestionMembres/liste.php");
 			break;

@@ -109,7 +109,18 @@
 														</div>';
 												echo '</fieldset>';
 									}
-								?>								
+								?>	
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<label class="reglement">Voici le règlement de l'association, veuillez le lire avant de soumettre votre adhésion.</label>
+					 		<iframe src="data/contenu/legal/reglementInterieur.pdf" 
+					 					class="iframe" width="100%" height="350"px;>
+					 		</iframe>	
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="checkbox" required/> Confirmez la lecture du règlement
+								</label>
+							</div>							
 								<button type="submit" class="btn btn-primary">Soumettre les formulaires</button>
 							</form>
 						</div>

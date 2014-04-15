@@ -32,6 +32,12 @@
 						<p>'.$message.'</p>
 					</div>';
 				}
+				if (isset($message_supp)) {
+					echo '<div class="alert alert-danger alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<p>'.$message_supp.'</p>
+					</div>';
+				}
 			?>
 		</div>
 	</div>
@@ -46,7 +52,7 @@
 						<th>Telephone</th>
 						<th>Mail</th>
 						<th>Accepter</th>
-						<th>Supprimer</th>
+						<th>Rejeter</th>
 					</tr>
 					<?php
 						foreach ($listeDemandes as $demandes) {
