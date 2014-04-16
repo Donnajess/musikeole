@@ -1,6 +1,8 @@
 <?php
 	session_start();
 
+if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
+
 	function __autoload($class)
 	{
 		static $classDir = '/modeles';
@@ -83,5 +85,10 @@
 			break;
 
 	}
+
+}else{
+	header('Location: ../index.php');
+	exit();
+}
 
 ?>

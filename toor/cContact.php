@@ -1,4 +1,7 @@
 <?php
+	session_start();
+
+if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
 
 	// Chargement des classes
 	include('../modeles/ConnexionBDD.php');
@@ -22,6 +25,9 @@
 		include("contact.php");
 	}
 	
-
+}else{
+	header('Location: ../index.php');
+	exit();
+}
 
 ?>

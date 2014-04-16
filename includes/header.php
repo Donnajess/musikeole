@@ -49,9 +49,15 @@
 									<li><a href="cAlbums.php"><span class="glyphicon glyphicon-picture"></span>Galerie Photos</a></li>
 									<li><a href="#"><span class="glyphicon glyphicon-comment"></span>Exprimez vous !</a></li>
 								</ul>
-								<ul class="nav navbar-nav navbar-right">
-									<li><a href="toor/index.php"><span class="glyphicon glyphicon-cog"></span>Administration</a></li>
-								</ul>
+								<?php
+									if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
+								?>
+									<ul class="nav navbar-nav navbar-right">
+										<li><a href="toor/index.php"><span class="glyphicon glyphicon-cog"></span>Administration</a></li>
+									</ul>
+								<?php
+									}
+								?>
 							</div>
 						</nav>
 					</div>

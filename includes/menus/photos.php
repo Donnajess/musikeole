@@ -1,10 +1,9 @@
 <?php
 	if ($action == 'album') {
-		if ($album->getManifestation()->getAssociation()->getId() == 0) {
+		if ($album->getManifestation() == null) {
 			$lien = 'href="cPresentation.php"';
 		}else{
 			$lien = 'href="cPresentation.php?action=association&id='.$album->getManifestation()->getAssociation()->getId().'"';
-		}
 ?>
 <div class="list-group">
 	<a <?php echo 'href="cAgenda.php?action=detailManifestation&id='.$album->getManifestation()->getId().'"'; ?> class="list-group-item">
@@ -17,5 +16,6 @@
 	</a>
 </div>
 <?php
-}
+		}
+	}
 ?>
