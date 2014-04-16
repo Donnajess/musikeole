@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 13 Avril 2014 à 00:10
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.16
+-- Généré le: Mer 16 Avril 2014 à 22:42
+-- Version du serveur: 5.6.14
+-- Version de PHP: 5.5.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `musikeole`
 --
-CREATE DATABASE IF NOT EXISTS `musikeole` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `musikeole`;
 
 -- --------------------------------------------------------
 
@@ -86,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `albums` (
   `nom` varchar(50) NOT NULL,
   `idManifestation` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Contenu de la table `albums`
@@ -100,7 +98,9 @@ INSERT INTO `albums` (`id`, `nom`, `idManifestation`) VALUES
 (8, 'yolo', 18),
 (9, 'Consectetur', 13),
 (10, 'grandes photos', 15),
-(11, 'Longues photos', 17);
+(11, 'Longues photos', 17),
+(12, 'Lorem ipsum', 0),
+(13, 'Lorem ipsum', 0);
 
 -- --------------------------------------------------------
 
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `manifestations` (
 --
 
 INSERT INTO `manifestations` (`id`, `nom`, `description`, `dateManif`, `heure`, `places`, `image`, `gratuit`, `prixAdherent`, `prixExterieur`, `prixEnfant`, `dateCreation`, `valide`, `idAssociation`, `idAlbum`, `idMembre`) VALUES
-(0, '', '', '0000-00-00', '', 0, '', 0, '0.00', '0.00', '0.00', '0000-00-00', 1, 0, 0, 0),
+(0, '', '', '0000-00-00', '', 0, '', 0, '0.00', '0.00', '0.00', '0000-00-00', 1, 0, 13, 0),
 (6, 'Tous en choeur !', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, non fuga aut mollitia odio sapiente porro? Nam, obcaecati, ea, iure, nobis similique id reiciendis earum veniam perspiciatis minima nihil iste!</p>\r\n<p>Ducimus, vitae assumenda dolore quibusdam repellat qui voluptate nostrum pariatur aliquid eius. Voluptas, animi, illum maiores laborum corporis totam itaque voluptate dolorum ratione ipsa impedit dolorem illo aliquam rerum dolore.</p>', '2014-06-17', '13:00', 50, '6a5678ef0622d7f689fb36dffcb04ff5.jpg', 1, '0.00', '0.00', '0.00', '2014-04-04', 1, 3, 0, 0),
 (11, 'Lorem ipsum', '<p>Duplexque isdem diebus acciderat malum, quod et Theophilum insontem atrox interceperat casus, et Serenianus dignus exsecratione cunctorum, innoxius, modo non reclamante publico vigore, discessit.</p>\r\n<h3>Consectetur</h3>\r\n<p>Principium autem unde latius se funditabat, emersit ex negotio tali. Chilo ex vicario et coniux eius Maxima nomine, questi apud Olybrium ea tempestate urbi praefectum, vitamque suam venenis petitam adseverantes inpetrarunt ut hi, quos suspectati sunt, ilico rapti conpingerentur in vincula, organarius Sericus et Asbolius palaestrita et aruspex Campensis.</p>', '2014-04-27', '19:00', 50, '3ff3116223e146b7604c5f1bc4f0a050.jpg', 0, '5.00', '10.00', '2.00', '2014-04-06', 1, 0, 0, 0),
 (12, 'Chorale de pÃ¢ques', '<p>Ergo ego senator inimicus, si ita vultis, homini, amicus esse, sicut semper fui, rei publicae debeo. Quid? si ipsas inimicitias, depono rei publicae causa, quis me tandem iure reprehendet, praesertim cum ego omnium meorum consiliorum atque factorum exempla semper ex summorum hominum consiliis atque factis mihi censuerim petenda.</p>', '2014-05-06', '13:00', 50, '84305343a9b56df4b70f7bdd8bbd0526.jpg', 1, '0.00', '0.00', '0.00', '2014-04-06', 1, 3, 0, 0),
@@ -313,14 +313,16 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `idAutorisation` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAutorisation` (`idAutorisation`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `membres`
 --
 
 INSERT INTO `membres` (`id`, `nom`, `prenom`, `dateNaissance`, `telephone`, `mail`, `motDePasse`, `idAutorisation`) VALUES
-(0, '', '', '', '', '', '', 3);
+(0, '', '', '', '', '', '', 3),
+(1, 'Wavelet', 'Alexandre', '13/09/1991', '33625340992', 'wavelet.alexandre@gmail.com', '6bab9ba7d9001e9126955bfb2c4ac48e', 3),
+(2, 'Wavelet', 'Alexandre', '13/09/1991', '33625340992', 'azerty@azerty.com', 'ab4f63f9ac65152575886860dde480a1', 3);
 
 -- --------------------------------------------------------
 
@@ -418,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `idAlbum` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idAlbum` (`idAlbum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=148 ;
 
 --
 -- Contenu de la table `photos`
@@ -529,7 +531,27 @@ INSERT INTO `photos` (`id`, `nom`, `idAlbum`) VALUES
 (124, 'd3dc98fba311128f67f840df9513d4a6.jpg', 11),
 (125, 'ce3383511c510e0170d6f9eb105f6c8d.jpg', 11),
 (126, '97a952f070661a82165ee068e837001d.jpg', 11),
-(127, '8febc19a030626d7a6c29ba2349752f2.jpg', 11);
+(127, '8febc19a030626d7a6c29ba2349752f2.jpg', 11),
+(128, '73c77122851b5e0e71ac5058d3136c55.jpg', 12),
+(129, '51828dba426ebc0ef0e03f598a416e54.jpg', 12),
+(130, 'b13e58d94a095b16f9a0e49036b004eb.jpg', 12),
+(131, 'a5e88db73c2a0e6ab7b3bb83510e9483.jpg', 12),
+(132, 'c94bf7013205ee5d640f932752980c44.jpg', 12),
+(133, 'd9d400af0baca6369a087cdf6e60fd09.jpg', 12),
+(134, 'bf028fc56093f3c9cabfd10d8ed1869d.jpg', 12),
+(135, '983ba9c18539b7c0b7630d1a8d987b5e.jpg', 12),
+(136, '4b6c53a780f28e32d14fe00bd1ff15f3.jpg', 12),
+(137, '4b082d70cdde7d586c9fe56f3a524abf.jpg', 12),
+(138, '7955c51de6d1ca6ceb6fd8cada8d0097.jpg', 13),
+(139, '595116bc0019a2a136e99f4cf661d398.jpg', 13),
+(140, 'e4d8e0345a1b2139ba7adf0a83711a8c.jpg', 13),
+(141, 'c2b4f95f899569fcfcdab3c70ba0621c.jpg', 13),
+(142, '484ade29453127cf70164749e4ee0522.jpg', 13),
+(143, '83b93051cf86e25cf6c9d80547107cf7.jpg', 13),
+(144, 'f690bb718fc2604e1c41bbe6d21fe9a1.jpg', 13),
+(145, '6859ddb5fe8059f04820ec7c404d2a69.jpg', 13),
+(146, 'b0344b0f7d6bb23c66f20c4b107654d7.jpg', 13),
+(147, '73ac7ea59cd5a935eb6a583e03965638.jpg', 13);
 
 -- --------------------------------------------------------
 
