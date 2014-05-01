@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
+// if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
 	include("includes/header.php");
 ?>
 	<div class="container">
@@ -97,8 +97,8 @@ if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
 	</div>
 <?php
 	include("includes/footer.php");
-}else{
-	header('Location: ../index.php');
-	exit();
-}
+// }else{
+// 	header('Location: ../index.php');
+// 	exit();
+// }
 ?>

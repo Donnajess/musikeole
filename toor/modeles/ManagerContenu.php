@@ -57,7 +57,7 @@
 		{
 			$info = $this->enregistrerImage($photo);
 			if ($info[0]) {
-				$reqMembre = $this->connexion->getConnexion()->prepare('INSERT INTO membresBureau VALUES (0, ?, ?, ?, ?, ?, ?, ?)');
+				$reqMembre = $this->connexion->getConnexion()->prepare('INSERT INTO membresbureau VALUES (0, ?, ?, ?, ?, ?, ?, ?)');
 				$reqMembre->execute(array($membre->getNom(), $membre->getPrenom(), $membre->getRole(), $membre->getActivite(), $membre->getDateEntree(), $info[1], $membre->getIndice()));
 			}
 			return $info;
@@ -95,7 +95,7 @@
 
 		public function getMembresBureau()
 		{
-			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM membresBureau ORDER BY indice DESC, nom');
+			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM membresbureau ORDER BY indice DESC, nom');
 			$reqMembres->execute();
 			$membresBureau = array();
 			while ($ligne = $reqMembres->fetch()) {
@@ -109,11 +109,11 @@
 
 		public function supprimerMembreBureau($id)
 		{
-			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresBureau WHERE id = ?');
+			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresbureau WHERE id = ?');
 			$reqNomPhoto->execute(array($id));
 			$nomPhoto = $reqNomPhoto->fetch();
 			$this->supprimerImageMembreBureau($nomPhoto['photo']);
-			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM membresBureau WHERE id=?');
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM membresbureau WHERE id=?');
 			$reqSuppression->execute(array($id));
 		}
 
@@ -127,7 +127,7 @@
 
 		public function getMembreBureau($id)
 		{
-			$reqMembre = $this->connexion->getConnexion()->prepare('SELECT * FROM membresBureau WHERE id = ?');
+			$reqMembre = $this->connexion->getConnexion()->prepare('SELECT * FROM membresbureau WHERE id = ?');
 			$reqMembre->execute(array($id));
 			$ligne = $reqMembre->fetch();
 			$date = explode('-', $ligne['dateEntree']);
@@ -140,13 +140,13 @@
 
 		public function modifierMembreBureau($membre)
 		{
-			$reqModification = $this->connexion->getConnexion()->prepare('UPDATE membresBureau SET nom = ?, prenom = ?, role = ?, activite = ?, dateEntree = ?, indice = ? WHERE id = ?');
+			$reqModification = $this->connexion->getConnexion()->prepare('UPDATE membresbureau SET nom = ?, prenom = ?, role = ?, activite = ?, dateEntree = ?, indice = ? WHERE id = ?');
 			$reqModification->execute(array($membre->getNom(), $membre->getPrenom(), $membre->getRole(), $membre->getActivite(), $membre->getDateEntree(), $membre->getIndice(), $membre->getId()));
 		}
 
 		public function modifierPhotoMembre($id, $photo)
 		{
-			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresBureau WHERE id = ?');
+			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM membresbureau WHERE id = ?');
 			$reqNomPhoto->execute(array($id));
 			$nomPhoto = $reqNomPhoto->fetch();
 			$nomPhoto = $nomPhoto['photo'];

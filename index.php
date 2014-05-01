@@ -52,13 +52,13 @@
 									<li><a href="#"><span class="glyphicon glyphicon-comment"></span>Exprimez vous !</a></li>
 								</ul>
 								<?php
-									if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
+									// if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
 								?>
 									<ul class="nav navbar-nav navbar-right">
 										<li><a href="toor/index.php"><span class="glyphicon glyphicon-cog"></span>Administration</a></li>
 									</ul>
 								<?php
-									}
+									// }
 								?>
 							</div>
 						</nav>

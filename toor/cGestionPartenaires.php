@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
+// if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
 
 	function __autoload($class)
 	{
@@ -81,9 +81,9 @@ if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
 
 	}
 
-}else{
-	header('Location: ../index.php');
-	exit();
-}
+// }else{
+// 	header('Location: ../index.php');
+// 	exit();
+// }
 
 ?>

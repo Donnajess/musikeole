@@ -30,11 +30,11 @@
 
 		case 'album':
 			$album = $manager->getAlbum($_GET['id']);
-			if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 1) {
+			// if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 1) {
 				include('vues/albums/detail.php');
-			}else {
-				include('vues/albums/erreur.php');
-			}
+			// }else {
+			// 	include('vues/albums/erreur.php');
+			// }
 			break;
 
 		default:

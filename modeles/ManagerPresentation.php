@@ -70,7 +70,7 @@
 
 		public function getMembresBureau()
 		{
-			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM membresBureau ORDER BY indice DESC, nom, prenom');
+			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM membresbureau ORDER BY indice DESC, nom, prenom');
 			$reqMembres->execute();
 			$membres = array();
 			while ($ligne = $reqMembres->fetch()) {
