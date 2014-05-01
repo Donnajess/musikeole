@@ -33,6 +33,11 @@
 			include('vues/presentation/membres.php');
 			break;
 
+		case 'equipePedagogique':
+			$membres = $manager->getEquipePedagogique();
+			include('vues/presentation/equipePedagogique.php');
+			break;
+
 		case 'association':
 			$texte = $manager->getPresentationAssociation(htmlentities($_GET['id']));
 			include('vues/presentation/index.php');

@@ -8,6 +8,7 @@
 				<h1>Gestion de contenu</h1>
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#musikeole" data-toggle="tab">Musik'Eole</a></li>
+					<li><a href="#pedagogique" data-toggle="tab">Équipe pédagogique</a></li>
 					<li><a href="#associations" data-toggle="tab">Associations</a></li>
 					<li><a href="#bannieres" data-toggle="tab">Bannières</a></li>
 					<li><a href="#reglements" data-toggle="tab">Règlements</a></li>
@@ -19,10 +20,15 @@
 							Dans cette section, vous pouvez gérer la présentation de l'association Musik'Eole, ses coordonées, ainsi que les membres du bureau.
 						</p>
 					</div>
+					<div class="tab-pane" id="pedagogique">
+						<p>
+							Dans cette section, vous pouvez gérer les présentations de chaque association satellite (Création, suppression, modification) ainsi que la présentation de l'école de musique.
+						</p>
+					</div>
 					<div class="tab-pane" id="associations">
 						<p>
 							Dans cette section, vous pouvez gérer les présentations de chaque association satellite (Création, suppression, modification) ainsi que la présentation de l'école de musique.
-						</p>	
+						</p>
 					</div>
 					<div class="tab-pane" id="bannieres">
 						<p>
@@ -49,6 +55,16 @@
 						<a href="cGestionContenuMusikEole.php?action=index">
 							<span class="glyphicon glyphicon-home"></span>
 							<h3>Musik'Eole</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<a href="cGestionEquipePedagogique.php">
+							<span class="glyphicon glyphicon-music"></span>
+							<h3>Équipe pédagogique</h3>
 						</a>
 					</div>
 				</div>

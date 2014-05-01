@@ -390,6 +390,100 @@
 			return $listePublicites;			
 		}
 
+		public function creerMembreEquipePedagogique($membre, $photo)
+		{
+			$info = $this->enregistrerImageEquipePedagogique($photo);
+			if ($info[0]) {
+				$reqMembre = $this->connexion->getConnexion()->prepare('INSERT INTO equipepedagogique VALUES (0, ?, ?, ?, ?, ?, ?, ?)');
+				$reqMembre->execute(array($membre->getNom(), $membre->getPrenom(), $membre->getRole(), $membre->getActivite(), $membre->getDateEntree(), $info[1], $membre->getIndice()));
+			}
+			return $info;
+		}
+
+		function enregistrerImageEquipePedagogique($image, $nomImage = false){
+			if($image['error'] = 0){
+				$info = array(false, 'Erreur lors du transfert de l\'image');
+			}else{
+				$extensions_valides = array('jpg','jpeg');
+				$extension_upload = strtolower(substr(strrchr($image['name'],'.'),1));
+				if(in_array($extension_upload,$extensions_valides)){
+					if (!$nomImage) {
+						$nomImage = md5(uniqid(rand(), true));
+						$nomImage = $nomImage.'.jpg';
+					}
+					$this->creerImage($image, $nomImage, 200, '../data/images/equipePedagogique/');
+					$info = array(true, $nomImage);
+				}else{
+					$info = array(false, 'Le fichier uploadé n\'est pas une image jpeg.');
+				}
+			}
+			return $info;
+		}
+
+		public function getMembresEquipePedagogique()
+		{
+			$reqMembres = $this->connexion->getConnexion()->prepare('SELECT * FROM equipepedagogique ORDER BY indice DESC, nom');
+			$reqMembres->execute();
+			$membresBureau = array();
+			while ($ligne = $reqMembres->fetch()) {
+				$membre = new MembreBureau($ligne['nom'], $ligne['prenom'], $ligne['role'], $ligne['dateEntree'], $ligne['indice'], $ligne['activite']);
+				$membre->setId($ligne['id']);
+				$membre->setPhoto($ligne['photo']);
+				array_push($membresBureau, $membre);
+			}
+			return $membresBureau;
+		}
+
+		public function supprimerMembreEquipePedagogique($id)
+		{
+			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM equipepedagogique WHERE id = ?');
+			$reqNomPhoto->execute(array($id));
+			$nomPhoto = $reqNomPhoto->fetch();
+			$this->supprimerImageMembreEquipePedagogique($nomPhoto['photo']);
+			$reqSuppression = $this->connexion->getConnexion()->prepare('DELETE FROM equipepedagogique WHERE id=?');
+			$reqSuppression->execute(array($id));
+		}
+
+		public function supprimerImageMembreEquipePedagogique($nomImage)
+		{
+			$fichier = '../data/images/equipePedagogique/'.$nomImage;
+			if (file_exists($fichier)) {
+				unlink($fichier);
+			}
+		}
+
+		public function getMembreEquipePedagogique($id)
+		{
+			$reqMembre = $this->connexion->getConnexion()->prepare('SELECT * FROM equipepedagogique WHERE id = ?');
+			$reqMembre->execute(array($id));
+			$ligne = $reqMembre->fetch();
+			$date = explode('-', $ligne['dateEntree']);
+			$date = $date[2].'-'.$date[1].'-'.$date[0];
+			$membre = new MembreBureau($ligne['nom'], $ligne['prenom'], $ligne['role'], $date, $ligne['indice'], $ligne['activite']);
+			$membre->setId($ligne['id']);
+			$membre->setPhoto($ligne['photo']);
+			return $membre;
+		}
+
+		public function modifierMembreEquipePedagogique($membre)
+		{
+			$reqModification = $this->connexion->getConnexion()->prepare('UPDATE equipepedagogique SET nom = ?, prenom = ?, role = ?, activite = ?, dateEntree = ?, indice = ? WHERE id = ?');
+			$reqModification->execute(array($membre->getNom(), $membre->getPrenom(), $membre->getRole(), $membre->getActivite(), $membre->getDateEntree(), $membre->getIndice(), $membre->getId()));
+		}
+
+		public function modifierPhotoMembreEquipePedagogique($id, $photo)
+		{
+			$reqNomPhoto = $this->connexion->getConnexion()->prepare('SELECT photo FROM equipepedagogique WHERE id = ?');
+			$reqNomPhoto->execute(array($id));
+			$nomPhoto = $reqNomPhoto->fetch();
+			$nomPhoto = $nomPhoto['photo'];
+			$this->supprimerImageMembreEquipePedagogique($nomPhoto);
+			$info = $this->enregistrerImageEquipePedagogique($photo, $nomPhoto);
+			return $info;
+		}
+
+
+
 	}
 
 ?>
