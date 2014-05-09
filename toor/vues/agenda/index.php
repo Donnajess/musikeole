@@ -206,10 +206,12 @@
 											if ($manif->getAlbum()) {
 												$photos = $manif->getAlbum()->getPhotos();
 												shuffle($photos);
-												for ($i=0; $i < 8; $i++) { 
-													echo '<div class="col-md-1">';
-														echo '<img src="../data/images/photos/miniatures/'.$photos[$i]->getFichier().'" class="img-responsive">';
-													echo '</div>';
+												for ($i=0; $i < 8; $i++) {
+													if (isset($photos[$i])) {
+														echo '<div class="col-md-1">';
+															echo '<img src="../data/images/photos/miniatures/'.$photos[$i]->getFichier().'" class="img-responsive">';
+														echo '</div>';
+													}
 												}
 											}else{
 												echo '<div class="col-md-9"></div>';
