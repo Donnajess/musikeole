@@ -11,11 +11,17 @@
 		$password = $_POST['password'];
 		$password = md5($password);
 		$connexionOK = $manager->Connexion($mail, $password);
-		if($connexionOK == true) 
+		$idAutorisation = $manager->getIdAutorisation($mail);
+		if(($connexionOK == true) && (idAutorisation != 1)) 
 		{
 			session_start();
     		$_SESSION['mail'] = $mail; 
-    		$_SESSION['idAutorisation'] = 2; 
+    		if(idAutorisation == 2)
+    		{
+    			$_SESSION['idAutorisation'] = 2; 
+    		} elseif(idAutorisation == 3) {
+    			$_SESSION['idAutorisation'] = 3; 
+    		}
     		header('Location:index.php');
 		}
 		else

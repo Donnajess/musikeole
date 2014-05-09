@@ -6,7 +6,7 @@
 		<div class="panel-body">
 			<a href="connexion.php" class="btn btn-primary btnConnexion" role="button">Connexion</a>
 			<a href="inscription.php" class="liensMembresDeco">Devenir membre</a> <br>
-			<a href="" data-toggle="modal" data-target="#mdpoublie" class="liensMembresDeco">Mot de passe oublié ?</a>
+			<a href="mdpOublie.php" class="liensMembresDeco">Mot de passe oublié ?</a>
 		</div>
 	</div>
 <?php } else { ?>

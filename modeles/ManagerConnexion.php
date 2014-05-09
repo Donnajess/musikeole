@@ -27,6 +27,11 @@
 			}
 			return $connexionOK;
 		}
+		public function getIdAutorisation($mail) {
+			$reqIdAuto = $this->connexion->getConnexion()->prepare('SELECT idAutorisation FROM membres WHERE mail = ?');
+			$reqIdAuto->execute(array($mail));
+			return $reqIdAuto;
+		}
 
 	}
 
