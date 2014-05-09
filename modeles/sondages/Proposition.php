@@ -8,6 +8,7 @@
 
 		protected $id;
 		protected $valeur;
+		protected $votes;
 
 		/**
 		 * Constructeur
@@ -33,8 +34,37 @@
 		 */
 		public function getValeur(){
 			return $this->valeur;
+		}	
+
+		/**
+		* Accesseur de votes.
+		* @return int nombre de votes de la proposition
+		*/
+		public function getVotes()
+		{
+			return $this->votes;
 		}
-		
-	}
+
+		/**
+		* Mutateur de votes.
+		* @param int $votes nombre de votes de la proposition
+		*/
+		public function setVotes($votes)
+		{
+			$this->votes = $votes;
+		}
+
+		/**
+		 * Calcule le pourcentage de votes pour cette proposition
+		 * @param  int $nombreVotesTotal 		nombre total des votes
+		 * @return int $pourcentage             le poucentage de votes de la proposition
+		 */
+		public function pourcentageVotes($nombreVotesTotal)
+		{
+			$pourcentage = ($nombreVotesTotal > 0) ? round($this->votes *100 / $nombreVotesTotal) : 0 ;
+			return $pourcentage;
+		}
+
+}
 
 ?>

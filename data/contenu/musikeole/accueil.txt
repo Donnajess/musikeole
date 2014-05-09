@@ -1,0 +1,2 @@
+<h3>Message d'accueil</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, rem, esse veniam nam soluta sapiente nesciunt veritatis corporis reprehenderit nulla temporibus deleniti atque ipsum nemo praesentium enim expedita voluptate eaque.</p>

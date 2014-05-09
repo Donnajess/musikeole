@@ -1,6 +1,8 @@
 <?php
 	session_start();
 
+// if (isset($_SESSION['idAutorisation']) && $_SESSION['idAutorisation'] > 2) {
+
 	function __autoload($class)
 	{
 		static $classDir = '/modeles';
@@ -8,7 +10,10 @@
 		require "$classDir/$file";
 	}
 
-	include($_SERVER['DOCUMENT_ROOT'].'/www/musikeole/toor/modeles/ManagerSondages.php');
+	// Chargement des classes
+	include('../modeles/ConnexionBDD.php');
+	include('includes/packageSondages.php');
+	include('modeles/ManagerSondages.php');
 
 	$manager = new ManagerSondages();
 
@@ -32,23 +37,46 @@
 			break;
 
 		case 'valider':
-			// Récupérer les variables et créer les objets
-			$manager.creerSondage($nouveauSondage);
-			$message = "Le sondage *insérer nom* a bien été créé.";
-			$listeSondages = $manager.getSondages();
+			$titre = $_POST['titre'];
+			$nbQuestions = $_POST['nbQuestions'];
+			$questionsSondages = array();
+			for ($i=0; $i < $nbQuestions; $i++) { 
+				$num = $i + 1;
+				$question = $_POST['question'.$num];
+				$type = new Type($_POST['type'.$num]);
+				$propositionsQuestion = array();
+				$numProposition = 1;
+				while (isset($_POST['proposition'.$numProposition.'-'.$num]) && !empty($_POST['proposition'.$numProposition.'-'.$num])) {
+					array_push($propositionsQuestion, new Proposition(0, $_POST['proposition'.$numProposition.'-'.$num]));
+					$numProposition++;
+				}
+				array_push($questionsSondages, new Question(0, $question, $type, $propositionsQuestion));
+			}
+			$nouveauSondage = new Sondage(0, $titre, 0, time(), 1, $questionsSondages);
+			$manager->creerSondage($nouveauSondage);
+			$message = 'Le sondage "'.$titre.'" a bien été créé.';
+			$listeSondages = $manager->getSondages();
 			include("vues/sondages/liste.php");
 			break;
 
 		case 'supprimer':
-			// Récupérer la variable
-			$manager.supprimerSondage($id);
+			$idSondage = $_GET['id'];
+			$manager->supprimerSondage($idSondage);
 			$message = "Le sondage a bien été supprimé.";
-			$listeSondages = $manager.getSondages();
+			$listeSondages = $manager->getSondages();
+			include("vues/sondages/liste.php");
+			break;
+
+		case 'activer':
+			$titreSondage = $manager->activerSondage($_GET['id']);
+			$message = 'Le sondage "'.$titreSondage.'" a été activé. Il est maintenant visible sur le site.';
+			$listeSondages = $manager->getSondages();
 			include("vues/sondages/liste.php");
 			break;
 
 		case 'detail':
-			// Traitement
+			$sondage = $manager->getSondage($_GET['id']);
+			include("vues/sondages/detail.php");
 			break;
 
 		default:
@@ -57,5 +85,10 @@
 			break;
 
 	}
+
+// }else{
+// 	header('Location: ../index.php');
+// 	exit();
+// }
 
 ?>

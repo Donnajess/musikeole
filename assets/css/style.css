@@ -19,9 +19,202 @@ body{
 	margin-bottom: 20px;
 }
 
+.table td{
+	vertical-align: middle;
+}
+
+.btn-danger a, .btn-primary a, .btn-success a{
+	color: white;
+}
+
+.tab-content .tab-pane{
+	padding-top: 20px;
+}
+
+.jumbotron{
+	height: 250px;
+}
+
+.panel-body .glyphicon{
+	font-size: 5em;
+	text-align: center;
+	width: 100%;
+}
+
+.panel-body h3{
+	text-align: center;
+}
+
+.panel-collapse .btn, .btn-margin-top{
+	margin-top: 20px;
+}
+
+.form-horizontal label{
+	vertical-align: middle;
+}
+
+.panel-collapse .form-horizontal .btn{
+	margin-top: 0px;
+}
+
+.panel-collapse .form-horizontal .btn-margin-top{
+	margin-top: 20px;
+}
+
+.panel-partenaire{
+	text-align: center;
+	height: 200px;
+}
+
+.imgPartenaire{
+	height: 75px;
+}
+
+.btn-success{
+	margin-right: 20px;
+}
+
+.btn-sondage{
+	width: 100px;
+}
+
+.cellule-image{
+	width: 20%;
+}
+
+.panel-collapse .btn-agenda-supprimer{
+	margin-top: 0px;
+}
+
+.pub{
+	margin-bottom: 10px;
+}
+
+.btnFormSondage{
+	margin-left: 10px;
+}
+
+.nav .glyphicon{
+	margin-right: 5px;
+}
+
+.btn a{
+	height: 100% !important;
+	width: 100% !important;
+}
+
+a.list-group-item:hover{
+	background-color: #428BCA;
+	color: white;
+}
+
 /* Menu */
 
 
 
 /* Pages */
 
+
+
+/* Page inscrition */
+
+.introInscription {
+	margin-top: 15px;
+}
+.formInscription {
+	width: 150px;
+}
+
+/* Formulaires inscription */
+.inscription_title {
+	font-size: 18px;
+}
+.iframe {
+	margin-top: 10px;
+}
+.reglement {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.checkbox {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.adhesion {
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.inscription {
+	margin-left: 5px;
+}
+
+/* Espace Membre */
+
+.formConnexion {
+	width: 300px;
+}
+.formMdpOublie {
+	width: 350px;
+}
+.formChangerMdp {
+	width: 350px;
+}
+.btnConnexion {
+	margin: auto;
+	margin-bottom: 5px;
+	width: 100%;
+}
+.liensMembresDeco {
+	font-size: 11px;
+}
+.liensMembresCo {
+	font-size: 12px;
+}
+.btnDeconnexion {
+	margin-top: 10px;
+}
+
+/* footer */
+
+html, body{
+	height: 100%;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -210px;
+}
+
+#push, #footer {
+	min-height: 210px;
+}
+
+#footer {
+	background-color: #dfdfdf;
+}
+
+#footer .container{
+	padding-top: 20px;
+}
+
+#footer .glyphicon{
+	margin-right: 10px;
+}
+
+#footer img{
+	vertical-align: baseline;
+	width: 60px;
+	height: auto;
+	margin-right: 20px;
+}
+
+@media (max-width: 767px) {
+	#footer {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
